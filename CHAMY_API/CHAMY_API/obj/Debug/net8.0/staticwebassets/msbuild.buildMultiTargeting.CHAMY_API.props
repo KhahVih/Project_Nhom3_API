@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\CHAMY_API.props" />
+</Project>

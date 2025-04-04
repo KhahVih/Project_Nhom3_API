@@ -1,0 +1,61 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\0d043e66-7b47-448b-847b-7d22e1ae89c4.png",
+      "PackagePath": "staticwebassets\\Image\\0d043e66-7b47-448b-847b-7d22e1ae89c4.png"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\0e641dc3-959a-437d-a4e0-f5b6adda3482.png",
+      "PackagePath": "staticwebassets\\Image\\0e641dc3-959a-437d-a4e0-f5b6adda3482.png"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\411ee19f-eff4-4266-aa0a-9043f51b8b7b.jpg",
+      "PackagePath": "staticwebassets\\Image\\411ee19f-eff4-4266-aa0a-9043f51b8b7b.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\4cc65634-6ea1-4c0c-8cef-c8c62a8b7878.jpg",
+      "PackagePath": "staticwebassets\\Image\\4cc65634-6ea1-4c0c-8cef-c8c62a8b7878.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\69e62f52-4bed-4fc4-a3aa-56eee438803a.jpg",
+      "PackagePath": "staticwebassets\\Image\\69e62f52-4bed-4fc4-a3aa-56eee438803a.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\75ad1a9c-f603-439c-b82d-e70b5cf5aedf.jpg",
+      "PackagePath": "staticwebassets\\Image\\75ad1a9c-f603-439c-b82d-e70b5cf5aedf.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\8298a55f-5e59-41c1-9cac-c15cca5aff57.jpg",
+      "PackagePath": "staticwebassets\\Image\\8298a55f-5e59-41c1-9cac-c15cca5aff57.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\a0940172-b581-4086-8bf4-b9aae43480b5.jpg",
+      "PackagePath": "staticwebassets\\Image\\a0940172-b581-4086-8bf4-b9aae43480b5.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\ec8e8489-3242-4397-ad34-576086b4f778.jpg",
+      "PackagePath": "staticwebassets\\Image\\ec8e8489-3242-4397-ad34-576086b4f778.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\f384a21a-d676-43c9-bac7-ce55c96f5919.jpg",
+      "PackagePath": "staticwebassets\\Image\\f384a21a-d676-43c9-bac7-ce55c96f5919.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.CHAMY_API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.CHAMY_API.props",
+      "PackagePath": "build\\CHAMY_API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.CHAMY_API.props",
+      "PackagePath": "buildMultiTargeting\\CHAMY_API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.CHAMY_API.props",
+      "PackagePath": "buildTransitive\\CHAMY_API.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
