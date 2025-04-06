@@ -702,11 +702,7 @@ namespace CHAMY_API.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("CHAMY_API.Models.Role", null)
-                        .WithMany("PermissionRoles")
-                        .HasForeignKey("RoleId1");
-
+    
                     b.Navigation("Permission");
 
                     b.Navigation("Role");

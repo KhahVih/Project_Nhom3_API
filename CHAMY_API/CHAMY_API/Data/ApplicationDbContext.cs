@@ -106,7 +106,7 @@ namespace CHAMY_API.Data
 
             modelBuilder.Entity<PermissionRole>()
                 .HasOne(pr => pr.Role)
-                .WithMany() 
+                .WithMany(r => r.PermissionRoles) 
                 .HasForeignKey(pr => pr.RoleId);
 
 

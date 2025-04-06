@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using CHAMY_API.Models;
 using CHAMY_API.Models.DTO;
 using CHAMY_API.Data;
+using CHAMY_API.DTOs;
 
 namespace CHAMY_API.Controllers
 {
@@ -19,11 +20,21 @@ namespace CHAMY_API.Controllers
             _environment = environment;
         }
 
-        // GET: api/images
-        [HttpGet("getAllImages")]
-        public async Task<IActionResult> GetImages()
+        // Lấy danh sách hình ảnh 
+        [HttpGet("GetAllImages")]
+        public async Task<IActionResult> GetImages(int page = 1)
         {
-            var images = await _context.Images
+            const int pageSize = 21;
+            if (page < 1) page = 1;
+            var query = _context.Images;
+            // tổng hình ảnh 
+            var totalProduct = await query.CountAsync();
+            // tính tổng số trang 
+            var totalPage = (int)Math.Ceiling((double)totalProduct / pageSize);
+            // tính số bản ghi cần bỏ qua để đến bảng ghi 
+            var skip = (page - 1) * pageSize;
+            // lấy danh sách hình ảnh  
+            var images = await query
                 .Select(i => new ImageDTO
                 {
                     Id = i.Id,
@@ -31,11 +42,19 @@ namespace CHAMY_API.Controllers
                     Link = i.Link
                 })
                 .ToListAsync();
+            // đối tượng chứa thông tin cần trả về 
+            var result = new
+            {
+                CurrentPage = page,      // Số trang hiện tại
+                TotalPages = totalPage, // Tổng số trang
+                TotalProduct = totalProduct, // Tổng số hình ảnh 
+                Images = images // Danh sách hình ảnh 
+            };
 
-            return Ok(images);
+            return Ok(result);
         }
 
-        // POST: api/images/upload
+        // Upload hình ảnh 
         [HttpPost("uploadImages")]
         public async Task<ActionResult<List<ImageDTO>>> UploadImages([FromForm] List<IFormFile> files)
         {

@@ -48,7 +48,7 @@ namespace CHAMY_API.Controllers
         {
             var permission = await _context.Permissions
                 .Include(p => p.PermissionRoles)
-                .ThenInclude(pr => pr.Role) // Đảm bảo lấy Role.Name
+                    .ThenInclude(pr => pr.Role) // Đảm bảo lấy Role.Name
                 .FirstOrDefaultAsync(p => p.Id == id);
 
             if (permission == null)

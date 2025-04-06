@@ -1,4 +1,4 @@
-﻿    using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CHAMY_API.Models;
 using CHAMY_API.DTOs;
@@ -21,11 +21,22 @@ namespace CHAMY_API.Controllers
             _environment = environment;
         }
 
-        // GET: api/products
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProducts()
-        {
+        // láy danh sách tất cả sản phẩm
+        [HttpGet("GetAllProduct")]
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProducts(int page = 1)
+        {   
+            const int pageSize = 21;
+            if(page < 1) page = 1;
+            // tổng sản phẩm
+            var totalProduct = await _context.Products.CountAsync();
+            // tính tổng số trang 
+            var totalPage = (int)Math.Ceiling((double)totalProduct / pageSize);
+            // tính số bản ghi cần bỏ qua để đến bảng ghi 
+            var skip = (page - 1) * pageSize;
+            // lấy danh sách sản phẩm 
             var products = await _context.Products
+                .Skip(skip)
+                .Take(pageSize)
              .Include(p => p.ProductImages)
              .ThenInclude(pi => pi.Image)
              .Include(p => p.Sales)
@@ -69,219 +80,547 @@ namespace CHAMY_API.Controllers
                      
                  }).ToList(),
              }).ToListAsync();
+            // đối tượng chứa thông tin cần trả về 
+            var result = new
+            {
+                CurrentPage = page,      // Số trang hiện tại
+                TotalPages = totalPage, // Tổng số trang
+                TotalProduct = totalProduct, // Tổng số sản phẩm 
+                Products = products // Danh sách sản phẩm 
+            };
 
-            return Ok(products);
+            return Ok(result);
         }
 
-        // GET: api/products/sale
-        [HttpGet("getProductSale/{id}")]
-        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductSaleId(int id)
+        // Lấy danh sách sản phẩm đã xuất 
+        [HttpGet("GetProductIsPuslish")]
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsIsPuslish(int page = 1)
         {
-            var products = await _context.Products
+            const int pageSize = 21;
+            if (page < 1) page = 1;
+            var query = _context.Products
+                .Where(p => p.IsPublish == true)
+                .Include(p => p.ProductImages)
+                .ThenInclude(pi => pi.Image)
+                .Include(p => p.Sales)
+                .Include(p => p.ProductCategorys)
+                .ThenInclude(pc => pc.Category);
+            // tổng sản phẩm
+            var totalProduct = await query.CountAsync();
+            // tính tổng số trang 
+            var totalPage = (int)Math.Ceiling((double)totalProduct / pageSize);
+            // tính số bản ghi cần bỏ qua để đến bảng ghi 
+            var skip = (page - 1) * pageSize;
+            // lấy danh sách sản phẩm 
+            var products = await query
+                .Skip(skip)
+                .Take(pageSize)
+                .Select(p => new ProductDTO
+                {
+                     Id = p.Id,
+                     PosCode = p.PosCode,
+                     Name = p.Name,
+                     Description = p.Description,
+                     CreatedAt = p.CreatedAt,
+                     UpdatedAt = p.UpdatedAt,
+                     Price = p.Price,
+                     IsPublish = p.IsPublish,
+                     IsNew = p.IsNew,
+                     SaleId = p.SaleId,
+                     SaleName = p.Sales.Name,
+                     Count = p.Count,
+                     Images = p.ProductImages.Select(pi => new ImageDTO
+                     {
+                         Id = pi.Image.Id,
+                         Name = pi.Image.Name,
+                         Link = pi.Image.Link
+                     }).ToList(),
+                     ProductCategorys = p.ProductCategorys.Select(pc => new ProductCategoryDTO
+                     {
+                         ProductId = pc.ProductId,
+                         CategoryId = pc.CategoryId,
+                         ProductName = pc.Product != null ? pc.Product.Name : null,
+                         CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
+                     }).ToList(),
+                     Comments = p.Comments.Select(c => new CommentDTO
+                     {
+                         ProductId = c.ProductId,
+                         ProductName = c.product.Name,
+                         CustomerId = c.CustomerId,
+                         CustomerName = c.customer.Fullname,
+                         Vote = c.Vote,
+                         Description = c.Description,
+
+                     }).ToList(),
+                }).ToListAsync();
+
+            // đối tượng chứa thông tin cần trả về 
+            var result = new
+            {
+                CurrentPage = page,      // Số trang hiện tại
+                TotalPages = totalPage, // Tổng số trang
+                TotalProduct = totalProduct, // Tổng số sản phẩm 
+                Products = products // Danh sách sản phẩm 
+            };
+
+            return Ok(result);
+        }
+
+        // Lấy danh sách sản phẩm chưa xuất 
+        [HttpGet("GetProductNoPuslish")]
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsNoPuslish(int page = 1)
+        {
+            const int pageSize = 21;
+            if (page < 1) page = 1;
+            var query = _context.Products
+                .Where(p => p.IsPublish == false)
+                .Include(p => p.ProductImages)
+                .ThenInclude(pi => pi.Image)
+                .Include(p => p.Sales)
+                .Include(p => p.ProductCategorys)
+                .ThenInclude(pc => pc.Category);
+            // tổng sản phẩm
+            var totalProduct = await query.CountAsync();
+            // tính tổng số trang 
+            var totalPage = (int)Math.Ceiling((double)totalProduct / pageSize);
+            // tính số bản ghi cần bỏ qua để đến bảng ghi 
+            var skip = (page - 1) * pageSize;
+            // lấy danh sách sản phẩm 
+            var products = await query
+                .Skip(skip)
+                .Take(pageSize)
+                .Select(p => new ProductDTO
+                {
+                    Id = p.Id,
+                    PosCode = p.PosCode,
+                    Name = p.Name,
+                    Description = p.Description,
+                    CreatedAt = p.CreatedAt,
+                    UpdatedAt = p.UpdatedAt,
+                    Price = p.Price,
+                    IsPublish = p.IsPublish,
+                    IsNew = p.IsNew,
+                    SaleId = p.SaleId,
+                    SaleName = p.Sales.Name,
+                    Count = p.Count,
+                    Images = p.ProductImages.Select(pi => new ImageDTO
+                    {
+                        Id = pi.Image.Id,
+                        Name = pi.Image.Name,
+                        Link = pi.Image.Link
+                    }).ToList(),
+                    ProductCategorys = p.ProductCategorys.Select(pc => new ProductCategoryDTO
+                    {
+                        ProductId = pc.ProductId,
+                        CategoryId = pc.CategoryId,
+                        ProductName = pc.Product != null ? pc.Product.Name : null,
+                        CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
+                    }).ToList(),
+                    Comments = p.Comments.Select(c => new CommentDTO
+                    {
+                        ProductId = c.ProductId,
+                        ProductName = c.product.Name,
+                        CustomerId = c.CustomerId,
+                        CustomerName = c.customer.Fullname,
+                        Vote = c.Vote,
+                        Description = c.Description,
+
+                    }).ToList(),
+                }).ToListAsync();
+
+            // đối tượng chứa thông tin cần trả về 
+            var result = new
+            {
+                CurrentPage = page,      // Số trang hiện tại
+                TotalPages = totalPage, // Tổng số trang
+                TotalProduct = totalProduct, // Tổng số sản phẩm 
+                Products = products // Danh sách sản phẩm 
+            };
+
+            return Ok(result);
+        }
+
+        // Lấy danh sách sản phẩm theo sale Id 
+        [HttpGet("GetProductSale/{id}")]
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductSaleId(int id, int page = 1)
+        {
+            const int pageSize = 21;
+            if (page < 1) page = 1;
+            var query = _context.Products
                 .Where(p => p.SaleId == id)
-             .Include(p => p.ProductImages)
-             .ThenInclude(pi => pi.Image)
-             .Include(p => p.Sales)
-             .Include(p => p.ProductCategorys) // Thêm include cho ProductCategorys
-             .ThenInclude(pc => pc.Category)   // Include Category từ ProductCategory
-             .Select(p => new ProductDTO
-             {
-                 Id = p.Id,
-                 PosCode = p.PosCode,
-                 Name = p.Name,
-                 Description = p.Description,
-                 CreatedAt = p.CreatedAt,
-                 UpdatedAt = p.UpdatedAt,
-                 Price = p.Price,
-                 IsPublish = p.IsPublish,
-                 IsNew = p.IsNew,
-                 SaleId = p.SaleId,
-                 SaleName = p.Sales.Name,
-                 Count = p.Count,
-                 Images = p.ProductImages.Select(pi => new ImageDTO
-                 {
-                     Id = pi.Image.Id,
-                     Name = pi.Image.Name,
-                     Link = pi.Image.Link
-                 }).ToList(),
-                 ProductCategorys = p.ProductCategorys.Select(pc => new ProductCategoryDTO
-                 {
-                     ProductId = pc.ProductId,
-                     CategoryId = pc.CategoryId,
-                     ProductName = pc.Product != null ? pc.Product.Name : null,
-                     CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
-                 }).ToList(),
-                 Comments = p.Comments.Select(c => new CommentDTO
-                 {
-                     Vote = c.Vote,
-                     Description = c.Description,
+                .Include(p => p.ProductImages)
+                .ThenInclude(pi => pi.Image)
+                .Include(p => p.Sales)
+                .Include(p => p.ProductCategorys)
+                .ThenInclude(pc => pc.Category);   
+            // tổng sản phẩm
+            var totalProduct = await query.CountAsync();
+            // tính tổng số trang 
+            var totalPage = (int)Math.Ceiling((double)totalProduct / pageSize);
+            // tính số bản ghi cần bỏ qua để đến bảng ghi 
+            var skip = (page - 1) * pageSize;
+            // lấy danh sách sản phẩm 
+            var products = await query
+                .Skip(skip)
+                .Take(pageSize)
+                .Select(p => new ProductDTO
+                {
+                     Id = p.Id,
+                     PosCode = p.PosCode,
+                     Name = p.Name,
+                     Description = p.Description,
+                     CreatedAt = p.CreatedAt,
+                     UpdatedAt = p.UpdatedAt,
+                     Price = p.Price,
+                     IsPublish = p.IsPublish,
+                     IsNew = p.IsNew,
+                     SaleId = p.SaleId,
+                     SaleName = p.Sales.Name,
+                     Count = p.Count,
+                     Images = p.ProductImages.Select(pi => new ImageDTO
+                     {
+                         Id = pi.Image.Id,
+                         Name = pi.Image.Name,
+                         Link = pi.Image.Link
+                     }).ToList(),
+                     ProductCategorys = p.ProductCategorys.Select(pc => new ProductCategoryDTO
+                     {
+                         ProductId = pc.ProductId,
+                         CategoryId = pc.CategoryId,
+                         ProductName = pc.Product != null ? pc.Product.Name : null,
+                         CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
+                     }).ToList(),
+                     Comments = p.Comments.Select(c => new CommentDTO
+                     {
+                         ProductId = c.ProductId,
+                         ProductName = c.product.Name,
+                         CustomerId = c.CustomerId,
+                         CustomerName = c.customer.Fullname,
+                         Vote = c.Vote,
+                         Description = c.Description,
 
-                 }).ToList(),
-             }).ToListAsync();
+                     }).ToList(),
+                }).ToListAsync();
 
-            return Ok(products);
+            // đối tượng chứa thông tin cần trả về 
+            var result = new
+            {
+                CurrentPage = page,      // Số trang hiện tại
+                TotalPages = totalPage, // Tổng số trang
+                TotalProduct = totalProduct, // Tổng số sản phẩm 
+                Products = products // Danh sách sản phẩm 
+            };
+
+            return Ok(result);
         }
 
-        // GET: api/products
+        // Lấy danh sách sản phẩm mới 
         [HttpGet("GetProductNew")]
-        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsNew()
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsNew(int page =1)
         {
-            var products = await _context.Products
-         .Include(p => p.ProductImages)
-         .ThenInclude(pi => pi.Image)
-         .Include(p => p.Sales)
-         .Include(p => p.ProductCategorys) // Thêm include cho ProductCategorys
-         .ThenInclude(pc => pc.Category)    // Include Category từ ProductCategory
-         .Where(p => p.IsNew == true)
-         .Select(p => new ProductDTO
-         {
-             Id = p.Id,
-             PosCode = p.PosCode,
-             Name = p.Name,
-             Description = p.Description,
-             CreatedAt = p.CreatedAt,
-             UpdatedAt = p.UpdatedAt,
-             Price = p.Price,
-             IsPublish = p.IsPublish,
-             IsNew = p.IsNew,
-             SaleId = p.SaleId,
-             SaleName = p.Sales.Name,
-             Count = p.Count,
-             Images = p.ProductImages.Select(pi => new ImageDTO
-             {
-                 Id = pi.Image.Id,
-                 Name = pi.Image.Name,
-                 Link = pi.Image.Link
-             }).ToList(),
-             ProductCategorys = p.ProductCategorys.Select(pc => new ProductCategoryDTO
-             {
-                 ProductId = pc.ProductId,
-                 CategoryId = pc.CategoryId,
-                 ProductName = pc.Product != null ? pc.Product.Name : null,
-                 CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
-             }).ToList(),
-             //Comments = p.Comments.Select(c => new CommentDTO
-             //{
-             //    Vote = c.Vote,
-             //    Description = c.Description,
+            const int pageSize = 21;
+            if (page < 1) page = 1;
+            var query = _context.Products
+                .Where(p => p.IsNew == true)
+                .Include(p => p.ProductImages)
+                .ThenInclude(pi => pi.Image)
+                .Include(p => p.Sales)
+                .Include(p => p.ProductCategorys)
+                .ThenInclude(pc => pc.Category);
+            // tổng sản phẩm
+            var totalProduct = await query.CountAsync();
+            // tính tổng số trang 
+            var totalPage = (int)Math.Ceiling((double)totalProduct / pageSize);
+            // tính số bản ghi cần bỏ qua để đến bảng ghi 
+            var skip = (page - 1) * pageSize;
+            // lấy danh sách sản phẩm 
+            var products = await query
+                .Skip(skip)
+                .Take(pageSize)
+                .Select(p => new ProductDTO
+                {
+                    Id = p.Id,
+                    PosCode = p.PosCode,
+                    Name = p.Name,
+                    Description = p.Description,
+                    CreatedAt = p.CreatedAt,
+                    UpdatedAt = p.UpdatedAt,
+                    Price = p.Price,
+                    IsPublish = p.IsPublish,
+                    IsNew = p.IsNew,
+                    SaleId = p.SaleId,
+                    SaleName = p.Sales.Name,
+                    Count = p.Count,
+                    Images = p.ProductImages.Select(pi => new ImageDTO
+                    {
+                        Id = pi.Image.Id,
+                        Name = pi.Image.Name,
+                        Link = pi.Image.Link
+                    }).ToList(),
+                    ProductCategorys = p.ProductCategorys.Select(pc => new ProductCategoryDTO
+                    {
+                        ProductId = pc.ProductId,
+                        CategoryId = pc.CategoryId,
+                        ProductName = pc.Product != null ? pc.Product.Name : null,
+                        CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
+                    }).ToList(),
+                    Comments = p.Comments.Select(c => new CommentDTO
+                    {
+                        ProductId = c.ProductId,
+                        ProductName = c.product.Name,
+                        CustomerId = c.CustomerId,
+                        CustomerName = c.customer.Fullname,
+                        Vote = c.Vote,
+                        Description = c.Description,
 
-             //}).ToList()
-         })
-         .ToListAsync();
+                    }).ToList(),
+                }).ToListAsync();
 
-            return Ok(products);
+            // đối tượng chứa thông tin cần trả về 
+            var result = new
+            {
+                CurrentPage = page,      // Số trang hiện tại
+                TotalPages = totalPage, // Tổng số trang
+                TotalProduct = totalProduct, // Tổng số sản phẩm 
+                Products = products // Danh sách sản phẩm 
+            };
+
+            return Ok(result);
         }
 
-        [HttpGet("GetProductPriceASC")]
-        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsPriceASC()
+        // Lấy danh sách sản phẩm cũ 
+        [HttpGet("GetProductOld")]
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsOld(int page = 1)
         {
-            var products = await _context.Products
-         .Include(p => p.ProductImages)
-         .ThenInclude(pi => pi.Image)
-         .Include(p => p.Sales)
-         .Include(p => p.ProductCategorys) // Thêm include cho ProductCategorys
-         .ThenInclude(pc => pc.Category)    // Include Category từ ProductCategory
-         .OrderBy(p => p.Price)
-         .Select(p => new ProductDTO
-         {
-             Id = p.Id,
-             PosCode = p.PosCode,
-             Name = p.Name,
-             Description = p.Description,
-             CreatedAt = p.CreatedAt,
-             UpdatedAt = p.UpdatedAt,
-             Price = p.Price,
-             IsPublish = p.IsPublish,
-             IsNew = p.IsNew,
-             SaleId = p.SaleId,
-             SaleName = p.Sales.Name,
-             Count = p.Count,
-             Images = p.ProductImages.Select(pi => new ImageDTO
-             {
-                 Id = pi.Image.Id,
-                 Name = pi.Image.Name,
-                 Link = pi.Image.Link
-             }).ToList(),
-             ProductCategorys = p.ProductCategorys.Select(pc => new ProductCategoryDTO
-             {
-                 ProductId = pc.ProductId,
-                 CategoryId = pc.CategoryId,
-                 ProductName = pc.Product != null ? pc.Product.Name : null,
-                 CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
-             }).ToList(),
-             //Comments = p.Comments.Select(c => new CommentDTO
-             //{
-             //    Vote = c.Vote,
-             //    Description = c.Description,
+            const int pageSize = 21;
+            if (page < 1) page = 1;
+            var query = _context.Products
+                .Where(p => p.IsNew == false)
+                .Include(p => p.ProductImages)
+                .ThenInclude(pi => pi.Image)
+                .Include(p => p.Sales)
+                .Include(p => p.ProductCategorys)
+                .ThenInclude(pc => pc.Category);
+            // tổng sản phẩm
+            var totalProduct = await query.CountAsync();
+            // tính tổng số trang 
+            var totalPage = (int)Math.Ceiling((double)totalProduct / pageSize);
+            // tính số bản ghi cần bỏ qua để đến bảng ghi 
+            var skip = (page - 1) * pageSize;
+            // lấy danh sách sản phẩm 
+            var products = await query
+                .Skip(skip)
+                .Take(pageSize)
+                .Select(p => new ProductDTO
+                {
+                    Id = p.Id,
+                    PosCode = p.PosCode,
+                    Name = p.Name,
+                    Description = p.Description,
+                    CreatedAt = p.CreatedAt,
+                    UpdatedAt = p.UpdatedAt,
+                    Price = p.Price,
+                    IsPublish = p.IsPublish,
+                    IsNew = p.IsNew,
+                    SaleId = p.SaleId,
+                    SaleName = p.Sales.Name,
+                    Count = p.Count,
+                    Images = p.ProductImages.Select(pi => new ImageDTO
+                    {
+                        Id = pi.Image.Id,
+                        Name = pi.Image.Name,
+                        Link = pi.Image.Link
+                    }).ToList(),
+                    ProductCategorys = p.ProductCategorys.Select(pc => new ProductCategoryDTO
+                    {
+                        ProductId = pc.ProductId,
+                        CategoryId = pc.CategoryId,
+                        ProductName = pc.Product != null ? pc.Product.Name : null,
+                        CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
+                    }).ToList(),
+                    Comments = p.Comments.Select(c => new CommentDTO
+                    {
+                        ProductId = c.ProductId,
+                        ProductName = c.product.Name,
+                        CustomerId = c.CustomerId,
+                        CustomerName = c.customer.Fullname,
+                        Vote = c.Vote,
+                        Description = c.Description,
 
-             //}).ToList()
-         })
-         .ToListAsync();
+                    }).ToList(),
+                }).ToListAsync();
 
-            return Ok(products);
+            // đối tượng chứa thông tin cần trả về 
+            var result = new
+            {
+                CurrentPage = page,      // Số trang hiện tại
+                TotalPages = totalPage, // Tổng số trang
+                TotalProduct = totalProduct, // Tổng số sản phẩm 
+                Products = products // Danh sách sản phẩm 
+            };
+
+            return Ok(result);
+        }
+
+        // Lấy danh sách sản phẩm có giá từ thấp đến cao 
+        [HttpGet("GetProductPriceASC")]
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsPriceASC( int page = 1)
+        {
+            const int pageSize = 21;
+            if (page < 1) page = 1;
+            var query = _context.Products
+                .Include(p => p.ProductImages)
+                .ThenInclude(pi => pi.Image)
+                .Include(p => p.Sales)
+                .Include(p => p.ProductCategorys)
+                .ThenInclude(pc => pc.Category)   
+                .OrderBy(p => p.Price);
+            // tổng sản phẩm
+            var totalProduct = await query.CountAsync();
+            // tính tổng số trang 
+            var totalPage = (int)Math.Ceiling((double)totalProduct / pageSize);
+            // tính số bản ghi cần bỏ qua để đến bảng ghi 
+            var skip = (page - 1) * pageSize;
+            // lấy danh sách sản phẩm 
+            var products = await query
+                .Skip(skip)
+                .Take(pageSize)
+                .Select(p => new ProductDTO
+                {
+                     Id = p.Id,
+                     PosCode = p.PosCode,
+                     Name = p.Name,
+                     Description = p.Description,
+                     CreatedAt = p.CreatedAt,
+                     UpdatedAt = p.UpdatedAt,
+                     Price = p.Price,
+                     IsPublish = p.IsPublish,
+                     IsNew = p.IsNew,
+                     SaleId = p.SaleId,
+                     SaleName = p.Sales.Name,
+                     Count = p.Count,
+                     Images = p.ProductImages.Select(pi => new ImageDTO
+                     {
+                         Id = pi.Image.Id,
+                         Name = pi.Image.Name,
+                         Link = pi.Image.Link
+                     }).ToList(),
+                     ProductCategorys = p.ProductCategorys.Select(pc => new ProductCategoryDTO
+                     {
+                         ProductId = pc.ProductId,
+                         CategoryId = pc.CategoryId,
+                         ProductName = pc.Product != null ? pc.Product.Name : null,
+                         CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
+                     }).ToList(),
+                    Comments = p.Comments.Select(c => new CommentDTO
+                    {
+                        ProductId = c.ProductId,
+                        ProductName = c.product.Name,
+                        CustomerId = c.CustomerId,
+                        CustomerName = c.customer.Fullname,
+                        Vote = c.Vote,
+                        Description = c.Description,
+
+                    }).ToList()
+                }).ToListAsync();
+
+            // đối tượng chứa thông tin cần trả về 
+            var result = new
+            {
+                CurrentPage = page,      // Số trang hiện tại
+                TotalPages = totalPage, // Tổng số trang
+                TotalProduct = totalProduct, // Tổng số sản phẩm 
+                Products = products // Danh sách sản phẩm 
+            };
+
+            return Ok(result);
         }
 
 
         [HttpGet("GetProductPriceASDC")]
-        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsPriceASDC()
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsPriceASDC(int page = 1)
         {
-            var products = await _context.Products
-         .Include(p => p.ProductImages)
-         .ThenInclude(pi => pi.Image)
-         .Include(p => p.Sales)
-         .Include(p => p.ProductCategorys) // Thêm include cho ProductCategorys
-         .ThenInclude(pc => pc.Category)    // Include Category từ ProductCategory
-         .OrderByDescending(p => p.Price)
-         .Select(p => new ProductDTO
-         {
-             Id = p.Id,
-             PosCode = p.PosCode,
-             Name = p.Name,
-             Description = p.Description,
-             CreatedAt = p.CreatedAt,
-             UpdatedAt = p.UpdatedAt,
-             Price = p.Price,
-             IsPublish = p.IsPublish,
-             IsNew = p.IsNew,
-             SaleId = p.SaleId,
-             SaleName = p.Sales.Name,
-             Count = p.Count,
-             Images = p.ProductImages.Select(pi => new ImageDTO
-             {
-                 Id = pi.Image.Id,
-                 Name = pi.Image.Name,
-                 Link = pi.Image.Link
-             }).ToList(),
-             ProductCategorys = p.ProductCategorys.Select(pc => new ProductCategoryDTO
-             {
-                 ProductId = pc.ProductId,
-                 CategoryId = pc.CategoryId,
-                 ProductName = pc.Product != null ? pc.Product.Name : null,
-                 CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
-             }).ToList(),
-             //Comments = p.Comments.Select(c => new CommentDTO
-             //{
-             //    Vote = c.Vote,
-             //    Description = c.Description,
+            const int pageSize = 21;
+            if (page < 1) page = 1;
+            var query = _context.Products
+                .Include(p => p.ProductImages)
+                .ThenInclude(pi => pi.Image)
+                .Include(p => p.Sales)
+                .Include(p => p.ProductCategorys)
+                .ThenInclude(pc => pc.Category)
+                .OrderByDescending(p => p.Price);
+            // tổng sản phẩm
+            var totalProduct = await query.CountAsync();
+            // tính tổng số trang 
+            var totalPage = (int)Math.Ceiling((double)totalProduct / pageSize);
+            // tính số bản ghi cần bỏ qua để đến bảng ghi 
+            var skip = (page - 1) * pageSize;
+            // lấy danh sách sản phẩm 
+            var products = await query
+                .Skip(skip)
+                .Take(pageSize)
+                .Select(p => new ProductDTO
+                {
+                    Id = p.Id,
+                    PosCode = p.PosCode,
+                    Name = p.Name,
+                    Description = p.Description,
+                    CreatedAt = p.CreatedAt,
+                    UpdatedAt = p.UpdatedAt,
+                    Price = p.Price,
+                    IsPublish = p.IsPublish,
+                    IsNew = p.IsNew,
+                    SaleId = p.SaleId,
+                    SaleName = p.Sales.Name,
+                    Count = p.Count,
+                    Images = p.ProductImages.Select(pi => new ImageDTO
+                    {
+                        Id = pi.Image.Id,
+                        Name = pi.Image.Name,
+                        Link = pi.Image.Link
+                    }).ToList(),
+                    ProductCategorys = p.ProductCategorys.Select(pc => new ProductCategoryDTO
+                    {
+                        ProductId = pc.ProductId,
+                        CategoryId = pc.CategoryId,
+                        ProductName = pc.Product != null ? pc.Product.Name : null,
+                        CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
+                    }).ToList(),
+                    Comments = p.Comments.Select(c => new CommentDTO
+                    {
+                        ProductId = c.ProductId,
+                        ProductName = c.product.Name,
+                        CustomerId = c.CustomerId,
+                        CustomerName = c.customer.Fullname,
+                        Vote = c.Vote,
+                        Description = c.Description,
 
-             //}).ToList()
-         })
-         .ToListAsync();
+                    }).ToList()
+                }).ToListAsync();
 
-            return Ok(products);
+            // đối tượng chứa thông tin cần trả về 
+            var result = new
+            {
+                CurrentPage = page,      // Số trang hiện tại
+                TotalPages = totalPage, // Tổng số trang
+                TotalProduct = totalProduct, // Tổng số sản phẩm 
+                Products = products // Danh sách sản phẩm 
+            };
+
+            return Ok(result);
         }
 
-        // GET: api/products/5
-        [HttpGet("{id}")]
+        // Lấy sản phẩm theo Id 
+        [HttpGet("GetProduct/{id}")]
         public async Task<ActionResult<ProductDTO>> GetProduct(int id)
         {
             var product = await _context.Products
-         .Include(p => p.ProductImages)
-         .ThenInclude(pi => pi.Image)
-         .Include(p => p.Sales)
-         .Include(p => p.ProductCategorys) // Thêm include cho ProductCategories
-         .ThenInclude(pc => pc.Category) // Include Category từ 
-         .FirstOrDefaultAsync(p => p.Id == id);
+                .Include(p => p.ProductImages)
+                .ThenInclude(pi => pi.Image)
+                .Include(p => p.Sales)
+                .Include(p => p.ProductCategorys)
+                .ThenInclude(pc => pc.Category)
+                .FirstOrDefaultAsync(p => p.Id == id);
 
             if (product == null)
             {
@@ -317,29 +656,45 @@ namespace CHAMY_API.Controllers
                     ProductName = pc.Product != null ? pc.Product.Name : null,
                     CategoryName = pc.Category != null ? pc.Category.Name : null // Thêm tên danh mục
                 }).ToList(),
-                //Comments = product.Comments.Select(c => new CommentDTO
-                //{
-                //    Vote = c.Vote,
-                //    Description = c.Description,
+                Comments = product.Comments.Select(c => new CommentDTO
+                {
+                    ProductId = c.ProductId,
+                    ProductName = c.product.Name,
+                    CustomerId = c.CustomerId,
+                    CustomerName = c.customer.Fullname,
+                    Vote = c.Vote,
+                    Description = c.Description,
 
-                //}).ToList()
+                }).ToList()
             };
 
             return Ok(productDTO);
         }
 
-        // GET: api/productsbycategory/5
-        [HttpGet("getProductByCategory/{id}")]
-        public async Task<ActionResult<ProductDTO>> GetProductByCategory(int id)
+        // Lấy danh sách sản phẩm theo danh mục 
+        [HttpGet("GetProductCategory/{id}")]
+        public async Task<ActionResult<ProductDTO>> GetProductByCategory(int id, int page = 1)
         {
-            // Truy vấn danh sách sản phẩm theo categoryId từ bảng ProductCategory
-            var product = await _context.Products
-            .Where(p => p.ProductCategorys.Any(pc => pc.CategoryId == id))
-            .Include(p => p.ProductImages)
-            .Include(p => p.Sales)
-            .Include(p => p.ProductCategorys)
-                .ThenInclude(pc => pc.Category)
-            .ToListAsync();
+            const int pageSize = 21;
+            if (page < 1) page = 1;
+            var query = _context.Products
+                .Where(p => p.ProductCategorys.Any(pc => pc.CategoryId == id))
+                .Include(p => p.ProductImages)
+                    .ThenInclude(pi => pi.Image)
+                .Include(p => p.Sales)
+                .Include(p => p.ProductCategorys)
+                    .ThenInclude(pc => pc.Category);
+            // tổng sản phẩm
+            var totalProduct = await query.CountAsync();
+            // tính tổng số trang 
+            var totalPage = (int)Math.Ceiling((double)totalProduct / pageSize);
+            // tính số bản ghi cần bỏ qua để đến bảng ghi 
+            var skip = (page - 1) * pageSize;
+            // lấy danh sách sản phẩm 
+            var product = await query
+                .Skip(skip)
+                .Take(pageSize)
+                .ToListAsync();
 
             if (product == null || !product.Any())
             {
@@ -358,14 +713,16 @@ namespace CHAMY_API.Controllers
                 IsPublish = product.IsPublish,
                 IsNew = product.IsNew,
                 SaleId = product.SaleId,
-                SaleName = product.Sales.Name,
+                SaleName = product.Sales?.Name,
                 Count = product.Count,
-                Images = product.ProductImages.Select(pi => new ImageDTO
-                {
-                    Id = pi.Image.Id,
-                    Name = pi.Image.Name,
-                    Link = pi.Image.Link
-                }).ToList(),
+                Images = product.ProductImages != null ? product.ProductImages
+                    .Where(pi => pi.Image != null)
+                    .Select(pi => new ImageDTO
+                    {
+                        Id = pi.Image.Id,
+                        Name = pi.Image.Name,
+                        Link = pi.Image.Link,
+                    }).ToList(): new List<ImageDTO>(),
                 ProductCategorys = product.ProductCategorys.Select(pc => new ProductCategoryDTO
                 {
                     ProductId = pc.ProductId,
@@ -373,28 +730,55 @@ namespace CHAMY_API.Controllers
                     ProductName = pc.Product != null ? pc.Product.Name : null,
                     CategoryName = pc.Category != null ? pc.Category.Name : null // Thêm tên danh mục
                 }).ToList(),
-                //Comments = product.Comments.Select(c => new CommentDTO
-                //{
-                //    Vote = c.Vote,
-                //    Description = c.Description,
+                Comments = product.Comments.Select(c => new CommentDTO
+                {
+                    ProductId = c.ProductId,
+                    ProductName = c.product.Name,
+                    CustomerId = c.CustomerId,
+                    CustomerName = c.customer.Fullname,
+                    Vote = c.Vote,
+                    Description = c.Description,
 
-                //}).ToList()
+                }).ToList()
             }).ToList();
 
-            return Ok(productDTO);
+
+            // đối tượng chứa thông tin cần trả về 
+            var result = new
+            {
+                CurrentPage = page,      // Số trang hiện tại
+                TotalPages = totalPage, // Tổng số trang
+                TotalProduct = totalProduct, // Tổng số sản phẩm 
+                Products = productDTO // Danh sách sản phẩm 
+            };
+
+            return Ok(result);
         }
 
-        // GET: api/products/name
-        [HttpGet("search/{name}")]
-        public async Task<ActionResult<ProductDTO>> GetProductName(string name)
+        // Tìm kiếm sản phẩm theo tên hoặc theo PosCode 
+        [HttpGet("SearchProduct/{name}")]
+        public async Task<ActionResult<ProductDTO>> GetProductName(string name, int page = 1)
         {
-            var products = await _context.Products
-         .Include(p => p.ProductImages)
-         .ThenInclude(pi => pi.Image)
-         .Include(p => p.ProductCategorys) // Thêm include cho ProductCategories
-         .ThenInclude(pc => pc.Category) // Include Category từ 
-         .Where(p => p.Name.Contains(name) || p.PosCode.Contains(name))
-         .ToListAsync();
+            const int pageSize = 21;
+            if (page < 1) page = 1;
+            var query = _context.Products
+                 .Include(p => p.ProductImages)
+                 .ThenInclude(pi => pi.Image)
+                 .Include(p => p.ProductCategorys)
+                 .ThenInclude(pc => pc.Category)
+                 .Include(p => p.Sales)
+                 .Where(p => p.Name.Contains(name) || p.PosCode.Contains(name));
+            // tổng sản phẩm
+            var totalProduct = await query.CountAsync();
+            // tính tổng số trang 
+            var totalPage = (int)Math.Ceiling((double)totalProduct / pageSize);
+            // tính số bản ghi cần bỏ qua để đến bảng ghi 
+            var skip = (page - 1) * pageSize;
+            // lấy danh sách sản phẩm 
+            var products = await query
+                .Skip(skip)
+                .Take(pageSize)
+                .ToListAsync();
 
             if (products == null)
             {
@@ -413,24 +797,45 @@ namespace CHAMY_API.Controllers
                 IsPublish = product.IsPublish,
                 IsNew = product.IsNew,
                 SaleId = product.SaleId,
-                SaleName = product.Sales.Name,
+                SaleName = product.Sales?.Name,
                 Count = product.Count,
-                Images = product.ProductImages.Select(pi => new ImageDTO
-                {
-                    Id = pi.Image.Id,
-                    Name = pi.Image.Name,
-                    Link = pi.Image.Link
-                }).ToList(),
+                Images = product.ProductImages != null ? product.ProductImages
+                    .Where(pi => pi.Image != null)
+                    .Select(pi => new ImageDTO
+                    {
+                        Id = pi.Image.Id,
+                        Name = pi.Image.Name,
+                        Link = pi.Image.Link,
+                    }).ToList() : new List<ImageDTO>(),
                 ProductCategorys = product.ProductCategorys.Select(pc => new ProductCategoryDTO
                 {
                     ProductId = pc.ProductId,
                     CategoryId = pc.CategoryId,
                     ProductName = pc.Product != null ? pc.Product.Name : null,
                     CategoryName = pc.Category != null ? pc.Category.Name : null // Thêm tên danh mục
+                }).ToList(),
+                Comments = product.Comments.Select(c => new CommentDTO
+                {
+                    ProductId = c.ProductId,
+                    ProductName = c.product.Name,
+                    CustomerId = c.CustomerId,
+                    CustomerName = c.customer.Fullname,
+                    Vote = c.Vote,
+                    Description = c.Description,
+
                 }).ToList()
             }).ToList();
 
-            return Ok(productDTO);
+            // đối tượng chứa thông tin cần trả về 
+            var result = new
+            {
+                CurrentPage = page,      // Số trang hiện tại
+                TotalPages = totalPage, // Tổng số trang
+                TotalProduct = totalProduct, // Tổng số sản phẩm 
+                Products = productDTO // Danh sách sản phẩm 
+            };
+
+            return Ok(result);
         }
 
         // POST: api/products
@@ -541,6 +946,7 @@ namespace CHAMY_API.Controllers
 
         //    return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, productDTO);
         //}
+        // Thêm sản phẩm mới 
         [HttpPost]
         public async Task<ActionResult<ProductDTO>> CreateProduct([FromForm] string productDTOJson, [FromForm] List<IFormFile> imageFiles)
         {

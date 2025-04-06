@@ -641,11 +641,17 @@
   {
     "ContainingType": "CHAMY_API.Controllers.ImagesController",
     "Method": "GetImages",
-    "RelativePath": "api/Images/getAllImages",
+    "RelativePath": "api/Images/GetAllImages",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -942,26 +948,6 @@
   },
   {
     "ContainingType": "CHAMY_API.Controllers.ProductController",
-    "Method": "GetProducts",
-    "RelativePath": "api/Product",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CHAMY_API.DTOs.ProductDTO, CHAMY_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "CHAMY_API.Controllers.ProductController",
     "Method": "CreateProduct",
     "RelativePath": "api/Product",
     "HttpMethod": "POST",
@@ -977,32 +963,6 @@
         "Name": "imageFiles",
         "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
         "IsRequired": false
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "CHAMY_API.DTOs.ProductDTO",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "CHAMY_API.Controllers.ProductController",
-    "Method": "GetProduct",
-    "RelativePath": "api/Product/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
       }
     ],
     "ReturnTypes": [
@@ -1061,8 +1021,34 @@
   },
   {
     "ContainingType": "CHAMY_API.Controllers.ProductController",
-    "Method": "GetProductByCategory",
-    "RelativePath": "api/Product/getProductByCategory/{id}",
+    "Method": "GetProducts",
+    "RelativePath": "api/Product/GetAllProduct",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CHAMY_API.DTOs.ProductDTO, CHAMY_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CHAMY_API.Controllers.ProductController",
+    "Method": "GetProduct",
+    "RelativePath": "api/Product/GetProduct/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1087,12 +1073,127 @@
   },
   {
     "ContainingType": "CHAMY_API.Controllers.ProductController",
+    "Method": "GetProductByCategory",
+    "RelativePath": "api/Product/GetProductCategory/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CHAMY_API.DTOs.ProductDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CHAMY_API.Controllers.ProductController",
+    "Method": "GetProductsIsPuslish",
+    "RelativePath": "api/Product/GetProductIsPuslish",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CHAMY_API.DTOs.ProductDTO, CHAMY_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CHAMY_API.Controllers.ProductController",
     "Method": "GetProductsNew",
     "RelativePath": "api/Product/GetProductNew",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CHAMY_API.DTOs.ProductDTO, CHAMY_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CHAMY_API.Controllers.ProductController",
+    "Method": "GetProductsNoPuslish",
+    "RelativePath": "api/Product/GetProductNoPuslish",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CHAMY_API.DTOs.ProductDTO, CHAMY_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CHAMY_API.Controllers.ProductController",
+    "Method": "GetProductsOld",
+    "RelativePath": "api/Product/GetProductOld",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[CHAMY_API.DTOs.ProductDTO, CHAMY_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
@@ -1112,7 +1213,13 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[CHAMY_API.DTOs.ProductDTO, CHAMY_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
@@ -1132,7 +1239,13 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[CHAMY_API.DTOs.ProductDTO, CHAMY_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
@@ -1148,7 +1261,7 @@
   {
     "ContainingType": "CHAMY_API.Controllers.ProductController",
     "Method": "GetProductSaleId",
-    "RelativePath": "api/Product/getProductSale/{id}",
+    "RelativePath": "api/Product/GetProductSale/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1157,6 +1270,11 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
+      },
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -1174,7 +1292,7 @@
   {
     "ContainingType": "CHAMY_API.Controllers.ProductController",
     "Method": "GetProductName",
-    "RelativePath": "api/Product/search/{name}",
+    "RelativePath": "api/Product/SearchProduct/{name}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1183,6 +1301,11 @@
         "Name": "name",
         "Type": "System.String",
         "IsRequired": true
+      },
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
