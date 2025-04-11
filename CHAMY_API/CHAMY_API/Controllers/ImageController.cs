@@ -28,9 +28,9 @@ namespace CHAMY_API.Controllers
             if (page < 1) page = 1;
             var query = _context.Images;
             // tổng hình ảnh 
-            var totalProduct = await query.CountAsync();
+            var totalImage = await query.CountAsync();
             // tính tổng số trang 
-            var totalPage = (int)Math.Ceiling((double)totalProduct / pageSize);
+            var totalPage = (int)Math.Ceiling((double)totalImage / pageSize);
             // tính số bản ghi cần bỏ qua để đến bảng ghi 
             var skip = (page - 1) * pageSize;
             // lấy danh sách hình ảnh  
@@ -47,7 +47,7 @@ namespace CHAMY_API.Controllers
             {
                 CurrentPage = page,      // Số trang hiện tại
                 TotalPages = totalPage, // Tổng số trang
-                TotalProduct = totalProduct, // Tổng số hình ảnh 
+                TotalImage = totalImage, // Tổng số hình ảnh 
                 Images = images // Danh sách hình ảnh 
             };
 

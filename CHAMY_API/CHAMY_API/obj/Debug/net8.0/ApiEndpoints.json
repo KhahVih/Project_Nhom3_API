@@ -79,46 +79,6 @@
     ]
   },
   {
-    "ContainingType": "CHAMY_API.Controllers.CartController",
-    "Method": "GetColor",
-    "RelativePath": "api/Cart/GetColor",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CHAMY_API.Models.DTO.ColorDTO, CHAMY_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "CHAMY_API.Controllers.CartController",
-    "Method": "GetSize",
-    "RelativePath": "api/Cart/GetSize",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CHAMY_API.Models.DTO.ColorDTO, CHAMY_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
     "ContainingType": "CHAMY_API.Controllers.CategoryController",
     "Method": "GetCategories",
     "RelativePath": "api/Category",
@@ -1047,6 +1007,26 @@
   },
   {
     "ContainingType": "CHAMY_API.Controllers.ProductController",
+    "Method": "GetColor",
+    "RelativePath": "api/Product/GetColor",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CHAMY_API.Models.DTO.ColorDTO, CHAMY_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CHAMY_API.Controllers.ProductController",
     "Method": "GetProduct",
     "RelativePath": "api/Product/GetProduct/{id}",
     "HttpMethod": "GET",
@@ -1291,6 +1271,26 @@
   },
   {
     "ContainingType": "CHAMY_API.Controllers.ProductController",
+    "Method": "GetSize",
+    "RelativePath": "api/Product/GetSize",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CHAMY_API.Models.DTO.ColorDTO, CHAMY_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CHAMY_API.Controllers.ProductController",
     "Method": "GetProductName",
     "RelativePath": "api/Product/SearchProduct/{name}",
     "HttpMethod": "GET",
@@ -1428,6 +1428,140 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CHAMY_API.Controllers.SaleController",
+    "Method": "CreateSale",
+    "RelativePath": "api/Sale",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "saleDto",
+        "Type": "CHAMY_API.Models.DTO.SaleDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CHAMY_API.Models.DTO.SaleDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CHAMY_API.Controllers.SaleController",
+    "Method": "UpdateSale",
+    "RelativePath": "api/Sale/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "saleDTO",
+        "Type": "CHAMY_API.Models.DTO.SaleDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CHAMY_API.Models.DTO.SaleDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CHAMY_API.Controllers.SaleController",
+    "Method": "GetSale",
+    "RelativePath": "api/Sale/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CHAMY_API.Models.DTO.SaleDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CHAMY_API.Controllers.SaleController",
+    "Method": "UpdateSaleStatus",
+    "RelativePath": "api/Sale/{id}/isactive",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "isActive",
+        "Type": "System.Boolean",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CHAMY_API.Models.DTO.SaleDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CHAMY_API.Controllers.SaleController",
+    "Method": "GetSale",
+    "RelativePath": "api/Sale/GetSale",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CHAMY_API.Models.DTO.SaleDTO, CHAMY_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "CHAMY_API.Controllers.UserController",

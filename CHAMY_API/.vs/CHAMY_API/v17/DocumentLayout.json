@@ -3,12 +3,72 @@
   "WorkspaceRootPath": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\controllers\\imagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\controllers\\imagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\dto\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\dto\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\controllers\\salecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\controllers\\salecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\dto\\saledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\dto\\saledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\sale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\sale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\enumextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\enumextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\controllers\\imagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\controllers\\imagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\controllers\\contactcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\controllers\\contactcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\dto\\cartitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\dto\\cartitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,16 +79,8 @@
       "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\controllers\\permissioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\migrations\\20250331065230_dbchamycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\migrations\\20250331065230_dbchamycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\migrations\\20250402071011_addhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -51,28 +103,8 @@
       "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\permissionrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\dto\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\dto\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\service\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\service\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\controllers\\historycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -99,10 +131,6 @@
       "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\dto\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -119,10 +147,6 @@
       "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\dto\\saledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\dto\\saledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\dto\\checkoutdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\dto\\checkoutdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -133,14 +157,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\dto\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\dto\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\dto\\cartitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\dto\\cartitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\enumextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\enumextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\dto\\updateorderstatusdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -161,10 +177,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\color.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\color.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\sale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\sale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\dto\\shoppingcartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -241,14 +253,6 @@
       "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\dto\\permissiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\controllers\\contactcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\controllers\\contactcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|c:\\du_an_tt_cubetech\\project\\chamy_api\\chamy_api\\models\\dto\\contactdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{152D9F8A-B0B6-4731-94F4-0A01C25C9E9A}|CHAMY_API\\CHAMY_API.csproj|solutionrelative:chamy_api\\models\\dto\\contactdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -260,7 +264,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -269,27 +273,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "ApplicationDbContextModelSnapshot.cs",
-              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "CHAMY_API\\Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "RelativeToolTip": "CHAMY_API\\Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "ViewState": "AgIAAKsCAAAAAAAAAAAYwMACAAAEAAAAAAAAAA==",
+              "Title": "SaleController.cs",
+              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\SaleController.cs",
+              "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\SaleController.cs",
+              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\SaleController.cs",
+              "RelativeToolTip": "CHAMY_API\\Controllers\\SaleController.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAYwE8AAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T07:07:08.065Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Comment.cs",
-              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Comment.cs",
-              "RelativeDocumentMoniker": "CHAMY_API\\Models\\Comment.cs",
-              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Comment.cs",
-              "RelativeToolTip": "CHAMY_API\\Models\\Comment.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T12:10:11.465Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-10T08:37:57.951Z"
             },
             {
               "$type": "Document",
@@ -299,40 +290,194 @@
               "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\ProductController.cs",
               "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\ProductController.cs",
               "RelativeToolTip": "CHAMY_API\\Controllers\\ProductController.cs",
-              "ViewState": "AgIAACQEAAAAAAAAAAAUwBcAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAYwFAAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T12:35:15.249Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T12:35:15.249Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SaleDTO.cs",
+              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\SaleDTO.cs",
+              "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\SaleDTO.cs",
+              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\SaleDTO.cs",
+              "RelativeToolTip": "CHAMY_API\\Models\\DTO\\SaleDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T07:27:28.638Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductDTO.cs",
+              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\ProductDTO.cs",
+              "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\ProductDTO.cs",
+              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\ProductDTO.cs",
+              "RelativeToolTip": "CHAMY_API\\Models\\DTO\\ProductDTO.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAIwBUAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T12:19:41.607Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "CHAMY_API\\Models\\Product.cs",
+              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Product.cs",
+              "RelativeToolTip": "CHAMY_API\\Models\\Product.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA/wA0AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T12:15:30.638Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Comment.cs",
+              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Comment.cs",
+              "RelativeDocumentMoniker": "CHAMY_API\\Models\\Comment.cs",
+              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Comment.cs",
+              "RelativeToolTip": "CHAMY_API\\Models\\Comment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T12:10:11.465Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\CartController.cs",
+              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\CartController.cs",
+              "RelativeToolTip": "CHAMY_API\\Controllers\\CartController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T07:30:31.333Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "CommentController.cs",
+              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\CommentController.cs",
+              "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\CommentController.cs",
+              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\CommentController.cs",
+              "RelativeToolTip": "CHAMY_API\\Controllers\\CommentController.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAQwGkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T12:26:06.579Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Sale.cs",
+              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Sale.cs",
+              "RelativeDocumentMoniker": "CHAMY_API\\Models\\Sale.cs",
+              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Sale.cs",
+              "RelativeToolTip": "CHAMY_API\\Models\\Sale.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T06:44:36.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "CHAMY_API\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAYwAUAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T09:12:32.78Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "EnumExtensions.cs",
+              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\EnumExtensions.cs",
+              "RelativeDocumentMoniker": "CHAMY_API\\EnumExtensions.cs",
+              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\EnumExtensions.cs",
+              "RelativeToolTip": "CHAMY_API\\EnumExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T08:45:21.357Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "ImageController.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\ImageController.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\ImageController.cs",
               "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\ImageController.cs",
               "RelativeToolTip": "CHAMY_API\\Controllers\\ImageController.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAQwDcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAYwCAAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T11:03:02.201Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T11:03:02.201Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PermissionController.cs",
-              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\PermissionController.cs",
-              "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\PermissionController.cs",
-              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\PermissionController.cs",
-              "RelativeToolTip": "CHAMY_API\\Controllers\\PermissionController.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAYwDAAAAA3AAAAAAAAAA==",
+              "DocumentIndex": 13,
+              "Title": "ContactController.cs",
+              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\ContactController.cs",
+              "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\ContactController.cs",
+              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\ContactController.cs",
+              "RelativeToolTip": "CHAMY_API\\Controllers\\ContactController.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAYwBgAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T08:18:27.699Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T10:54:35.18Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 14,
+              "Title": "ApplicationDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "CHAMY_API\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeToolTip": "CHAMY_API\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAJwCAAAAAAAAAAAYwKECAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T07:07:08.065Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "CHAMY_API\\Controllers\\LoginController.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAgwEMAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T06:45:29.095Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CartItem.cs",
+              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\CartItem.cs",
+              "RelativeDocumentMoniker": "CHAMY_API\\Models\\CartItem.cs",
+              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\CartItem.cs",
+              "RelativeToolTip": "CHAMY_API\\Models\\CartItem.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA4wBAAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T06:56:51.944Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CartItemDTO.cs",
+              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\CartItemDTO.cs",
+              "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\CartItemDTO.cs",
+              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\CartItemDTO.cs",
+              "RelativeToolTip": "CHAMY_API\\Models\\DTO\\CartItemDTO.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAQwAcAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T06:59:18.406Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\UserController.cs",
@@ -340,12 +485,23 @@
               "RelativeToolTip": "CHAMY_API\\Controllers\\UserController.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAAwDIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T06:10:02.333Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T06:10:02.333Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 18,
+              "Title": "PermissionController.cs",
+              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\PermissionController.cs",
+              "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\PermissionController.cs",
+              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\PermissionController.cs",
+              "RelativeToolTip": "CHAMY_API\\Controllers\\PermissionController.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAYwDAAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T08:18:27.699Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "20250402071011_addHistory.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Migrations\\20250402071011_addHistory.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Migrations\\20250402071011_addHistory.cs",
@@ -357,7 +513,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 21,
               "Title": "20250401033432_updateOrder.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Migrations\\20250401033432_updateOrder.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Migrations\\20250401033432_updateOrder.cs",
@@ -369,7 +525,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 19,
               "Title": "20250331065230_DBChamyContext.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Migrations\\20250331065230_DBChamyContext.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Migrations\\20250331065230_DBChamyContext.cs",
@@ -381,7 +537,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 22,
               "Title": "20250331072737_UpdateOrderDb.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Migrations\\20250331072737_UpdateOrderDb.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Migrations\\20250331072737_UpdateOrderDb.cs",
@@ -393,7 +549,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 23,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Data\\ApplicationDbContext.cs",
@@ -405,7 +561,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 24,
               "Title": "PermissionRole.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\PermissionRole.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\PermissionRole.cs",
@@ -417,31 +573,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "LoginController.cs",
-              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\LoginController.cs",
-              "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\LoginController.cs",
-              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\LoginController.cs",
-              "RelativeToolTip": "CHAMY_API\\Controllers\\LoginController.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAgwE4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T06:45:29.095Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Product.cs",
-              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Product.cs",
-              "RelativeDocumentMoniker": "CHAMY_API\\Models\\Product.cs",
-              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Product.cs",
-              "RelativeToolTip": "CHAMY_API\\Models\\Product.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAA3wA0AAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T12:15:30.638Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 25,
               "Title": "UserService.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Service\\UserService.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\Service\\UserService.cs",
@@ -453,43 +585,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ProductDTO.cs",
-              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\ProductDTO.cs",
-              "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\ProductDTO.cs",
-              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\ProductDTO.cs",
-              "RelativeToolTip": "CHAMY_API\\Models\\DTO\\ProductDTO.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABUAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T12:19:41.607Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "CartController.cs",
-              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\CartController.cs",
-              "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\CartController.cs",
-              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\CartController.cs",
-              "RelativeToolTip": "CHAMY_API\\Controllers\\CartController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T07:30:31.333Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "CartItem.cs",
-              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\CartItem.cs",
-              "RelativeDocumentMoniker": "CHAMY_API\\Models\\CartItem.cs",
-              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\CartItem.cs",
-              "RelativeToolTip": "CHAMY_API\\Models\\CartItem.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAkwBoAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T06:56:51.944Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 26,
               "Title": "HistoryController.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\HistoryController.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\HistoryController.cs",
@@ -501,7 +597,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 29,
               "Title": "History.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\History.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\History.cs",
@@ -513,7 +609,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 27,
               "Title": "HistoryDTO.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\HistoryDTO.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\HistoryDTO.cs",
@@ -525,7 +621,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 33,
               "Title": "UserDTO.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\UserDTO.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\UserDTO.cs",
@@ -537,7 +633,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 32,
               "Title": "Order.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Order.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\Order.cs",
@@ -549,7 +645,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 30,
               "Title": "CustomerController.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\CustomerController.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\CustomerController.cs",
@@ -561,7 +657,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 28,
               "Title": "Customer.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Customer.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\Customer.cs",
@@ -573,19 +669,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "OrderController.cs",
-              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\OrderController.cs",
-              "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\OrderController.cs",
-              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\OrderController.cs",
-              "RelativeToolTip": "CHAMY_API\\Controllers\\OrderController.cs",
-              "ViewState": "AgIAAMwAAAAAAAAAAAAQwPQAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T09:12:32.78Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 31,
               "Title": "LoginDTO.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\LoginDTO.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\LoginDTO.cs",
@@ -597,7 +681,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 34,
               "Title": "OrderDetailDTO.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\OrderDetailDTO.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\OrderDetailDTO.cs",
@@ -609,7 +693,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 35,
               "Title": "RoleController.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\RoleController.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\RoleController.cs",
@@ -621,19 +705,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "SaleDTO.cs",
-              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\SaleDTO.cs",
-              "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\SaleDTO.cs",
-              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\SaleDTO.cs",
-              "RelativeToolTip": "CHAMY_API\\Models\\DTO\\SaleDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T07:27:28.638Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 36,
               "Title": "CheckOutDTO.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\CheckOutDTO.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\CheckOutDTO.cs",
@@ -645,7 +717,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 37,
               "Title": "OrderDetail.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\OrderDetail.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\OrderDetail.cs",
@@ -657,7 +729,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 38,
               "Title": "OrderDTO.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\OrderDTO.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\OrderDTO.cs",
@@ -669,19 +741,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "CartItemDTO.cs",
-              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\CartItemDTO.cs",
-              "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\CartItemDTO.cs",
-              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\CartItemDTO.cs",
-              "RelativeToolTip": "CHAMY_API\\Models\\DTO\\CartItemDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T06:59:18.406Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 39,
               "Title": "UpdateOrderStatusDTO.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\UpdateOrderStatusDTO.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\UpdateOrderStatusDTO.cs",
@@ -693,19 +753,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "EnumExtensions.cs",
-              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\EnumExtensions.cs",
-              "RelativeDocumentMoniker": "CHAMY_API\\EnumExtensions.cs",
-              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\EnumExtensions.cs",
-              "RelativeToolTip": "CHAMY_API\\EnumExtensions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAUAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T08:45:21.357Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 40,
               "Title": "ChangePassword.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\ChangePassword.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\ChangePassword.cs",
@@ -717,7 +765,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 41,
               "Title": "CustomerDTO.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\CustomerDTO.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\CustomerDTO.cs",
@@ -729,7 +777,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 42,
               "Title": "CategoryController.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\CategoryController.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\CategoryController.cs",
@@ -741,7 +789,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 43,
               "Title": "Color.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Color.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\Color.cs",
@@ -753,19 +801,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "Sale.cs",
-              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Sale.cs",
-              "RelativeDocumentMoniker": "CHAMY_API\\Models\\Sale.cs",
-              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Sale.cs",
-              "RelativeToolTip": "CHAMY_API\\Models\\Sale.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T06:44:36.134Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 45,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Program.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Program.cs",
@@ -777,7 +813,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 44,
               "Title": "ShoppingCartDTO.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\ShoppingCartDTO.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\ShoppingCartDTO.cs",
@@ -789,7 +825,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 46,
               "Title": "ColorDTO.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\ColorDTO.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\ColorDTO.cs",
@@ -801,7 +837,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 47,
               "Title": "Size.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Size.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\Size.cs",
@@ -813,7 +849,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 48,
               "Title": "ProductCategory.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\ProductCategory.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\ProductCategory.cs",
@@ -825,7 +861,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 49,
               "Title": "20250329075606_order.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\CHAMY_API\\CHAMY_API\\Migrations\\20250329075606_order.cs",
               "RelativeDocumentMoniker": "..\\..\\CHAMY_API\\CHAMY_API\\Migrations\\20250329075606_order.cs",
@@ -837,7 +873,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 50,
               "Title": "Contact.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Contact.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\Contact.cs",
@@ -849,7 +885,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 51,
               "Title": "20250329073617_ShoppingCart.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\CHAMY_API\\CHAMY_API\\Migrations\\20250329073617_ShoppingCart.cs",
               "RelativeDocumentMoniker": "..\\..\\CHAMY_API\\CHAMY_API\\Migrations\\20250329073617_ShoppingCart.cs",
@@ -861,7 +897,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 52,
               "Title": "SizeDTO.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\SizeDTO.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\SizeDTO.cs",
@@ -873,7 +909,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 53,
               "Title": "CommentDTO.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\CommentDTO.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\CommentDTO.cs",
@@ -885,7 +921,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 54,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\appsettings.json",
               "RelativeDocumentMoniker": "CHAMY_API\\appsettings.json",
@@ -897,7 +933,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 56,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\User.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\User.cs",
@@ -909,7 +945,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 57,
               "Title": "UserPermission.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\UserPermission.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\UserPermission.cs",
@@ -921,7 +957,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 58,
               "Title": "Permission.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Permission.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\Permission.cs",
@@ -933,7 +969,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 55,
               "Title": "UserPermissionDTO.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\UserPermissionDTO.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\UserPermissionDTO.cs",
@@ -945,7 +981,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 59,
               "Title": "Role.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\Role.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\Role.cs",
@@ -957,7 +993,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 60,
               "Title": "RoleDTO.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\RoleDTO.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\RoleDTO.cs",
@@ -969,7 +1005,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 61,
               "Title": "PermissionRoleDTO.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\PermissionRoleDTO.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\PermissionRoleDTO.cs",
@@ -981,7 +1017,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 62,
               "Title": "PermissionDTO.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\PermissionDTO.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\PermissionDTO.cs",
@@ -993,31 +1029,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
-              "Title": "CommentController.cs",
-              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\CommentController.cs",
-              "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\CommentController.cs",
-              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\CommentController.cs",
-              "RelativeToolTip": "CHAMY_API\\Controllers\\CommentController.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAgwDoAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T12:26:06.579Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 61,
-              "Title": "ContactController.cs",
-              "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\ContactController.cs",
-              "RelativeDocumentMoniker": "CHAMY_API\\Controllers\\ContactController.cs",
-              "ToolTip": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Controllers\\ContactController.cs",
-              "RelativeToolTip": "CHAMY_API\\Controllers\\ContactController.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwBgAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T10:54:35.18Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 63,
               "Title": "ContactDTO.cs",
               "DocumentMoniker": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\Models\\DTO\\ContactDTO.cs",
               "RelativeDocumentMoniker": "CHAMY_API\\Models\\DTO\\ContactDTO.cs",

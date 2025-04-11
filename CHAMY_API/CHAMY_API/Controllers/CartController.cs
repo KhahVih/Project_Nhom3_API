@@ -17,24 +17,6 @@ namespace CHAMY_API.Controllers
         {
             _context = context;
         }
-        [HttpGet("GetColor")]
-        public async Task<ActionResult<IEnumerable<ColorDTO>>> GetColor()
-        {
-            var color = await _context.Colors
-                .ToListAsync();
-
-
-            return Ok(color);
-        }
-        [HttpGet("GetSize")]
-        public async Task<ActionResult<IEnumerable<ColorDTO>>> GetSize()
-        {
-            var size = await _context.Sizes
-                .ToListAsync();
-
-
-            return Ok(size);
-        }
 
         [HttpGet("Customer/{id}")]
         public async Task<ActionResult<IEnumerable<CartItemDTO>>> GetCart(int id)
@@ -56,7 +38,10 @@ namespace CHAMY_API.Controllers
                  SizeId = item.SizeId,
                  SizeName = item.Size.Name ?? "Không chọn",
                  UnitPrice = item.UnitPrice,
-                 FinalPrice = item.FinalPrice
+                 FinalPrice = (item.Product.Sales != null && item.Product.Sales.IsActive &&
+                          DateTime.Now >= item.Product.Sales.StartDate && DateTime.Now <= item.Product.Sales.EndDate)
+                          ? item.UnitPrice * (1 - item.Product.Sales.DiscountPercentage / 100)
+                          : item.UnitPrice
              }).ToListAsync();
 
             return Ok(cart);
@@ -88,9 +73,16 @@ namespace CHAMY_API.Controllers
                     c.ColorId == cartItemDto.ColorId &&
                     c.SizeId == cartItemDto.SizeId);
             CartItemDTO resultItem;
+            double UnitPrice = cartItemDto.UnitPrice;
+            double FinalPrice = UnitPrice;
+            if (product.Sales != null && product.Sales.IsActive && DateTime.Now >= product.Sales.StartDate && DateTime.Now <= product.Sales.EndDate)
+            {
+                FinalPrice = UnitPrice * (1 - product.Sales.DiscountPercentage / 100);
+            }
             if (existingItem != null)
             {
                 existingItem.Quantity += cartItemDto.Quantity;
+                existingItem.UnitPrice = UnitPrice;
                 await _context.SaveChangesAsync();
                 resultItem = new CartItemDTO
                 {
@@ -103,8 +95,10 @@ namespace CHAMY_API.Controllers
                     ColorName = existingItem.Color?.Name,
                     SizeId = existingItem.SizeId,
                     SizeName = existingItem.Size?.Name,
-                    UnitPrice = existingItem.UnitPrice,
-                    FinalPrice = existingItem.FinalPrice
+                    //UnitPrice = existingItem.UnitPrice,
+                    //FinalPrice = existingItem.FinalPrice
+                    UnitPrice = UnitPrice,
+                    FinalPrice = FinalPrice, // Sử dụng giá cuối cùng đã tính 
                 };
             }
             else
@@ -116,7 +110,8 @@ namespace CHAMY_API.Controllers
                     Quantity = cartItemDto.Quantity,
                     ColorId = cartItemDto.ColorId,
                     SizeId = cartItemDto.SizeId,
-                    UnitPrice = cartItemDto.UnitPrice // Gán giá từ product nếu có sale
+                    // UnitPrice = cartItemDto.UnitPrice // Gán giá từ product nếu có sale
+                    UnitPrice = UnitPrice   
                 };
                 _context.CartItems.Add(newCartItem);
                 await _context.SaveChangesAsync();
@@ -131,8 +126,10 @@ namespace CHAMY_API.Controllers
                     ColorName = newCartItem.ColorId.HasValue ? (await _context.Colors.FindAsync(newCartItem.ColorId))?.Name : null,
                     SizeId = newCartItem.SizeId,
                     SizeName = newCartItem.SizeId.HasValue ? (await _context.Sizes.FindAsync(newCartItem.SizeId))?.Name : null,
-                    UnitPrice = newCartItem.UnitPrice,
-                    FinalPrice = newCartItem.UnitPrice // Có thể tính lại nếu cần
+                    //UnitPrice = newCartItem.UnitPrice,
+                    //FinalPrice = newCartItem.UnitPrice // Có thể tính lại nếu cần
+                    UnitPrice = UnitPrice,
+                    FinalPrice = FinalPrice // áp dụng giá đã giảm 
                 };
             }
 

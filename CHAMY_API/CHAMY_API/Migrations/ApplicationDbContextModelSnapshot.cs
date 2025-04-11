@@ -476,23 +476,6 @@ namespace CHAMY_API.Migrations
                     b.ToTable("ProductImages");
                 });
 
-            modelBuilder.Entity("CHAMY_API.Models.Role", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Roles");
-                });
-
             modelBuilder.Entity("CHAMY_API.Models.Sale", b =>
                 {
                     b.Property<int>("Id")
@@ -687,25 +670,6 @@ namespace CHAMY_API.Migrations
                     b.Navigation("Product");
 
                     b.Navigation("Size");
-                });
-
-            modelBuilder.Entity("CHAMY_API.Models.PermissionRole", b =>
-                {
-                    b.HasOne("CHAMY_API.Models.Permission", "Permission")
-                        .WithMany("PermissionRoles")
-                        .HasForeignKey("PermissionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CHAMY_API.Models.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-    
-                    b.Navigation("Permission");
-
-                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("CHAMY_API.Models.Product", b =>

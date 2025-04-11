@@ -15,18 +15,7 @@
         public Size? Size { get; set; }
 
         // Tính giá sau khi áp dụng giảm giá (nếu có)
-        public double FinalPrice
-        {
-            get
-            {
-                if (Product?.Sales != null && Product.Sales.IsActive &&
-                    DateTime.Now >= Product.Sales.StartDate && DateTime.Now <= Product.Sales.EndDate)
-                {
-                    return UnitPrice * (1 - Product.Sales.DiscountPercentage / 100);
-                }
-                return UnitPrice;
-            }
-        }
+        public double FinalPrice { get; set;}
         
     }
 }

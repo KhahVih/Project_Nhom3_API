@@ -55,6 +55,7 @@ namespace CHAMY_API.Controllers
                  IsNew = p.IsNew,
                  SaleId = p.SaleId,
                  SaleName = p.Sales.Name,
+                 DiscountPercentage = p.Sales.DiscountPercentage,
                  Count = p.Count,
                  Images = p.ProductImages.Select(pi => new ImageDTO
                  {
@@ -77,6 +78,7 @@ namespace CHAMY_API.Controllers
                      CustomerName = c.customer.Fullname,
                      Vote = c.Vote,
                      Description = c.Description,
+                     CreatedAt = c.CreatedAt,
                      
                  }).ToList(),
              }).ToListAsync();
@@ -321,7 +323,7 @@ namespace CHAMY_API.Controllers
             const int pageSize = 21;
             if (page < 1) page = 1;
             var query = _context.Products
-                .Where(p => p.IsNew == true)
+                .OrderByDescending(p => p.CreatedAt)
                 .Include(p => p.ProductImages)
                 .ThenInclude(pi => pi.Image)
                 .Include(p => p.Sales)
@@ -395,7 +397,7 @@ namespace CHAMY_API.Controllers
             const int pageSize = 21;
             if (page < 1) page = 1;
             var query = _context.Products
-                .Where(p => p.IsNew == false)
+                .OrderBy(p => p.CreatedAt)
                 .Include(p => p.ProductImages)
                 .ThenInclude(pi => pi.Image)
                 .Include(p => p.Sales)
@@ -616,10 +618,12 @@ namespace CHAMY_API.Controllers
         {
             var product = await _context.Products
                 .Include(p => p.ProductImages)
-                .ThenInclude(pi => pi.Image)
+                    .ThenInclude(pi => pi.Image)
                 .Include(p => p.Sales)
                 .Include(p => p.ProductCategorys)
-                .ThenInclude(pc => pc.Category)
+                    .ThenInclude(pc => pc.Category)
+                .Include(p => p.Comments) // Thêm dòng này để lấy Comments
+                    .ThenInclude(c => c.customer) // Nếu cần thông tin Customer (Fullname)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
             if (product == null)
@@ -639,9 +643,7 @@ namespace CHAMY_API.Controllers
                 IsPublish = product.IsPublish,
                 IsNew = product.IsNew,
                 SaleId = product.SaleId,
-                SaleName = _context.Sale.FirstOrDefault(s => s.Id == product.SaleId) != null
-                    ? _context.Sale.FirstOrDefault(s => s.Id == product.SaleId).Name
-                    : null,
+                SaleName = _context.Sale.FirstOrDefault(s => s.Id == product.SaleId)?.Name,
                 Count = product.Count,
                 Images = product.ProductImages.Select(pi => new ImageDTO
                 {
@@ -664,8 +666,9 @@ namespace CHAMY_API.Controllers
                     CustomerName = c.customer.Fullname,
                     Vote = c.Vote,
                     Description = c.Description,
+                    CreatedAt = c.CreatedAt,
 
-                }).ToList()
+                }).ToList(),
             };
 
             return Ok(productDTO);
@@ -1362,6 +1365,27 @@ namespace CHAMY_API.Controllers
 
             return NoContent();
         }
+        // Get Color
+        [HttpGet("GetColor")]
+        public async Task<ActionResult<IEnumerable<ColorDTO>>> GetColor()
+        {
+            var color = await _context.Colors
+                .ToListAsync();
+
+
+            return Ok(color);
+        }
+        // Get Size
+        [HttpGet("GetSize")]
+        public async Task<ActionResult<IEnumerable<ColorDTO>>> GetSize()
+        {
+            var size = await _context.Sizes
+                .ToListAsync();
+
+
+            return Ok(size);
+        }
+
     }
 
 }
