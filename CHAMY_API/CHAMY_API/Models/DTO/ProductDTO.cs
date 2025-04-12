@@ -20,5 +20,7 @@ namespace CHAMY_API.DTOs
         public List<ImageDTO>? Images { get; set; } // Danh sách ảnh với Link
         public List<ProductCategoryDTO>? ProductCategorys { get; set; } // Sản phẩm thuộc danh mục 
         public List<CommentDTO>? Comments { get; set; } = new List<CommentDTO>();
+        public List<ColorDTO> Colors { get; set; } // Danh sách màu sắc của sản phẩm
+        public List<SizeDTO> Sizes { get; set; } // Danh sách kích thước của sản phẩm
     }
 }

@@ -5,6 +5,7 @@ using CHAMY_API.DTOs;
 using CHAMY_API.Data;
 using CHAMY_API.Models.DTO;
 using System.Text.Json;
+using System.Drawing;
 
 namespace CHAMY_API.Controllers
 {
@@ -81,6 +82,18 @@ namespace CHAMY_API.Controllers
                      CreatedAt = c.CreatedAt,
                      
                  }).ToList(),
+                 Colors = p.ProductColors.Select(pc => new ColorDTO
+                 {
+                     Id = pc.Color.Id,
+                     Name = pc.Color.Name
+                 }).ToList(),
+
+                 // ✅ Thêm danh sách kích thước
+                 Sizes = p.ProductSizes.Select(ps => new SizeDTO
+                 {
+                     Id = ps.Size.Id,
+                     Name = ps.Size.Name
+                 }).ToList()
              }).ToListAsync();
             // đối tượng chứa thông tin cần trả về 
             var result = new
@@ -622,6 +635,10 @@ namespace CHAMY_API.Controllers
                 .Include(p => p.Sales)
                 .Include(p => p.ProductCategorys)
                     .ThenInclude(pc => pc.Category)
+                .Include(p => p.ProductColors)
+                    .ThenInclude(pc => pc.Color) // Include màu sắc
+                .Include(p => p.ProductSizes)
+                    .ThenInclude(ps => ps.Size)  // Include kích thước
                 .Include(p => p.Comments) // Thêm dòng này để lấy Comments
                     .ThenInclude(c => c.customer) // Nếu cần thông tin Customer (Fullname)
                 .FirstOrDefaultAsync(p => p.Id == id);
@@ -669,6 +686,19 @@ namespace CHAMY_API.Controllers
                     CreatedAt = c.CreatedAt,
 
                 }).ToList(),
+                // ✅ Thêm danh sách màu sắc
+                Colors = product.ProductColors.Select(pc => new ColorDTO
+                {
+                    Id = pc.Color.Id,
+                    Name = pc.Color.Name
+                }).ToList(),
+
+                // ✅ Thêm danh sách kích thước
+                Sizes = product.ProductSizes.Select(ps => new SizeDTO
+                {
+                    Id = ps.Size.Id,
+                    Name = ps.Size.Name
+                }).ToList()
             };
 
             return Ok(productDTO);
@@ -841,115 +871,7 @@ namespace CHAMY_API.Controllers
             return Ok(result);
         }
 
-        // POST: api/products
-        //[HttpPost]
-        //public async Task<ActionResult<ProductDTO>> CreateProduct(ProductDTO productDTO)
-        //{
-        //    if (productDTO == null)
-        //    {
-        //        return BadRequest("Product data is required.");
-        //    }
-
-        //    // Tạo product mới 
-        //    var product = new Product
-        //    {
-        //        PosCode = productDTO.PosCode,
-        //        Name = productDTO.Name,
-        //        Description = productDTO.Description,
-        //        Price = productDTO.Price,
-        //        IsPublish = productDTO.IsPublish,
-        //        IsNew = productDTO.IsNew,
-        //        Count = productDTO.Count,
-        //        CreatedAt = DateTime.UtcNow,
-        //        UpdatedAt = DateTime.UtcNow,
-        //        ProductImages = new List<ProductImage>(), // Khởi tạo danh sách hình ảnh
-        //        ProductCategorys = new List<ProductCategory>() // Khởi tạo danh sách danh mục
-        //    };
-
-        //    // Xử lý danh sách hình ảnh - luôn tạo mới Image
-        //    if (productDTO.Images != null && productDTO.Images.Any())
-        //    {
-        //        foreach (var img in productDTO.Images)
-        //        {
-        //            if (img == null || string.IsNullOrEmpty(img.Link))
-        //            {
-        //                continue; // Bỏ qua nếu hình ảnh không hợp lệ
-        //            }
-
-        //            // Tạo mới Image
-        //            var newImage = new Image
-        //            {
-        //                Link = img.Link,
-        //                Name = img.Name ?? "Unnamed", // Gán mặc định nếu Name null
-        //                ProductImages = new List<ProductImage>()
-        //            };
-        //            _context.Images.Add(newImage);
-        //            await _context.SaveChangesAsync(); // Lưu để có ImageId
-
-        //            // Tạo ProductImage liên kết với Product và Image mới
-        //            var productImage = new ProductImage
-        //            {
-        //                ProductId = product.Id, // Sẽ được cập nhật sau khi lưu product
-        //                ImageId = newImage.Id,
-        //                Product = product,
-        //                Image = newImage
-        //            };
-        //            product.ProductImages.Add(productImage);
-        //        }
-        //    }
-
-        //    // Xử lý danh sách danh mục (ProductCategory)
-        //    if (productDTO.ProductCategorys != null && productDTO.ProductCategorys.Any())
-        //    {
-        //        foreach (var pcDTO in productDTO.ProductCategorys)
-        //        {
-        //            var existingCategory = await _context.Category
-        //                .FirstOrDefaultAsync(c => c.Id == pcDTO.CategoryId);
-
-        //            if (existingCategory != null)
-        //            {
-        //                var productCategory = new ProductCategory
-        //                {
-        //                    Product = product,
-        //                    Category = existingCategory,
-        //                    CategoryId = existingCategory.Id
-        //                };
-        //                product.ProductCategorys.Add(productCategory);
-        //            }
-        //        }
-        //    }
-
-        //    // Thêm product vào context và lưu để có Id
-        //    _context.Products.Add(product);
-        //    await _context.SaveChangesAsync();
-
-        //    // Cập nhật ProductId cho các ProductImage sau khi product đã được lưu
-        //    foreach (var productImage in product.ProductImages)
-        //    {
-        //        productImage.ProductId = product.Id;
-        //    }
-        //    await _context.SaveChangesAsync();
-
-        //    // Cập nhật productDTO để trả về
-        //    productDTO.Id = product.Id;
-        //    productDTO.ProductCategorys = product.ProductCategorys.Select(pc => new ProductCategoryDTO
-        //    {
-        //        ProductId = pc.ProductId,
-        //        CategoryId = pc.CategoryId,
-        //        CategoryName = pc.Category.Name,
-        //    }).ToList();
-
-        //    // Thêm thông tin hình ảnh vào DTO
-        //    productDTO.Images = product.ProductImages.Select(pi => new ImageDTO
-        //    {
-        //        Id = pi.Image.Id,
-        //        Link = pi.Image.Link,
-        //        Name = pi.Image.Name
-        //    }).ToList();
-
-        //    return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, productDTO);
-        //}
-        // Thêm sản phẩm mới 
+        // thêm product
         [HttpPost]
         public async Task<ActionResult<ProductDTO>> CreateProduct([FromForm] string productDTOJson, [FromForm] List<IFormFile> imageFiles)
         {
@@ -982,7 +904,9 @@ namespace CHAMY_API.Controllers
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow,
                 ProductImages = new List<ProductImage>(),
-                ProductCategorys = new List<ProductCategory>()
+                ProductCategorys = new List<ProductCategory>(),
+                ProductColors = new List<ProductColor>(),
+                ProductSizes = new List<ProductSize>(),
             };
 
             // Xử lý upload hình ảnh nếu có
@@ -1059,6 +983,42 @@ namespace CHAMY_API.Controllers
                     }
                 }
             }
+            // Xử lý màu sắc
+            if (productDTO.Colors != null && productDTO.Colors.Any())
+            {
+                foreach (var colorDTO in productDTO.Colors)
+                {
+                    var color = await _context.Colors.FirstOrDefaultAsync(c => c.Id == colorDTO.Id);
+                    if (color != null)
+                    {
+                        var productcolor = new ProductColor
+                        {
+                            Product = product,
+                            Color = color,
+                            ColorId = color.Id
+                        };
+                        product.ProductColors.Add(productcolor);
+                    }
+                }
+            }
+            // Xử lý kích thước
+            if (productDTO.Sizes != null && productDTO.Sizes.Any())
+            {
+                foreach (var sizeDTO in productDTO.Sizes)
+                {
+                    var size = await _context.Sizes.FindAsync(sizeDTO.Id);
+                    if (size != null)
+                    {
+                        var productsize = new ProductSize
+                        {
+                            Product = product,
+                            Size = size,
+                            SizeId = size.Id
+                        };
+                        product.ProductSizes.Add(productsize);
+                    }
+                }
+            }
 
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
@@ -1083,85 +1043,23 @@ namespace CHAMY_API.Controllers
                 Link = pi.Image.Link,
                 Name = pi.Image.Name
             }).ToList();
+            productDTO.Colors = product.ProductColors.Select(pc => new ColorDTO
+            {
+                Id = pc.Color.Id,
+                Name = pc.Color.Name
+            }).ToList();
+
+            productDTO.Sizes = product.ProductSizes.Select(ps => new SizeDTO
+            {
+                Id = ps.Size.Id,
+                Name = ps.Size.Name
+            }).ToList();
 
             return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, productDTO);
         }
 
-        // PUT: api/products/5
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> UpdateProduct(int id, ProductDTO productDTO)
-        //{
-        //    if (id != productDTO.Id)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    var product = await _context.Products
-        //        .Include(p => p.ProductImages)
-        //        .Include(p => p.ProductCategorys)
-        //        .FirstOrDefaultAsync(p => p.Id == id);
-
-        //    if (product == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    // Cập nhật thông tin sản phẩm
-        //    product.PosCode = productDTO.PosCode;
-        //    product.Name = productDTO.Name;
-        //    product.Description = productDTO.Description;
-        //    product.Price = productDTO.Price;
-        //    product.IsPublish = productDTO.IsPublish;
-        //    product.IsNew = productDTO.IsNew;
-        //    product.Count = productDTO.Count;
-        //    product.UpdatedAt = DateTime.UtcNow;
-
-        //    // Cập nhật danh sách ảnh
-        //    product.ProductImages.Clear();
-        //    if (productDTO.Images != null && productDTO.Images.Any())
-        //    {
-        //        foreach (var image in productDTO.Images)
-        //        {
-        //            product.ProductImages.Add(new ProductImage
-        //            {
-        //                ProductId = product.Id,
-        //                ImageId = image.Id
-        //            });
-        //        }
-        //    }
-        //    // **Cập nhật danh sách danh mục**
-        //    // Lấy danh sách CategoryId hiện có
-        //    var existingCategoryIds = product.ProductCategorys.Select(pc => pc.CategoryId).ToList();
-        //    // Lấy danh sách CategoryId từ DTO (xử lý trường hợp null)
-        //    var dtoCategoryIds = productDTO.ProductCategorys?.Select(pc => pc.CategoryId).ToList() ?? new List<int>();
-        //    // Xác định các CategoryId cần xóa
-        //    var toRemoveCategoryIds = existingCategoryIds.Except(dtoCategoryIds).ToList();
-        //    // Xác định các CategoryId cần thêm
-        //    var toAddCategoryIds = dtoCategoryIds.Except(existingCategoryIds).ToList();
-
-        //    // Xóa các ProductCategory không còn trong DTO
-        //    foreach (var categoryId in toRemoveCategoryIds)
-        //    {
-        //        var pcToRemove = product.ProductCategorys.FirstOrDefault(pc => pc.CategoryId == categoryId);
-        //        if (pcToRemove != null)
-        //        {
-        //           product.ProductCategorys.Remove(pcToRemove);
-        //        }
-        //    }
-        //    // Thêm mới các ProductCategory từ DTO
-        //    foreach (var categoryId in toAddCategoryIds)
-        //    {
-        //        var newPc = new ProductCategory { ProductId = product.Id, CategoryId = categoryId };
-        //        product.ProductCategorys.Add(newPc);
-        //    }
-
-        //    _context.Entry(product).State = EntityState.Modified;
-        //    await _context.SaveChangesAsync();
-
-        //    return NoContent();
-        //}
         // PUT: api/products/{id}
-        [HttpPut("{id}")]
+        [HttpPut("UpdateProduct/{id}")]
         public async Task<IActionResult> UpdateProduct(int id, [FromForm] string productDTOJson, [FromForm] List<IFormFile> imageFiles)
         {
             if (string.IsNullOrEmpty(productDTOJson))
@@ -1328,6 +1226,77 @@ namespace CHAMY_API.Controllers
                     });
                 }
             }
+            // === Cập nhật danh sách màu sắc ===
+            var existingColorIds = await _context.ProductColors
+                .Where(pc => pc.ProductId == product.Id)
+                .Select(pc => pc.ColorId)
+                .ToListAsync();
+
+            var dtoColorIds = productDTO.Colors?.Select(c => c.Id).ToList() ?? new List<int>();
+
+            var toRemoveColorIds = existingColorIds.Except(dtoColorIds).ToList();
+            var toAddColorIds = dtoColorIds.Except(existingColorIds).ToList();
+
+            // Xóa màu không còn được chọn
+            foreach (var colorId in toRemoveColorIds)
+            {
+                var pcToRemove = await _context.ProductColors
+                    .FirstOrDefaultAsync(pc => pc.ProductId == product.Id && pc.ColorId == colorId);
+                if (pcToRemove != null)
+                {
+                    _context.ProductColors.Remove(pcToRemove);
+                }
+            }
+
+            // Thêm màu mới
+            foreach (var colorId in toAddColorIds)
+            {
+                var color = await _context.Colors.FindAsync(colorId);
+                if (color != null)
+                {
+                    _context.ProductColors.Add(new ProductColor
+                    {
+                        ProductId = product.Id,
+                        ColorId = color.Id
+                    });
+                }
+            }
+
+            // === Cập nhật danh sách kích cỡ ===
+            var existingSizeIds = await _context.ProductSizes
+                .Where(ps => ps.ProductId == product.Id)
+                .Select(ps => ps.SizeId)
+                .ToListAsync();
+
+            var dtoSizeIds = productDTO.Sizes?.Select(s => s.Id).ToList() ?? new List<int>();
+
+            var toRemoveSizeIds = existingSizeIds.Except(dtoSizeIds).ToList();
+            var toAddSizeIds = dtoSizeIds.Except(existingSizeIds).ToList();
+
+            // Xóa size không còn được chọn
+            foreach (var sizeId in toRemoveSizeIds)
+            {
+                var psToRemove = await _context.ProductSizes
+                    .FirstOrDefaultAsync(ps => ps.ProductId == product.Id && ps.SizeId == sizeId);
+                if (psToRemove != null)
+                {
+                    _context.ProductSizes.Remove(psToRemove);
+                }
+            }
+
+            // Thêm size mới
+            foreach (var sizeId in toAddSizeIds)
+            {
+                var size = await _context.Sizes.FindAsync(sizeId);
+                if (size != null)
+                {
+                    _context.ProductSizes.Add(new ProductSize
+                    {
+                        ProductId = product.Id,
+                        SizeId = size.Id
+                    });
+                }
+            }
 
             _context.Entry(product).State = EntityState.Modified;
             await _context.SaveChangesAsync();
@@ -1346,6 +1315,22 @@ namespace CHAMY_API.Controllers
                 CategoryId = pc.CategoryId,
                 CategoryName = pc.Category.Name 
             }).ToList();
+            productDTO.Colors = await _context.ProductColors
+                .Where(pc => pc.ProductId == product.Id)
+                .Select(pc => new ColorDTO
+                {
+                    Id = pc.Color.Id,
+                    Name = pc.Color.Name
+                })
+                .ToListAsync();
+            productDTO.Sizes = await _context.ProductSizes
+            .Where(ps => ps.ProductId == product.Id)
+            .Select(ps => new SizeDTO
+            {
+                Id = ps.Size.Id,
+                Name = ps.Size.Name
+            })
+            .ToListAsync();
 
             return Ok(productDTO); // Trả về productDTO thay vì NoContent để frontend nhận dữ liệu mới
         }

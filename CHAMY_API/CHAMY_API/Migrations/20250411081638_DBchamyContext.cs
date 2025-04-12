@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CHAMY_API.Migrations
 {
     /// <inheritdoc />
-    public partial class DBChamyContext : Migration
+    public partial class DBchamyContext : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -164,39 +164,67 @@ namespace CHAMY_API.Migrations
             //        table.PrimaryKey("PK_Users", x => x.Id);
             //    });
 
-            migrationBuilder.CreateTable(
-                name: "Orders",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CustomerId = table.Column<int>(type: "int", nullable: true),
-                    CustomerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TotalAmount = table.Column<double>(type: "float", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeliveredAt = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Orders", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Orders_Customers_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "Customers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
-                });
+            //migrationBuilder.CreateTable(
+            //    name: "History",
+            //    columns: table => new
+            //    {
+            //        Id = table.Column<int>(type: "int", nullable: false)
+            //            .Annotation("SqlServer:Identity", "1, 1"),
+            //        CustomerId = table.Column<int>(type: "int", nullable: false),
+            //        Action = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+            //        IpAddress = table.Column<string>(type: "nvarchar(max)", nullable: false)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_History", x => x.Id);
+            //        table.ForeignKey(
+            //            name: "FK_History_Customers_CustomerId",
+            //            column: x => x.CustomerId,
+            //            principalTable: "Customers",
+            //            principalColumn: "Id",
+            //            onDelete: ReferentialAction.Cascade);
+            //    });
+
+            //migrationBuilder.CreateTable(
+            //    name: "Orders",
+            //    columns: table => new
+            //    {
+            //        Id = table.Column<int>(type: "int", nullable: false)
+            //            .Annotation("SqlServer:Identity", "1, 1"),
+            //        CustomerId = table.Column<int>(type: "int", nullable: true),
+            //        CustomerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        Province = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        District = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        Wards = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        Note = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        TotalAmount = table.Column<double>(type: "float", nullable: false),
+            //        Status = table.Column<int>(type: "int", nullable: false),
+            //        CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+            //        UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+            //        DeliveredAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_Orders", x => x.Id);
+            //        table.ForeignKey(
+            //            name: "FK_Orders_Customers_CustomerId",
+            //            column: x => x.CustomerId,
+            //            principalTable: "Customers",
+            //            principalColumn: "Id",
+            //            onDelete: ReferentialAction.SetNull);
+            //    });
 
             //migrationBuilder.CreateTable(
             //    name: "PermissionRoles",
             //    columns: table => new
             //    {
             //        PermissionId = table.Column<int>(type: "int", nullable: false),
-            //        RoleId = table.Column<int>(type: "int", nullable: false),
+            //        RoleId = table.Column<int>(type: "int", nullable: false)
             //    },
             //    constraints: table =>
             //    {
@@ -266,45 +294,51 @@ namespace CHAMY_API.Migrations
             //            onDelete: ReferentialAction.Cascade);
             //    });
 
-            //migrationBuilder.CreateTable(
-            //    name: "CartItems",
-            //    columns: table => new
-            //    {
-            //        Id = table.Column<int>(type: "int", nullable: false)
-            //            .Annotation("SqlServer:Identity", "1, 1"),
-            //        CustomerId = table.Column<int>(type: "int", nullable: true),
-            //        ProductId = table.Column<int>(type: "int", nullable: false),
-            //        Quantity = table.Column<int>(type: "int", nullable: false),
-            //        ColorId = table.Column<int>(type: "int", nullable: true),
-            //        SizeId = table.Column<int>(type: "int", nullable: true),
-            //        UnitPrice = table.Column<double>(type: "float", nullable: false)
-            //    },
-            //    constraints: table =>
-            //    {
-            //        table.PrimaryKey("PK_CartItems", x => x.Id);
-            //        table.ForeignKey(
-            //            name: "FK_CartItems_Colors_ColorId",
-            //            column: x => x.ColorId,
-            //            principalTable: "Colors",
-            //            principalColumn: "Id");
-            //        table.ForeignKey(
-            //            name: "FK_CartItems_Customers_CustomerId",
-            //            column: x => x.CustomerId,
-            //            principalTable: "Customers",
-            //            principalColumn: "Id",
-            //            onDelete: ReferentialAction.Restrict);
-            //        table.ForeignKey(
-            //            name: "FK_CartItems_Products_ProductId",
-            //            column: x => x.ProductId,
-            //            principalTable: "Products",
-            //            principalColumn: "Id",
-            //            onDelete: ReferentialAction.Cascade);
-            //        table.ForeignKey(
-            //            name: "FK_CartItems_Sizes_SizeId",
-            //            column: x => x.SizeId,
-            //            principalTable: "Sizes",
-            //            principalColumn: "Id");
-            //    });
+            migrationBuilder.CreateTable(
+                name: "CartItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CustomerId = table.Column<int>(type: "int", nullable: true),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    ColorId = table.Column<int>(type: "int", nullable: true),
+                    SizeId = table.Column<int>(type: "int", nullable: true),
+                    UnitPrice = table.Column<double>(type: "float", nullable: false),
+                    FinalPrice = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CartItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CartItems_Colors_ColorId",
+                        column: x => x.ColorId,
+                        principalTable: "Colors",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_CartItems_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_CartItems_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CartItems_Sizes_SizeId",
+                        column: x => x.SizeId,
+                        principalTable: "Sizes",
+                        principalColumn: "Id");
+                });
+            migrationBuilder.AddColumn<double>(
+                name: "FinalPrice",
+                table: "CartItems",
+                nullable: true
+                );
 
             //migrationBuilder.CreateTable(
             //    name: "Comments",
@@ -318,6 +352,7 @@ namespace CHAMY_API.Migrations
             //        CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
             //        CustomerId = table.Column<int>(type: "int", nullable: false),
             //        IsShow = table.Column<bool>(type: "bit", nullable: true),
+            //        customerId = table.Column<int>(type: "int", nullable: false)
             //    },
             //    constraints: table =>
             //    {
@@ -329,6 +364,12 @@ namespace CHAMY_API.Migrations
             //            principalColumn: "Id",
             //            onDelete: ReferentialAction.SetNull);
             //        table.ForeignKey(
+            //            name: "FK_Comments_Customers_customerId",
+            //            column: x => x.customerId,
+            //            principalTable: "Customers",
+            //            principalColumn: "Id",
+            //            onDelete: ReferentialAction.Cascade);
+            //        table.ForeignKey(
             //            name: "FK_Comments_Products_ProductId",
             //            column: x => x.ProductId,
             //            principalTable: "Products",
@@ -336,45 +377,45 @@ namespace CHAMY_API.Migrations
             //            onDelete: ReferentialAction.Cascade);
             //    });
 
-            migrationBuilder.CreateTable(
-                name: "OrderDetails",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OrderId = table.Column<int>(type: "int", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
-                    UnitPrice = table.Column<double>(type: "float", nullable: false),
-                    ColorId = table.Column<int>(type: "int", nullable: true),
-                    SizeId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_OrderDetails", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_OrderDetails_Colors_ColorId",
-                        column: x => x.ColorId,
-                        principalTable: "Colors",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_OrderDetails_Orders_OrderId",
-                        column: x => x.OrderId,
-                        principalTable: "Orders",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_OrderDetails_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_OrderDetails_Sizes_SizeId",
-                        column: x => x.SizeId,
-                        principalTable: "Sizes",
-                        principalColumn: "Id");
-                });
+            //migrationBuilder.CreateTable(
+            //    name: "OrderDetails",
+            //    columns: table => new
+            //    {
+            //        Id = table.Column<int>(type: "int", nullable: false)
+            //            .Annotation("SqlServer:Identity", "1, 1"),
+            //        OrderId = table.Column<int>(type: "int", nullable: false),
+            //        ProductId = table.Column<int>(type: "int", nullable: false),
+            //        Quantity = table.Column<int>(type: "int", nullable: false),
+            //        UnitPrice = table.Column<double>(type: "float", nullable: false),
+            //        ColorId = table.Column<int>(type: "int", nullable: true),
+            //        SizeId = table.Column<int>(type: "int", nullable: true)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_OrderDetails", x => x.Id);
+            //        table.ForeignKey(
+            //            name: "FK_OrderDetails_Colors_ColorId",
+            //            column: x => x.ColorId,
+            //            principalTable: "Colors",
+            //            principalColumn: "Id");
+            //        table.ForeignKey(
+            //            name: "FK_OrderDetails_Orders_OrderId",
+            //            column: x => x.OrderId,
+            //            principalTable: "Orders",
+            //            principalColumn: "Id",
+            //            onDelete: ReferentialAction.Cascade);
+            //        table.ForeignKey(
+            //            name: "FK_OrderDetails_Products_ProductId",
+            //            column: x => x.ProductId,
+            //            principalTable: "Products",
+            //            principalColumn: "Id",
+            //            onDelete: ReferentialAction.Cascade);
+            //        table.ForeignKey(
+            //            name: "FK_OrderDetails_Sizes_SizeId",
+            //            column: x => x.SizeId,
+            //            principalTable: "Sizes",
+            //            principalColumn: "Id");
+            //    });
 
             //migrationBuilder.CreateTable(
             //    name: "ProductCategory",
@@ -447,6 +488,11 @@ namespace CHAMY_API.Migrations
             //    column: "SizeId");
 
             //migrationBuilder.CreateIndex(
+            //    name: "IX_Comments_customerId",
+            //    table: "Comments",
+            //    column: "customerId");
+
+            //migrationBuilder.CreateIndex(
             //    name: "IX_Comments_CustomerId",
             //    table: "Comments",
             //    column: "CustomerId");
@@ -456,36 +502,40 @@ namespace CHAMY_API.Migrations
             //    table: "Comments",
             //    column: "ProductId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderDetails_ColorId",
-                table: "OrderDetails",
-                column: "ColorId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_History_CustomerId",
+            //    table: "History",
+            //    column: "CustomerId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderDetails_OrderId",
-                table: "OrderDetails",
-                column: "OrderId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_OrderDetails_ColorId",
+            //    table: "OrderDetails",
+            //    column: "ColorId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderDetails_ProductId",
-                table: "OrderDetails",
-                column: "ProductId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_OrderDetails_OrderId",
+            //    table: "OrderDetails",
+            //    column: "OrderId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderDetails_SizeId",
-                table: "OrderDetails",
-                column: "SizeId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_OrderDetails_ProductId",
+            //    table: "OrderDetails",
+            //    column: "ProductId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Orders_CustomerId",
-                table: "Orders",
-                column: "CustomerId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_OrderDetails_SizeId",
+            //    table: "OrderDetails",
+            //    column: "SizeId");
+
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_Orders_CustomerId",
+            //    table: "Orders",
+            //    column: "CustomerId");
 
             //migrationBuilder.CreateIndex(
             //    name: "IX_PermissionRoles_RoleId",
             //    table: "PermissionRoles",
             //    column: "RoleId");
-
 
             //migrationBuilder.CreateIndex(
             //    name: "IX_ProductCategory_CategoryId",
@@ -520,8 +570,11 @@ namespace CHAMY_API.Migrations
             //migrationBuilder.DropTable(
             //    name: "Contacts");
 
-            migrationBuilder.DropTable(
-                name: "OrderDetails");
+            //migrationBuilder.DropTable(
+            //    name: "History");
+
+            //migrationBuilder.DropTable(
+            //    name: "OrderDetails");
 
             //migrationBuilder.DropTable(
             //    name: "PermissionRoles");
@@ -538,8 +591,8 @@ namespace CHAMY_API.Migrations
             //migrationBuilder.DropTable(
             //    name: "Colors");
 
-            migrationBuilder.DropTable(
-                name: "Orders");
+            //migrationBuilder.DropTable(
+            //    name: "Orders");
 
             //migrationBuilder.DropTable(
             //    name: "Sizes");

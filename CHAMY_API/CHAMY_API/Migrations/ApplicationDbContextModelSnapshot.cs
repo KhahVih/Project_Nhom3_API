@@ -36,6 +36,9 @@ namespace CHAMY_API.Migrations
                     b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
+                    b.Property<double>("FinalPrice")
+                        .HasColumnType("float");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -383,14 +386,9 @@ namespace CHAMY_API.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("RoleId1")
-                        .HasColumnType("int");
-
                     b.HasKey("PermissionId", "RoleId");
 
                     b.HasIndex("RoleId");
-
-                    b.HasIndex("RoleId1");
 
                     b.ToTable("PermissionRoles");
                 });
@@ -458,6 +456,21 @@ namespace CHAMY_API.Migrations
                     b.ToTable("ProductCategory");
                 });
 
+            modelBuilder.Entity("CHAMY_API.Models.ProductColor", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ColorId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId", "ColorId");
+
+                    b.HasIndex("ColorId");
+
+                    b.ToTable("ProductColors");
+                });
+
             modelBuilder.Entity("CHAMY_API.Models.ProductImage", b =>
                 {
                     b.Property<int>("ProductId")
@@ -474,6 +487,38 @@ namespace CHAMY_API.Migrations
                     b.HasIndex("ImageId");
 
                     b.ToTable("ProductImages");
+                });
+
+            modelBuilder.Entity("CHAMY_API.Models.ProductSize", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SizeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId", "SizeId");
+
+                    b.HasIndex("SizeId");
+
+                    b.ToTable("ProductSizes");
+                });
+
+            modelBuilder.Entity("CHAMY_API.Models.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("CHAMY_API.Models.Sale", b =>
@@ -574,7 +619,7 @@ namespace CHAMY_API.Migrations
                     b.HasOne("CHAMY_API.Models.Customer", "Customer")
                         .WithMany("CartItems")
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("CHAMY_API.Models.Product", "Product")
                         .WithMany()
@@ -672,6 +717,25 @@ namespace CHAMY_API.Migrations
                     b.Navigation("Size");
                 });
 
+            modelBuilder.Entity("CHAMY_API.Models.PermissionRole", b =>
+                {
+                    b.HasOne("CHAMY_API.Models.Permission", "Permission")
+                        .WithMany("PermissionRoles")
+                        .HasForeignKey("PermissionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CHAMY_API.Models.Role", "Role")
+                        .WithMany("PermissionRoles")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Permission");
+
+                    b.Navigation("Role");
+                });
+
             modelBuilder.Entity("CHAMY_API.Models.Product", b =>
                 {
                     b.HasOne("CHAMY_API.Models.Sale", "Sales")
@@ -700,6 +764,25 @@ namespace CHAMY_API.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("CHAMY_API.Models.ProductColor", b =>
+                {
+                    b.HasOne("CHAMY_API.Models.Color", "Color")
+                        .WithMany("ProductColors")
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CHAMY_API.Models.Product", "Product")
+                        .WithMany("ProductColors")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Color");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("CHAMY_API.Models.ProductImage", b =>
                 {
                     b.HasOne("CHAMY_API.Models.Image", "Image")
@@ -717,6 +800,25 @@ namespace CHAMY_API.Migrations
                     b.Navigation("Image");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("CHAMY_API.Models.ProductSize", b =>
+                {
+                    b.HasOne("CHAMY_API.Models.Product", "Product")
+                        .WithMany("ProductSizes")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CHAMY_API.Models.Size", "Size")
+                        .WithMany("ProductSizes")
+                        .HasForeignKey("SizeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Size");
                 });
 
             modelBuilder.Entity("CHAMY_API.Models.UserPermission", b =>
@@ -741,6 +843,11 @@ namespace CHAMY_API.Migrations
             modelBuilder.Entity("CHAMY_API.Models.Category", b =>
                 {
                     b.Navigation("ProductCategory");
+                });
+
+            modelBuilder.Entity("CHAMY_API.Models.Color", b =>
+                {
+                    b.Navigation("ProductColors");
                 });
 
             modelBuilder.Entity("CHAMY_API.Models.Customer", b =>
@@ -777,7 +884,11 @@ namespace CHAMY_API.Migrations
 
                     b.Navigation("ProductCategorys");
 
+                    b.Navigation("ProductColors");
+
                     b.Navigation("ProductImages");
+
+                    b.Navigation("ProductSizes");
                 });
 
             modelBuilder.Entity("CHAMY_API.Models.Role", b =>
@@ -788,6 +899,11 @@ namespace CHAMY_API.Migrations
             modelBuilder.Entity("CHAMY_API.Models.Sale", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("CHAMY_API.Models.Size", b =>
+                {
+                    b.Navigation("ProductSizes");
                 });
 
             modelBuilder.Entity("CHAMY_API.Models.User", b =>

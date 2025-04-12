@@ -25,7 +25,8 @@ namespace CHAMY_API.Data
         public DbSet<Size> Sizes { get; set; }
         public DbSet<Sale> Sale { get; set; }
         public DbSet<History> History { get; set; }
-
+        public DbSet<ProductColor> ProductColors { get; set; }
+        public DbSet<ProductSize> ProductSizes { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -132,7 +133,7 @@ namespace CHAMY_API.Data
                 .HasOne(e => e.Customer)
                  .WithMany() // Nếu Customer không có collection CartItems
                  .HasForeignKey(e => e.CustomerId) // Chỉ định rõ CustomerId là khóa ngoại
-                 .OnDelete(DeleteBehavior.Restrict); // Tùy chỉnh hành vi xóa
+                 .OnDelete(DeleteBehavior.SetNull); // Tùy chỉnh hành vi xóa
             // Quan hệ Order - OrderItem
             modelBuilder.Entity<Order>()
                 .HasMany(o => o.OrderItems)
@@ -185,6 +186,34 @@ namespace CHAMY_API.Data
                 .WithMany(c => c.History)
                 .HasForeignKey(h => h.CustomerId)
                 .OnDelete(DeleteBehavior.Cascade); // Xóa History khi Customer bị xóa
+
+            // Configure ProductColor (many-to-many)
+            modelBuilder.Entity<ProductColor>()
+                .HasKey(pc => new { pc.ProductId, pc.ColorId });
+
+            modelBuilder.Entity<ProductColor>()
+                .HasOne(pc => pc.Product)
+                .WithMany(p => p.ProductColors)
+                .HasForeignKey(pc => pc.ProductId);
+
+            modelBuilder.Entity<ProductColor>()
+                .HasOne(pc => pc.Color)
+                .WithMany(c => c.ProductColors)
+                .HasForeignKey(pc => pc.ColorId);
+
+            // Configure ProductSize (many-to-many)
+            modelBuilder.Entity<ProductSize>()
+                .HasKey(ps => new { ps.ProductId, ps.SizeId });
+
+            modelBuilder.Entity<ProductSize>()
+                .HasOne(ps => ps.Product)
+                .WithMany(p => p.ProductSizes)
+                .HasForeignKey(ps => ps.ProductId);
+
+            modelBuilder.Entity<ProductSize>()
+                .HasOne(ps => ps.Size)
+                .WithMany(s => s.ProductSizes)
+                .HasForeignKey(ps => ps.SizeId);
         }
     }
 }

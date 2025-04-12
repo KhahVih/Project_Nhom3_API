@@ -24,5 +24,9 @@ namespace CHAMY_API.Models
         public List<ProductImage> ProductImages { get; set; } = new List<ProductImage>();
         public List<ProductCategory> ProductCategorys { get; set; } = new List<ProductCategory>();
         public List<Comment> Comments { get; set; } = new List<Comment>();
+        // Mối quan hệ n-n với Color và Size
+        public List<ProductColor> ProductColors { get; set; } = new List<ProductColor>();
+        public List<ProductSize> ProductSizes { get; set; } = new List<ProductSize>();
     }
 }
+

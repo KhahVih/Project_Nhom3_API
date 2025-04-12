@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CHAMY_API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250402071011_addHistory")]
-    partial class addHistory
+    [Migration("20250411081638_DBchamyContext")]
+    partial class DBchamyContext
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,6 +38,9 @@ namespace CHAMY_API.Migrations
 
                     b.Property<int?>("CustomerId")
                         .HasColumnType("int");
+
+                    b.Property<double>("FinalPrice")
+                        .HasColumnType("float");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -386,14 +389,9 @@ namespace CHAMY_API.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("RoleId1")
-                        .HasColumnType("int");
-
                     b.HasKey("PermissionId", "RoleId");
 
                     b.HasIndex("RoleId");
-
-                    b.HasIndex("RoleId1");
 
                     b.ToTable("PermissionRoles");
                 });
@@ -701,14 +699,10 @@ namespace CHAMY_API.Migrations
                         .IsRequired();
 
                     b.HasOne("CHAMY_API.Models.Role", "Role")
-                        .WithMany()
+                        .WithMany("PermissionRoles")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("CHAMY_API.Models.Role", null)
-                        .WithMany("PermissionRoles")
-                        .HasForeignKey("RoleId1");
 
                     b.Navigation("Permission");
 
