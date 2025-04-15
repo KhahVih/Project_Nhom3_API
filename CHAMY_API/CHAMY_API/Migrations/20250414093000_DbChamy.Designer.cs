@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CHAMY_API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250411081638_DBchamyContext")]
-    partial class DBchamyContext
+    [Migration("20250414093000_DbChamy")]
+    partial class DbChamy
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -109,10 +109,10 @@ namespace CHAMY_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("CreatedAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -127,16 +127,11 @@ namespace CHAMY_API.Migrations
                     b.Property<int?>("Vote")
                         .HasColumnType("int");
 
-                    b.Property<int>("customerId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
 
                     b.HasIndex("ProductId");
-
-                    b.HasIndex("customerId");
 
                     b.ToTable("Comments");
                 });
@@ -459,6 +454,21 @@ namespace CHAMY_API.Migrations
                     b.ToTable("ProductCategory");
                 });
 
+            modelBuilder.Entity("CHAMY_API.Models.ProductColor", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ColorId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId", "ColorId");
+
+                    b.HasIndex("ColorId");
+
+                    b.ToTable("ProductColors");
+                });
+
             modelBuilder.Entity("CHAMY_API.Models.ProductImage", b =>
                 {
                     b.Property<int>("ProductId")
@@ -475,6 +485,53 @@ namespace CHAMY_API.Migrations
                     b.HasIndex("ImageId");
 
                     b.ToTable("ProductImages");
+                });
+
+            modelBuilder.Entity("CHAMY_API.Models.ProductSize", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SizeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId", "SizeId");
+
+                    b.HasIndex("SizeId");
+
+                    b.ToTable("ProductSizes");
+                });
+
+            modelBuilder.Entity("CHAMY_API.Models.ProductVariant", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ColorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SizeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ColorId");
+
+                    b.HasIndex("SizeId");
+
+                    b.HasIndex("ProductId", "ColorId", "SizeId")
+                        .IsUnique();
+
+                    b.ToTable("ProductVariants");
                 });
 
             modelBuilder.Entity("CHAMY_API.Models.Role", b =>
@@ -592,7 +649,7 @@ namespace CHAMY_API.Migrations
                     b.HasOne("CHAMY_API.Models.Customer", "Customer")
                         .WithMany("CartItems")
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("CHAMY_API.Models.Product", "Product")
                         .WithMany()
@@ -615,27 +672,20 @@ namespace CHAMY_API.Migrations
 
             modelBuilder.Entity("CHAMY_API.Models.Comment", b =>
                 {
-                    b.HasOne("CHAMY_API.Models.Customer", null)
+                    b.HasOne("CHAMY_API.Models.Customer", "Customer")
                         .WithMany("Comments")
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.SetNull)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("CHAMY_API.Models.Product", "product")
+                    b.HasOne("CHAMY_API.Models.Product", "Product")
                         .WithMany("Comments")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CHAMY_API.Models.Customer", "customer")
-                        .WithMany()
-                        .HasForeignKey("customerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Customer");
 
-                    b.Navigation("customer");
-
-                    b.Navigation("product");
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("CHAMY_API.Models.History", b =>
@@ -737,6 +787,25 @@ namespace CHAMY_API.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("CHAMY_API.Models.ProductColor", b =>
+                {
+                    b.HasOne("CHAMY_API.Models.Color", "Color")
+                        .WithMany("ProductColors")
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CHAMY_API.Models.Product", "Product")
+                        .WithMany("ProductColors")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Color");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("CHAMY_API.Models.ProductImage", b =>
                 {
                     b.HasOne("CHAMY_API.Models.Image", "Image")
@@ -754,6 +823,52 @@ namespace CHAMY_API.Migrations
                     b.Navigation("Image");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("CHAMY_API.Models.ProductSize", b =>
+                {
+                    b.HasOne("CHAMY_API.Models.Product", "Product")
+                        .WithMany("ProductSizes")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CHAMY_API.Models.Size", "Size")
+                        .WithMany("ProductSizes")
+                        .HasForeignKey("SizeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Size");
+                });
+
+            modelBuilder.Entity("CHAMY_API.Models.ProductVariant", b =>
+                {
+                    b.HasOne("CHAMY_API.Models.Color", "Color")
+                        .WithMany()
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CHAMY_API.Models.Product", "Product")
+                        .WithMany("ProductVariants")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CHAMY_API.Models.Size", "Size")
+                        .WithMany()
+                        .HasForeignKey("SizeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Color");
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Size");
                 });
 
             modelBuilder.Entity("CHAMY_API.Models.UserPermission", b =>
@@ -778,6 +893,11 @@ namespace CHAMY_API.Migrations
             modelBuilder.Entity("CHAMY_API.Models.Category", b =>
                 {
                     b.Navigation("ProductCategory");
+                });
+
+            modelBuilder.Entity("CHAMY_API.Models.Color", b =>
+                {
+                    b.Navigation("ProductColors");
                 });
 
             modelBuilder.Entity("CHAMY_API.Models.Customer", b =>
@@ -814,7 +934,13 @@ namespace CHAMY_API.Migrations
 
                     b.Navigation("ProductCategorys");
 
+                    b.Navigation("ProductColors");
+
                     b.Navigation("ProductImages");
+
+                    b.Navigation("ProductSizes");
+
+                    b.Navigation("ProductVariants");
                 });
 
             modelBuilder.Entity("CHAMY_API.Models.Role", b =>
@@ -825,6 +951,11 @@ namespace CHAMY_API.Migrations
             modelBuilder.Entity("CHAMY_API.Models.Sale", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("CHAMY_API.Models.Size", b =>
+                {
+                    b.Navigation("ProductSizes");
                 });
 
             modelBuilder.Entity("CHAMY_API.Models.User", b =>

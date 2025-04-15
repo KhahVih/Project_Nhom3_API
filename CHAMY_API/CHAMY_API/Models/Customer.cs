@@ -13,7 +13,7 @@
         public bool? IsClone { get; set; }
         public DateTime? CreatedAt { get; set; } 
         public DateTime? Date { get; set; }
-        public List<Comment> Comments { get; set; } = new List<Comment>();
+        public List<Comment>? Comments { get; set; }
         // Thêm quan hệ với Order
         public List<Order> Orders { get; set; } = new List<Order>();
         public List<CartItem> CartItems { get; set; } = new List<CartItem>();

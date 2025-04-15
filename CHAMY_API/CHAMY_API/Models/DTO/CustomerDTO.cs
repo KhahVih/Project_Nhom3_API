@@ -17,6 +17,6 @@
         public int CommentCount { get; set; }
 
         public List<CommentDTO> Comments { get; set; } = new List<CommentDTO>();
-        public List<CartItem> CartIteams { get; set; }
+        public List<CartItem>? CartIteams { get; set; }
     }
 }

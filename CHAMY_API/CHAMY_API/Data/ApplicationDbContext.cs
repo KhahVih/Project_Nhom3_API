@@ -27,6 +27,7 @@ namespace CHAMY_API.Data
         public DbSet<History> History { get; set; }
         public DbSet<ProductColor> ProductColors { get; set; }
         public DbSet<ProductSize> ProductSizes { get; set; }
+        public DbSet<ProductVariant> ProductVariants { get; set; }  
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -38,18 +39,16 @@ namespace CHAMY_API.Data
                 .HasForeignKey(p => p.SaleId)
                 .IsRequired(false); // SaleId có thể null
 
-            // Cấu hình mối quan hệ một-nhiều
             modelBuilder.Entity<Comment>()
-                .HasOne(c => c.product)
+                 .HasOne(c => c.Customer)
+                 .WithMany(cu => cu.Comments)
+                 .HasForeignKey(c => c.CustomerId)
+                 .OnDelete(DeleteBehavior.SetNull); // hoặc Restrict tùy bạn
+
+            modelBuilder.Entity<Comment>()
+                .HasOne(c => c.Product)
                 .WithMany(p => p.Comments)
-                .HasForeignKey(c => c.ProductId)
-                .OnDelete(DeleteBehavior.Cascade); // Xóa sản phẩm sẽ xóa các comment liên quan
-           // Cấu hình mối quan hệ 1 - n giữa Customer và Comment(giữ nguyên từ trước)
-            modelBuilder.Entity<Comment>()
-                .HasOne(c => c.customer)
-                .WithMany(c => c.Comments)
-                .HasForeignKey(c => c.CustomerId)
-                .OnDelete(DeleteBehavior.SetNull); // Có thể giữ hoặc thay đổi tùy yêu cầu
+                .HasForeignKey(c => c.ProductId);
             // Cấu hình khóa chính kép cho ProductCategory
             modelBuilder.Entity<ProductCategory>()
                 .HasKey(pc => new { pc.ProductId, pc.CategoryId });
@@ -178,7 +177,7 @@ namespace CHAMY_API.Data
             // Cấu hình mối quan hệ Customer - Comment (nếu cần)
             modelBuilder.Entity<Customer>()
                 .HasMany(c => c.Comments)
-                .WithOne() // Điều chỉnh nếu Comment có navigation property ngược lại
+                .WithOne(co => co.Customer) // Điều chỉnh nếu Comment có navigation property ngược lại
                 .HasForeignKey(c => c.CustomerId); // Thay "CustomerId" bằng tên khóa ngoại thực tế trong Comment
             // Cấu hình quan hệ giữa Customer và History
             modelBuilder.Entity<History>()
@@ -214,6 +213,10 @@ namespace CHAMY_API.Data
                 .HasOne(ps => ps.Size)
                 .WithMany(s => s.ProductSizes)
                 .HasForeignKey(ps => ps.SizeId);
+            //
+            modelBuilder.Entity<ProductVariant>()
+               .HasIndex(v => new { v.ProductId, v.ColorId, v.SizeId })
+               .IsUnique();
         }
     }
 }

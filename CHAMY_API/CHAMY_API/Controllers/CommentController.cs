@@ -23,8 +23,8 @@ namespace CHAMY_API.Controllers
         public async Task<ActionResult<IEnumerable<CommentDTO>>> GetComments()
         {
             var comments = await _context.Comments
-                .Include(c => c.product)
-                .Include(c => c.customer)
+                .Include(c => c.Product)
+                .Include(c => c.Customer)
                 .Select(c => new CommentDTO
                 {
                     Id = c.Id,
@@ -34,8 +34,8 @@ namespace CHAMY_API.Controllers
                     CreatedAt = c.CreatedAt,
                     CustomerId = c.CustomerId,
                     IsShow = c.IsShow,
-                    ProductName = c.product.Name,
-                    CustomerName = c.customer.Fullname,
+                    ProductName = c.Product.Name,
+                    CustomerName = c.Customer.Fullname,
                 })
                 .ToListAsync();
             // Nếu có productId được truyền vào, lọc theo productId
@@ -52,8 +52,8 @@ namespace CHAMY_API.Controllers
         public async Task<ActionResult<CommentDTO>> GetComment(int id)
         {
             var comment = await _context.Comments
-                .Include(c => c.product)
-                .Include(c => c.customer)
+                .Include(c => c.Product)
+                .Include(c => c.Customer)
                 .Select(c => new CommentDTO
                 {
                     Id = c.Id,
@@ -63,8 +63,8 @@ namespace CHAMY_API.Controllers
                     CreatedAt = c.CreatedAt,
                     CustomerId = c.CustomerId,
                     IsShow = c.IsShow,
-                    ProductName = c.product.Name,
-                    CustomerName = c.customer.Fullname,
+                    ProductName = c.Product.Name,
+                    CustomerName = c.Customer.Fullname,
                 })
                 .FirstOrDefaultAsync(c => c.Id == id);
 
@@ -84,6 +84,9 @@ namespace CHAMY_API.Controllers
             {
                 return BadRequest("Comment data or ProductId is required.");
             }
+            if (commentDTO.CustomerName == null || commentDTO.CustomerId <= 0) {
+                return BadRequest("Comment data or CustomerId is required.");
+            }
 
             var comment = new Comment
             {
@@ -92,7 +95,7 @@ namespace CHAMY_API.Controllers
                 Description = commentDTO.Description,
                 CreatedAt = DateTime.Now, // Tự động gán thời gian tạo
                 CustomerId = commentDTO.CustomerId,
-                IsShow = commentDTO.IsShow ?? true // Mặc định là true nếu không cung cấp
+                IsShow = commentDTO.IsShow ?? false // Mặc định là true nếu không cung cấp
             };
 
             _context.Comments.Add(comment);

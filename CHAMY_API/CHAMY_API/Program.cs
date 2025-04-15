@@ -1,5 +1,4 @@
 ﻿using CHAMY_API.Data;
-using CHAMY_API.Models.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -57,8 +56,6 @@ builder.Services.AddControllersWithViews()
     Options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
     .AddNewtonsoftJson(Options => Options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
-// Đăng ký services
-builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>

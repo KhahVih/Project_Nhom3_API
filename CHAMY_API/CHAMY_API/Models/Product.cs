@@ -27,6 +27,7 @@ namespace CHAMY_API.Models
         // Mối quan hệ n-n với Color và Size
         public List<ProductColor> ProductColors { get; set; } = new List<ProductColor>();
         public List<ProductSize> ProductSizes { get; set; } = new List<ProductSize>();
+        public List<ProductVariant> ProductVariants { get; set; }
     }
 }
 

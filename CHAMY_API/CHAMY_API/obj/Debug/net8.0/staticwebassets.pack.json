@@ -1,6 +1,14 @@
 {
   "Files": [
     {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\0b8d9b76-3f54-450f-b8c2-84e3f3a8d031.jpg",
+      "PackagePath": "staticwebassets\\Image\\0b8d9b76-3f54-450f-b8c2-84e3f3a8d031.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\0c8fdd91-6d13-42ac-90e2-ec7a6f86b97b.jpg",
+      "PackagePath": "staticwebassets\\Image\\0c8fdd91-6d13-42ac-90e2-ec7a6f86b97b.jpg"
+    },
+    {
       "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\0d043e66-7b47-448b-847b-7d22e1ae89c4.png",
       "PackagePath": "staticwebassets\\Image\\0d043e66-7b47-448b-847b-7d22e1ae89c4.png"
     },
@@ -9,12 +17,28 @@
       "PackagePath": "staticwebassets\\Image\\0e641dc3-959a-437d-a4e0-f5b6adda3482.png"
     },
     {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\0e7c787b-003c-47ee-b9fa-9a9f33c4f870.jpg",
+      "PackagePath": "staticwebassets\\Image\\0e7c787b-003c-47ee-b9fa-9a9f33c4f870.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\118e9877-6696-4f2a-a4d8-565983b83f59.jpg",
+      "PackagePath": "staticwebassets\\Image\\118e9877-6696-4f2a-a4d8-565983b83f59.jpg"
+    },
+    {
       "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\15b91059-cf88-4384-b8fc-425f2940edd2.jpg",
       "PackagePath": "staticwebassets\\Image\\15b91059-cf88-4384-b8fc-425f2940edd2.jpg"
     },
     {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\166283d1-0ec7-42d5-b60b-229f6e6ae3d2.jpg",
+      "PackagePath": "staticwebassets\\Image\\166283d1-0ec7-42d5-b60b-229f6e6ae3d2.jpg"
+    },
+    {
       "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\238308d4-9b7b-4e7a-864a-6823b62aa9dd.jpg",
       "PackagePath": "staticwebassets\\Image\\238308d4-9b7b-4e7a-864a-6823b62aa9dd.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\31d68545-d36a-4b15-bd79-7f70e3021188.jpg",
+      "PackagePath": "staticwebassets\\Image\\31d68545-d36a-4b15-bd79-7f70e3021188.jpg"
     },
     {
       "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\34a61dd7-7fdb-4f6a-9599-9739a4790fa2.jpg",
@@ -41,6 +65,14 @@
       "PackagePath": "staticwebassets\\Image\\587c4a47-37ba-4251-a5c5-aab28e78beae.jpg"
     },
     {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\640bd633-b31f-476b-adb7-5fbf9a97ed61.jpg",
+      "PackagePath": "staticwebassets\\Image\\640bd633-b31f-476b-adb7-5fbf9a97ed61.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\66cb3bc2-e4d4-4597-bbb8-ff99442af837.jpg",
+      "PackagePath": "staticwebassets\\Image\\66cb3bc2-e4d4-4597-bbb8-ff99442af837.jpg"
+    },
+    {
       "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\69e62f52-4bed-4fc4-a3aa-56eee438803a.jpg",
       "PackagePath": "staticwebassets\\Image\\69e62f52-4bed-4fc4-a3aa-56eee438803a.jpg"
     },
@@ -51,6 +83,10 @@
     {
       "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\75ad1a9c-f603-439c-b82d-e70b5cf5aedf.jpg",
       "PackagePath": "staticwebassets\\Image\\75ad1a9c-f603-439c-b82d-e70b5cf5aedf.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\767c56a9-c28b-458a-9f41-1a011b806513.jpg",
+      "PackagePath": "staticwebassets\\Image\\767c56a9-c28b-458a-9f41-1a011b806513.jpg"
     },
     {
       "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\78a22144-e333-4ee9-b509-d5e94772f603.jpg",
@@ -65,12 +101,32 @@
       "PackagePath": "staticwebassets\\Image\\8298a55f-5e59-41c1-9cac-c15cca5aff57.jpg"
     },
     {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\85514c58-1dd7-45b6-a737-5e76289ef3da.jpg",
+      "PackagePath": "staticwebassets\\Image\\85514c58-1dd7-45b6-a737-5e76289ef3da.jpg"
+    },
+    {
       "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\87060be7-50cb-4abb-84b8-cc1fe44a8709.jpg",
       "PackagePath": "staticwebassets\\Image\\87060be7-50cb-4abb-84b8-cc1fe44a8709.jpg"
     },
     {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\878bb003-91f8-41f2-9b79-08a7b28ebb11.jpg",
+      "PackagePath": "staticwebassets\\Image\\878bb003-91f8-41f2-9b79-08a7b28ebb11.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\87ae14db-1aa2-439e-aa1e-508f4e48f439.jpg",
+      "PackagePath": "staticwebassets\\Image\\87ae14db-1aa2-439e-aa1e-508f4e48f439.jpg"
+    },
+    {
       "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\886d85e4-345b-475f-8e76-4b8bf6dda710.jpg",
       "PackagePath": "staticwebassets\\Image\\886d85e4-345b-475f-8e76-4b8bf6dda710.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\8921fd7c-1f5f-40db-b9ab-5c0855be34b0.jpg",
+      "PackagePath": "staticwebassets\\Image\\8921fd7c-1f5f-40db-b9ab-5c0855be34b0.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\8b80e404-7329-4c96-b196-a145699943b2.jpg",
+      "PackagePath": "staticwebassets\\Image\\8b80e404-7329-4c96-b196-a145699943b2.jpg"
     },
     {
       "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\9233a857-fa83-41ae-8da2-d6c0f39390f8.jpg",
@@ -81,6 +137,10 @@
       "PackagePath": "staticwebassets\\Image\\96b36941-8a89-4bce-9984-15d077cc9c71.jpg"
     },
     {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\9baba8d3-1f39-4147-9347-376879a64c67.jpg",
+      "PackagePath": "staticwebassets\\Image\\9baba8d3-1f39-4147-9347-376879a64c67.jpg"
+    },
+    {
       "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\9e08b4d3-9beb-44f1-b3ce-03e472d46c5a.png",
       "PackagePath": "staticwebassets\\Image\\9e08b4d3-9beb-44f1-b3ce-03e472d46c5a.png"
     },
@@ -89,8 +149,28 @@
       "PackagePath": "staticwebassets\\Image\\a0940172-b581-4086-8bf4-b9aae43480b5.jpg"
     },
     {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\af283dc0-2410-46e7-979b-0ac5378beebf.jpg",
+      "PackagePath": "staticwebassets\\Image\\af283dc0-2410-46e7-979b-0ac5378beebf.jpg"
+    },
+    {
       "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\bb993b0b-7a6c-4e88-9081-fa54c25d9db6.jpg",
       "PackagePath": "staticwebassets\\Image\\bb993b0b-7a6c-4e88-9081-fa54c25d9db6.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\bcf02809-7185-41f7-98fd-e69e3aab3159.jpg",
+      "PackagePath": "staticwebassets\\Image\\bcf02809-7185-41f7-98fd-e69e3aab3159.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\c45c9d65-0014-418c-b6f4-bb18b684048c.jpg",
+      "PackagePath": "staticwebassets\\Image\\c45c9d65-0014-418c-b6f4-bb18b684048c.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\c575fda6-1f40-42b0-8501-c97380081d3a.jpg",
+      "PackagePath": "staticwebassets\\Image\\c575fda6-1f40-42b0-8501-c97380081d3a.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\c58fa45d-912f-4785-ac0c-29163d94a437.jpg",
+      "PackagePath": "staticwebassets\\Image\\c58fa45d-912f-4785-ac0c-29163d94a437.jpg"
     },
     {
       "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\c5ff91e7-9de9-451c-bb82-8ad1532e420d.jpg",
@@ -99,6 +179,10 @@
     {
       "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\c75e81e5-d9f3-4d2a-92d9-505de3106fe6.jpg",
       "PackagePath": "staticwebassets\\Image\\c75e81e5-d9f3-4d2a-92d9-505de3106fe6.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\c7751165-10ef-4d67-b96b-ef86bd875562.jpg",
+      "PackagePath": "staticwebassets\\Image\\c7751165-10ef-4d67-b96b-ef86bd875562.jpg"
     },
     {
       "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\c7a3d8b2-b745-4a42-b36a-e0de0e1d6258.jpg",
@@ -113,6 +197,10 @@
       "PackagePath": "staticwebassets\\Image\\de134590-a85e-4c9a-a4b3-e50fff2f834f.jpg"
     },
     {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\e3b0f801-5591-41a3-b04c-bcb41ec9f8af.jpg",
+      "PackagePath": "staticwebassets\\Image\\e3b0f801-5591-41a3-b04c-bcb41ec9f8af.jpg"
+    },
+    {
       "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\ec8e8489-3242-4397-ad34-576086b4f778.jpg",
       "PackagePath": "staticwebassets\\Image\\ec8e8489-3242-4397-ad34-576086b4f778.jpg"
     },
@@ -123,6 +211,14 @@
     {
       "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\f384a21a-d676-43c9-bac7-ce55c96f5919.jpg",
       "PackagePath": "staticwebassets\\Image\\f384a21a-d676-43c9-bac7-ce55c96f5919.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\f682988b-9d4d-4387-92df-0fa35a234c31.jpg",
+      "PackagePath": "staticwebassets\\Image\\f682988b-9d4d-4387-92df-0fa35a234c31.jpg"
+    },
+    {
+      "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\fa876c3f-b85a-423e-a4ec-be5984417a75.jpg",
+      "PackagePath": "staticwebassets\\Image\\fa876c3f-b85a-423e-a4ec-be5984417a75.jpg"
     },
     {
       "Id": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\fe625944-b21a-4d39-8eb8-997ef25cc705.jpg",

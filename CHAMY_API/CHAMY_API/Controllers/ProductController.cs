@@ -71,29 +71,6 @@ namespace CHAMY_API.Controllers
                      ProductName = pc.Product != null ? pc.Product.Name : null,
                      CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
                  }).ToList(),
-                 Comments = p.Comments.Select(c => new CommentDTO
-                 {
-                     ProductId= c.ProductId,
-                     ProductName = c.product.Name,
-                     CustomerId = c.CustomerId,
-                     CustomerName = c.customer.Fullname,
-                     Vote = c.Vote,
-                     Description = c.Description,
-                     CreatedAt = c.CreatedAt,
-                     
-                 }).ToList(),
-                 Colors = p.ProductColors.Select(pc => new ColorDTO
-                 {
-                     Id = pc.Color.Id,
-                     Name = pc.Color.Name
-                 }).ToList(),
-
-                 // ✅ Thêm danh sách kích thước
-                 Sizes = p.ProductSizes.Select(ps => new SizeDTO
-                 {
-                     Id = ps.Size.Id,
-                     Name = ps.Size.Name
-                 }).ToList()
              }).ToListAsync();
             // đối tượng chứa thông tin cần trả về 
             var result = new
@@ -156,16 +133,6 @@ namespace CHAMY_API.Controllers
                          CategoryId = pc.CategoryId,
                          ProductName = pc.Product != null ? pc.Product.Name : null,
                          CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
-                     }).ToList(),
-                     Comments = p.Comments.Select(c => new CommentDTO
-                     {
-                         ProductId = c.ProductId,
-                         ProductName = c.product.Name,
-                         CustomerId = c.CustomerId,
-                         CustomerName = c.customer.Fullname,
-                         Vote = c.Vote,
-                         Description = c.Description,
-
                      }).ToList(),
                 }).ToListAsync();
 
@@ -231,16 +198,7 @@ namespace CHAMY_API.Controllers
                         ProductName = pc.Product != null ? pc.Product.Name : null,
                         CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
                     }).ToList(),
-                    Comments = p.Comments.Select(c => new CommentDTO
-                    {
-                        ProductId = c.ProductId,
-                        ProductName = c.product.Name,
-                        CustomerId = c.CustomerId,
-                        CustomerName = c.customer.Fullname,
-                        Vote = c.Vote,
-                        Description = c.Description,
-
-                    }).ToList(),
+                 
                 }).ToListAsync();
 
             // đối tượng chứa thông tin cần trả về 
@@ -305,16 +263,7 @@ namespace CHAMY_API.Controllers
                          ProductName = pc.Product != null ? pc.Product.Name : null,
                          CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
                      }).ToList(),
-                     Comments = p.Comments.Select(c => new CommentDTO
-                     {
-                         ProductId = c.ProductId,
-                         ProductName = c.product.Name,
-                         CustomerId = c.CustomerId,
-                         CustomerName = c.customer.Fullname,
-                         Vote = c.Vote,
-                         Description = c.Description,
-
-                     }).ToList(),
+                    
                 }).ToListAsync();
 
             // đối tượng chứa thông tin cần trả về 
@@ -379,16 +328,7 @@ namespace CHAMY_API.Controllers
                         ProductName = pc.Product != null ? pc.Product.Name : null,
                         CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
                     }).ToList(),
-                    Comments = p.Comments.Select(c => new CommentDTO
-                    {
-                        ProductId = c.ProductId,
-                        ProductName = c.product.Name,
-                        CustomerId = c.CustomerId,
-                        CustomerName = c.customer.Fullname,
-                        Vote = c.Vote,
-                        Description = c.Description,
-
-                    }).ToList(),
+                    
                 }).ToListAsync();
 
             // đối tượng chứa thông tin cần trả về 
@@ -453,16 +393,7 @@ namespace CHAMY_API.Controllers
                         ProductName = pc.Product != null ? pc.Product.Name : null,
                         CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
                     }).ToList(),
-                    Comments = p.Comments.Select(c => new CommentDTO
-                    {
-                        ProductId = c.ProductId,
-                        ProductName = c.product.Name,
-                        CustomerId = c.CustomerId,
-                        CustomerName = c.customer.Fullname,
-                        Vote = c.Vote,
-                        Description = c.Description,
-
-                    }).ToList(),
+                    
                 }).ToListAsync();
 
             // đối tượng chứa thông tin cần trả về 
@@ -527,16 +458,7 @@ namespace CHAMY_API.Controllers
                          ProductName = pc.Product != null ? pc.Product.Name : null,
                          CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
                      }).ToList(),
-                    Comments = p.Comments.Select(c => new CommentDTO
-                    {
-                        ProductId = c.ProductId,
-                        ProductName = c.product.Name,
-                        CustomerId = c.CustomerId,
-                        CustomerName = c.customer.Fullname,
-                        Vote = c.Vote,
-                        Description = c.Description,
-
-                    }).ToList()
+                    
                 }).ToListAsync();
 
             // đối tượng chứa thông tin cần trả về 
@@ -601,16 +523,7 @@ namespace CHAMY_API.Controllers
                         ProductName = pc.Product != null ? pc.Product.Name : null,
                         CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
                     }).ToList(),
-                    Comments = p.Comments.Select(c => new CommentDTO
-                    {
-                        ProductId = c.ProductId,
-                        ProductName = c.product.Name,
-                        CustomerId = c.CustomerId,
-                        CustomerName = c.customer.Fullname,
-                        Vote = c.Vote,
-                        Description = c.Description,
-
-                    }).ToList()
+                   
                 }).ToListAsync();
 
             // đối tượng chứa thông tin cần trả về 
@@ -640,7 +553,7 @@ namespace CHAMY_API.Controllers
                 .Include(p => p.ProductSizes)
                     .ThenInclude(ps => ps.Size)  // Include kích thước
                 .Include(p => p.Comments) // Thêm dòng này để lấy Comments
-                    .ThenInclude(c => c.customer) // Nếu cần thông tin Customer (Fullname)
+                    .ThenInclude(c => c.Customer) // Nếu cần thông tin Customer (Fullname)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
             if (product == null)
@@ -661,6 +574,7 @@ namespace CHAMY_API.Controllers
                 IsNew = product.IsNew,
                 SaleId = product.SaleId,
                 SaleName = _context.Sale.FirstOrDefault(s => s.Id == product.SaleId)?.Name,
+                DiscountPercentage = product.Sales?.DiscountPercentage,
                 Count = product.Count,
                 Images = product.ProductImages.Select(pi => new ImageDTO
                 {
@@ -678,9 +592,9 @@ namespace CHAMY_API.Controllers
                 Comments = product.Comments.Select(c => new CommentDTO
                 {
                     ProductId = c.ProductId,
-                    ProductName = c.product.Name,
+                    ProductName = c.Product.Name,
                     CustomerId = c.CustomerId,
-                    CustomerName = c.customer.Fullname,
+                    CustomerName = c.Customer.Fullname,
                     Vote = c.Vote,
                     Description = c.Description,
                     CreatedAt = c.CreatedAt,
@@ -763,16 +677,6 @@ namespace CHAMY_API.Controllers
                     ProductName = pc.Product != null ? pc.Product.Name : null,
                     CategoryName = pc.Category != null ? pc.Category.Name : null // Thêm tên danh mục
                 }).ToList(),
-                Comments = product.Comments.Select(c => new CommentDTO
-                {
-                    ProductId = c.ProductId,
-                    ProductName = c.product.Name,
-                    CustomerId = c.CustomerId,
-                    CustomerName = c.customer.Fullname,
-                    Vote = c.Vote,
-                    Description = c.Description,
-
-                }).ToList()
             }).ToList();
 
 
@@ -847,16 +751,6 @@ namespace CHAMY_API.Controllers
                     ProductName = pc.Product != null ? pc.Product.Name : null,
                     CategoryName = pc.Category != null ? pc.Category.Name : null // Thêm tên danh mục
                 }).ToList(),
-                Comments = product.Comments.Select(c => new CommentDTO
-                {
-                    ProductId = c.ProductId,
-                    ProductName = c.product.Name,
-                    CustomerId = c.CustomerId,
-                    CustomerName = c.customer.Fullname,
-                    Vote = c.Vote,
-                    Description = c.Description,
-
-                }).ToList()
             }).ToList();
 
             // đối tượng chứa thông tin cần trả về 
@@ -1019,6 +913,22 @@ namespace CHAMY_API.Controllers
                     }
                 }
             }
+            // Sau khi SaveChanges để có product.Id
+            if (productDTO.Variants != null && productDTO.Variants.Any())
+            {
+                foreach (var variantDTO in productDTO.Variants)
+                {
+                    var productVariant = new ProductVariant
+                    {
+                        ProductId = product.Id,
+                        ColorId = variantDTO.ColorId,
+                        SizeId = variantDTO.SizeId,
+                        Quantity = variantDTO.Quantity
+                    };
+                    _context.ProductVariants.Add(productVariant);
+                }
+                await _context.SaveChangesAsync();
+            }
 
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
@@ -1026,6 +936,17 @@ namespace CHAMY_API.Controllers
             foreach (var productImage in product.ProductImages)
             {
                 productImage.ProductId = product.Id;
+            }
+            // Tạo các bản ghi ProductVariant
+            foreach (var variant in product.ProductVariants)
+            {
+                var pv = new ProductVariant
+                {
+                    ProductId = product.Id,
+                    ColorId = variant.ColorId,
+                    SizeId = variant.SizeId,
+                    Quantity = variant.Quantity
+                };
             }
             await _context.SaveChangesAsync();
 
@@ -1369,6 +1290,76 @@ namespace CHAMY_API.Controllers
 
 
             return Ok(size);
+        }
+
+        // GET: api/products/{id}/variants
+        [HttpGet("{id}/variants")]
+        public async Task<IActionResult> GetVariants(int id)
+        {
+            var variants = await _context.ProductVariants
+                .Where(v => v.ProductId == id)
+                .Include(v => v.Color)
+                .Include(v => v.Size)
+                .Select(v => new {
+                    ColorId = v.ColorId,
+                    ColorName = v.Color.Name,
+                    SizeId = v.SizeId,
+                    SizeName = v.Size.Name,
+                    Quantity = v.Quantity
+                })
+                .ToListAsync();
+
+            return Ok(variants);
+        }
+
+        // POST: api/products/{id}/add-to-cart
+        [HttpPost("{id}/add-to-cart")]
+        public async Task<IActionResult> AddToCart(int id, [FromBody] VariantDto dto)
+        {
+            var variant = await _context.ProductVariants
+                .FirstOrDefaultAsync(v => v.ProductId == id && v.ColorId == dto.ColorId && v.SizeId == dto.SizeId);
+
+            if (variant == null)
+            {
+                return NotFound("Variant not found");
+            }
+
+            if (variant.Quantity <= 0)
+            {
+                return BadRequest("This variant is out of stock");
+            }
+
+            // TODO: Add to cart logic here
+            return Ok("Item added to cart");
+        }
+
+        // PUT: api/products/{id}/variants/update-stock
+        [HttpPut("{id}/variants/update-stock")]
+        public async Task<IActionResult> UpdateStock(int id, [FromBody] List<VariantDto> variants)
+        {
+            foreach (var dto in variants)
+            {
+                var variant = await _context.ProductVariants
+                    .FirstOrDefaultAsync(v => v.ProductId == id && v.ColorId == dto.ColorId && v.SizeId == dto.SizeId);
+
+                if (variant != null)
+                {
+                    variant.Quantity = dto.Quantity;
+                }
+                else
+                {
+                    _context.ProductVariants.Add(new ProductVariant
+                    {
+                        ProductId = id,
+                        ColorId = dto.ColorId,
+                        SizeId = dto.SizeId,
+                        Quantity = dto.Quantity
+                    });
+                }
+            }
+
+            await _context.SaveChangesAsync();
+            return Ok("Stock updated");
         }
 
     }

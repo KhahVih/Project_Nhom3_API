@@ -47,7 +47,7 @@ namespace CHAMY_API.Controllers
                             CustomerId = com.CustomerId,
                             CreatedAt = com.CreatedAt,
                             IsShow = com.IsShow
-                        }).ToList()
+                        }).ToList(),
                 })
                 .ToListAsync();
 
