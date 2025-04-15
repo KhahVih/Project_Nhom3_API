@@ -111,7 +111,7 @@ namespace CHAMY_API.Controllers
                 Address = customerDTO.Address,
                 Phone = customerDTO.Phone,
                 Gender = customerDTO.Gender,
-                IsClone = customerDTO.IsClone == false,
+                IsClone = false,
                 CreatedAt = DateTime.UtcNow,
                 Date = customerDTO.Date,
                 //Comments = new List<Comment>()
