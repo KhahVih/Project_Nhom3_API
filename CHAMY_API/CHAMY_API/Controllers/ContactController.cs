@@ -27,6 +27,7 @@ namespace CHAMY_API.Controllers
                 {
                     Id = c.Id,
                     Fullname = c.Fullname,
+                    Address = c.Address,
                     Email = c.Email,
                     Phonenumber = c.Phonenumber,
                     Title = c.Title,
@@ -47,6 +48,7 @@ namespace CHAMY_API.Controllers
                 {
                     Id = c.Id,
                     Fullname = c.Fullname,
+                    Address = c.Address,
                     Email = c.Email,
                     Phonenumber = c.Phonenumber,
                     Title = c.Title,
@@ -75,6 +77,7 @@ namespace CHAMY_API.Controllers
             var contact = new Contact
             {
                 Fullname = contactDTO.Fullname,
+                Address = contactDTO.Address,
                 Email = contactDTO.Email,
                 Phonenumber = contactDTO.Phonenumber,
                 Title = contactDTO.Title,
@@ -109,6 +112,7 @@ namespace CHAMY_API.Controllers
 
             // Cập nhật các trường
             contact.Fullname = contactDTO.Fullname;
+            contact.Address = contactDTO.Address;
             contact.Email = contactDTO.Email;
             contact.Phonenumber = contactDTO.Phonenumber;
             contact.Title = contactDTO.Title;

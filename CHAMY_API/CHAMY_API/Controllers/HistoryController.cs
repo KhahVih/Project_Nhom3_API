@@ -23,6 +23,7 @@ namespace CHAMY_API.Controllers
         {
             var histories = await _context.History
                 .Include(h => h.Customer) // Include thông tin Customer
+                .OrderByDescending(h => h.CreatedAt)
                 .Select(h => new HistoryDTO
                 {
                     CustomerId = h.CustomerId,
@@ -66,6 +67,7 @@ namespace CHAMY_API.Controllers
         {
             var histories = await _context.History
                 .Where(h => h.CustomerId == customerId)
+                .OrderByDescending(h => h.CreatedAt)
                 .Select(h => new
                 {
                     h.Id,
