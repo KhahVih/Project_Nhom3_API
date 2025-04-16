@@ -298,26 +298,6 @@
   },
   {
     "ContainingType": "CHAMY_API.Controllers.ContactController",
-    "Method": "GetContacts",
-    "RelativePath": "api/Contact",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CHAMY_API.Models.DTO.ContactDTO, CHAMY_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "CHAMY_API.Controllers.ContactController",
     "Method": "CreateContact",
     "RelativePath": "api/Contact",
     "HttpMethod": "POST",
@@ -406,16 +386,22 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CHAMY_API.Controllers.CustomerController",
-    "Method": "GetCustomers",
-    "RelativePath": "api/Customer",
+    "ContainingType": "CHAMY_API.Controllers.ContactController",
+    "Method": "GetContacts",
+    "RelativePath": "api/Contact/GetAllContact/page{page}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CHAMY_API.Models.DTO.CustomerDTO, CHAMY_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CHAMY_API.Models.DTO.ContactDTO, CHAMY_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -529,6 +515,32 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CHAMY_API.Controllers.CustomerController",
+    "Method": "GetCustomers",
+    "RelativePath": "api/Customer/GetCustomer/page{page}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CHAMY_API.Models.DTO.CustomerDTO, CHAMY_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "CHAMY_API.Controllers.HistoryController",
@@ -691,11 +703,17 @@
   {
     "ContainingType": "CHAMY_API.Controllers.OrderController",
     "Method": "GetOrdersByStatusDelivered",
-    "RelativePath": "api/Order/by-statusDelivered",
+    "RelativePath": "api/Order/by-statusDelivered{page}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -741,7 +759,13 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -1048,6 +1072,32 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[CHAMY_API.Models.DTO.ColorDTO, CHAMY_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CHAMY_API.Controllers.ProductController",
+    "Method": "GetDiscountedProducts",
+    "RelativePath": "api/Product/GetDiscountedProducts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CHAMY_API.DTOs.ProductDTO, CHAMY_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

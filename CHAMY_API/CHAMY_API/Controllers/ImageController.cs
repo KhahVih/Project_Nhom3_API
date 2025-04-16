@@ -24,7 +24,7 @@ namespace CHAMY_API.Controllers
         [HttpGet("GetAllImages")]
         public async Task<IActionResult> GetImages(int page = 1)
         {
-            const int pageSize = 21;
+            const int pageSize = 8;
             if (page < 1) page = 1;
             var query = _context.Images;
             // tổng hình ảnh 
@@ -35,6 +35,8 @@ namespace CHAMY_API.Controllers
             var skip = (page - 1) * pageSize;
             // lấy danh sách hình ảnh  
             var images = await query
+                .Skip(skip)
+                .Take(pageSize)
                 .Select(i => new ImageDTO
                 {
                     Id = i.Id,

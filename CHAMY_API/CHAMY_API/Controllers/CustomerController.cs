@@ -17,11 +17,22 @@ namespace CHAMY_API.Controllers
         }
 
         // GET: api/customers - Lấy danh sách tất cả customer cùng với comments của họ
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<CustomerDTO>>> GetCustomers()
+        [HttpGet("GetCustomer/page{page}")]
+        public async Task<ActionResult<IEnumerable<CustomerDTO>>> GetCustomers(int page = 1)
         {
-            var customers = await _context.Customers
-                .Include(c => c.Comments) // Eager loading comments
+            const int pageSize = 9;
+            if (page < 1) page = 1;
+            var query = _context.Customers
+                .Include(c => c.Comments);
+            // tổng số khách hàng 
+            var totalCustomer = await query.CountAsync();
+            // tính tổng số trang 
+            var totalPage = (int)Math.Ceiling((double)totalCustomer / pageSize);
+            // tính số bản ghi cần bỏ qua để đến bảng ghi 
+            var skip = (page - 1) * pageSize;
+            var customers = await  query
+                .Skip(skip)
+                .Take(pageSize)
                 .Select(c => new CustomerDTO
                 {
                     Id = c.Id,
@@ -51,7 +62,16 @@ namespace CHAMY_API.Controllers
                 })
                 .ToListAsync();
 
-            return Ok(customers);
+            // đối tượng chứa thông tin cần trả về 
+            var result = new
+            {
+                CurrentPage = page,      // Số trang hiện tại
+                TotalPages = totalPage, // Tổng số trang 
+                ToTalCustomers = totalCustomer, // Tổng số khách hàng 
+                Customers = customers, // danh sách khách hàng 
+            };
+
+            return Ok(result);
         }
         // GET: api/customers/5 - Lấy thông tin chi tiết một customer
         [HttpGet("{id}")]

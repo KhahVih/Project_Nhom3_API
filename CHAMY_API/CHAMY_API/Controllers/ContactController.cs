@@ -1,9 +1,11 @@
 ﻿using CHAMY_API.Data;
+using CHAMY_API.DTOs;
 using CHAMY_API.Models;
 using CHAMY_API.Models.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace CHAMY_API.Controllers
 {
@@ -18,11 +20,22 @@ namespace CHAMY_API.Controllers
         }
 
         // GET: api/Contact
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<ContactDTO>>> GetContacts()
+        [HttpGet("GetAllContact/page{page}")]
+        public async Task<ActionResult<IEnumerable<ContactDTO>>> GetContacts(int page = 1)
         {
-            var contacts = await _context.Contacts
-                .OrderByDescending(c => c.CreatedAt)
+            int pageSize = 10;
+            if (page < 1) page = 1;
+            var query = _context.Contacts
+                .OrderByDescending(c => c.CreatedAt);
+            // tổng số liên hệ 
+            var totalContact = await _context.Contacts.CountAsync();
+            // tính tổng số trang 
+            var totalPage = (int)Math.Ceiling((double) totalContact / pageSize);
+            // tính số bản ghi cần bỏ qua để đến bảng ghi 
+            var skip = (page - 1) * pageSize;
+            var contacts = await query
+                .Skip(skip)             
+                .Take(pageSize)
                 .Select(c => new ContactDTO
                 {
                     Id = c.Id,
@@ -35,8 +48,16 @@ namespace CHAMY_API.Controllers
                     CreatedAt = c.CreatedAt
                 })
                 .ToListAsync();
+            // đối tượng chứa thông tin cần trả về 
+            var result = new
+            {
+                CurrentPage = page,      // Số trang hiện tại
+                TotalPages = totalPage, // Tổng số trang
+                TotalContacts = totalContact, // Tổng số liên hệ 
+                Contacts = contacts, // danh sách liên hệ 
+            };
 
-            return Ok(contacts);
+            return Ok(result);
         }
 
         // GET: api/Contact/5

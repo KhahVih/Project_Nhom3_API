@@ -71,6 +71,19 @@ namespace CHAMY_API.Controllers
                      ProductName = pc.Product != null ? pc.Product.Name : null,
                      CategoryName = pc.Category != null ? pc.Category.Name : null, // Thêm tên danh mục
                  }).ToList(),
+                 Colors = p.ProductColors.Select(pc => new ColorDTO
+                 {
+                     Id = pc.Color.Id,
+                     Name = pc.Color.Name
+                 }).ToList(),
+
+                 // ✅ Thêm danh sách kích thước
+                 Sizes = p.ProductSizes.Select(ps => new SizeDTO
+                 {
+                     Id = ps.Size.Id,
+                     Name = ps.Size.Name
+                 }).ToList()
+
              }).ToListAsync();
             // đối tượng chứa thông tin cần trả về 
             var result = new
@@ -79,6 +92,70 @@ namespace CHAMY_API.Controllers
                 TotalPages = totalPage, // Tổng số trang
                 TotalProduct = totalProduct, // Tổng số sản phẩm 
                 Products = products // Danh sách sản phẩm 
+            };
+
+            return Ok(result);
+        }
+
+        // Lấy danh sách tất các sản phẩm giảm giá 
+        [HttpGet("GetDiscountedProducts")]
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetDiscountedProducts(int page = 1)
+        {
+            const int pageSize = 21;
+            if (page < 1) page = 1;
+
+            // Lọc sản phẩm có giảm giá
+            var discountedQuery = _context.Products
+                .Where(p => p.SaleId != null && p.Sales.DiscountPercentage > 0)
+                .Include(p => p.ProductImages)
+                    .ThenInclude(pi => pi.Image)
+                .Include(p => p.Sales)
+                .Include(p => p.ProductCategorys)
+                    .ThenInclude(pc => pc.Category);
+
+            var totalProduct = await discountedQuery.CountAsync();
+            var totalPage = (int)Math.Ceiling((double)totalProduct / pageSize);
+            var skip = (page - 1) * pageSize;
+
+            var products = await discountedQuery
+                .Skip(skip)
+                .Take(pageSize)
+                .Select(p => new ProductDTO
+                {
+                    Id = p.Id,
+                    PosCode = p.PosCode,
+                    Name = p.Name,
+                    Description = p.Description,
+                    CreatedAt = p.CreatedAt,
+                    UpdatedAt = p.UpdatedAt,
+                    Price = p.Price,
+                    IsPublish = p.IsPublish,
+                    IsNew = p.IsNew,
+                    SaleId = p.SaleId,
+                    SaleName = p.Sales.Name,
+                    DiscountPercentage = p.Sales.DiscountPercentage,
+                    Count = p.Count,
+                    Images = p.ProductImages.Select(pi => new ImageDTO
+                    {
+                        Id = pi.Image.Id,
+                        Name = pi.Image.Name,
+                        Link = pi.Image.Link
+                    }).ToList(),
+                    ProductCategorys = p.ProductCategorys.Select(pc => new ProductCategoryDTO
+                    {
+                        ProductId = pc.ProductId,
+                        CategoryId = pc.CategoryId,
+                        ProductName = pc.Product != null ? pc.Product.Name : null,
+                        CategoryName = pc.Category != null ? pc.Category.Name : null,
+                    }).ToList(),
+                }).ToListAsync();
+
+            var result = new
+            {
+                CurrentPage = page,
+                TotalPages = totalPage,
+                TotalProduct = totalProduct,
+                Products = products
             };
 
             return Ok(result);
@@ -803,6 +880,18 @@ namespace CHAMY_API.Controllers
                 ProductSizes = new List<ProductSize>(),
             };
 
+            // Gán Sale nếu có
+            if (productDTO.SaleId.HasValue)
+            {
+                var sale = await _context.Sale.FindAsync(productDTO.SaleId.Value);
+                if (sale != null)
+                {
+                    product.SaleId = sale.Id;
+                }
+            }
+            
+
+
             // Xử lý upload hình ảnh nếu có
             if (imageFiles != null && imageFiles.Any())
             {
@@ -914,21 +1003,21 @@ namespace CHAMY_API.Controllers
                 }
             }
             // Sau khi SaveChanges để có product.Id
-            if (productDTO.Variants != null && productDTO.Variants.Any())
-            {
-                foreach (var variantDTO in productDTO.Variants)
-                {
-                    var productVariant = new ProductVariant
-                    {
-                        ProductId = product.Id,
-                        ColorId = variantDTO.ColorId,
-                        SizeId = variantDTO.SizeId,
-                        Quantity = variantDTO.Quantity
-                    };
-                    _context.ProductVariants.Add(productVariant);
-                }
-                await _context.SaveChangesAsync();
-            }
+            //if (productDTO.Variants != null && productDTO.Variants.Any())
+            //{
+            //    foreach (var variantDTO in productDTO.Variants)
+            //    {
+            //        var productVariant = new ProductVariant
+            //        {
+            //            ProductId = product.Id,
+            //            ColorId = variantDTO.ColorId,
+            //            SizeId = variantDTO.SizeId,
+            //            Quantity = variantDTO.Quantity
+            //        };
+            //        _context.ProductVariants.Add(productVariant);
+            //    }
+            //    await _context.SaveChangesAsync();
+            //}
 
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
@@ -938,17 +1027,17 @@ namespace CHAMY_API.Controllers
                 productImage.ProductId = product.Id;
             }
             // Tạo các bản ghi ProductVariant
-            foreach (var variant in product.ProductVariants)
-            {
-                var pv = new ProductVariant
-                {
-                    ProductId = product.Id,
-                    ColorId = variant.ColorId,
-                    SizeId = variant.SizeId,
-                    Quantity = variant.Quantity
-                };
-            }
-            await _context.SaveChangesAsync();
+            //foreach (var variant in product.ProductVariants)
+            //{
+            //    var pv = new ProductVariant
+            //    {
+            //        ProductId = product.Id,
+            //        ColorId = variant.ColorId,
+            //        SizeId = variant.SizeId,
+            //        Quantity = variant.Quantity
+            //    };
+            //}
+            //await _context.SaveChangesAsync();
 
             productDTO.Id = product.Id;
             productDTO.ProductCategorys = product.ProductCategorys.Select(pc => new ProductCategoryDTO
@@ -975,6 +1064,19 @@ namespace CHAMY_API.Controllers
                 Id = ps.Size.Id,
                 Name = ps.Size.Name
             }).ToList();
+            // Nếu có Sale thì trả về luôn trong DTO
+            if (product.Sales != null)
+            {
+                productDTO.Sale = new SaleDTO
+                {
+                    Id = product.Sales.Id,
+                    Name = product.Sales.Name,
+                    DiscountPercentage = product.Sales.DiscountPercentage,
+                    StartDate = product.Sales.StartDate,
+                    EndDate = product.Sales.EndDate
+                };
+            }
+
 
             return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, productDTO);
         }
@@ -1025,6 +1127,8 @@ namespace CHAMY_API.Controllers
             product.IsNew = productDTO.IsNew;
             product.Count = productDTO.Count;
             product.UpdatedAt = DateTime.UtcNow;
+            // **Cập nhật SaleId**
+            product.SaleId = productDTO.SaleId;
 
             // **Cập nhật danh sách ảnh**
             // Lấy danh sách ImageId hiện có

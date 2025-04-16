@@ -295,7 +295,9 @@ namespace CHAMY_API.Controllers
         //    return Ok(resultItem);
         //}
 
-         // Cập nhật số lượng sản phẩm trong giỏ hàng
+
+
+        // Cập nhật số lượng sản phẩm trong giỏ hàng
         [HttpPut("{cartItemId}")]
         public async Task<IActionResult> UpdateCartItem(int cartItemId, [FromBody] int quantity)
         {

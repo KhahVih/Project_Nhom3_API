@@ -4,6 +4,7 @@ using CHAMY_API.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CHAMY_API.Controllers
 {
@@ -142,16 +143,27 @@ namespace CHAMY_API.Controllers
             });
         }
         [HttpGet("getall")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(int page = 1)
         {
-            var orders = await _context.Orders
+            const int pageSize = 6;
+            if (page < 1) page = 1;
+            var query = _context.Orders
                 .OrderByDescending(o => o.Id)
                 .Include(o => o.OrderItems)
                     .ThenInclude(od => od.Product)
                 .Include(o => o.OrderItems)
                     .ThenInclude(od => od.Color)
                 .Include(o => o.OrderItems)
-                    .ThenInclude(od => od.Size)
+                    .ThenInclude(od => od.Size);
+            // tổng đơn hàng 
+            var totalOrder = await query.CountAsync();
+            // tính tổng số trang 
+            var totalPage = (int)Math.Ceiling((double)totalOrder / pageSize);
+            // tính số bản ghi cần bỏ qua để đến bảng ghi 
+            var skip = (page - 1) * pageSize;
+            var orders = await query
+                .Skip(skip)
+                .Take(pageSize)
                 .Select(o => new
                 {
                     o.Id,
@@ -182,9 +194,16 @@ namespace CHAMY_API.Controllers
                     }).ToList()
                 })
                 .ToListAsync();
-            var totalOrder = _context.Orders.Count();
+            // đối tượng chứa thông tin cần trả về 
+            var result = new
+            {
+                CurrentPage = page,      // Số trang hiện tại
+                TotalPages = totalPage, // Tổng số trang
+                TotalOrders = totalOrder, // Tổng số đơn hàng  
+                Orders = orders // Danh sách đơn hàng  
+            };
 
-            return Ok(orders);
+            return Ok(result);
         }
         [HttpGet("getorderbyid/{id}")]
         public async Task<IActionResult> GetOrderById(int id)
@@ -440,18 +459,28 @@ namespace CHAMY_API.Controllers
             return Ok(pendingOrders);
         }
 
-        [HttpGet("by-statusDelivered")]
-        public async Task<IActionResult> GetOrdersByStatusDelivered()
+        [HttpGet("by-statusDelivered{page}")]
+        public async Task<IActionResult> GetOrdersByStatusDelivered(int page = 1)
         {
-
-            var processingOrders = await _context.Orders
+            const int pageSize = 6;
+            if (page < 1) page = 1;
+            var query = _context.Orders
                 .Where(o => o.Status == OrderStatus.Delivered) //o.Status == OrderStatus.Processing || o.Status == OrderStatus.Shipped ||
                 .Include(o => o.OrderItems)
                     .ThenInclude(oi => oi.Product)
                 .Include(o => o.OrderItems)
                     .ThenInclude(oi => oi.Color)
                 .Include(o => o.OrderItems)
-                    .ThenInclude(oi => oi.Size)
+                    .ThenInclude(oi => oi.Size);
+            // tổng đơn hàng 
+            var totalOrder = await query.CountAsync();
+            // tính tổng số trang 
+            var totalPage = (int)Math.Ceiling((double)totalOrder / pageSize);
+            // tính số bản ghi cần bỏ qua để đến bảng ghi 
+            var skip = (page - 1) * pageSize;
+            var processingOrders = await query
+                .Skip(skip)
+                .Take(totalPage)
                 .Select(o => new
                 {
                     o.Id,
@@ -482,8 +511,15 @@ namespace CHAMY_API.Controllers
                     }).ToList()
                 })
                 .ToListAsync();
-
-            return Ok(processingOrders);
+            // đối tượng chứa thông tin cần trả về 
+            var result = new
+            {
+                CurrentPage = page,      // Số trang hiện tại
+                TotalPages = totalPage, // Tổng số trang
+                TotalOrders = totalOrder, // Tổng số đơn hàng  
+                ProcessingOrders = processingOrders // Danh sách đơn hàng đã được giao  
+            };
+            return Ok(result);
         }
 
         // DELETE: api/order/{id}

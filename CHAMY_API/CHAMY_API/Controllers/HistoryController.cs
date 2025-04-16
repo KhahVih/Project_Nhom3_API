@@ -68,13 +68,14 @@ namespace CHAMY_API.Controllers
             var histories = await _context.History
                 .Where(h => h.CustomerId == customerId)
                 .OrderByDescending(h => h.CreatedAt)
-                .Select(h => new
+                .Select(h => new HistoryDTO
                 {
-                    h.Id,
-                    h.Action,
-                    h.Description,
-                    h.CreatedAt,
-                    h.IpAddress
+                    CustomerId = h.CustomerId,
+                    CustomerName = h.Customer.Fullname ?? h.Customer.Username, // Lấy Fullname hoặc Username nếu Fullname null
+                    Action = h.Action,
+                    Description = h.Description,
+                    CreatedAt = h.CreatedAt,
+
                 })
                 .ToListAsync();
 
