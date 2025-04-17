@@ -666,7 +666,7 @@ namespace CHAMY_API.Controllers
                     ProductName = pc.Product != null ? pc.Product.Name : null,
                     CategoryName = pc.Category != null ? pc.Category.Name : null // Thêm tên danh mục
                 }).ToList(),
-                Comments = product.Comments.Select(c => new CommentDTO
+                Comments = product.Comments.Where(c => c.IsShow == true).Select(c => new CommentDTO
                 {
                     ProductId = c.ProductId,
                     ProductName = c.Product.Name,
@@ -675,6 +675,7 @@ namespace CHAMY_API.Controllers
                     Vote = c.Vote,
                     Description = c.Description,
                     CreatedAt = c.CreatedAt,
+                    IsShow = c.IsShow,
 
                 }).ToList(),
                 // ✅ Thêm danh sách màu sắc

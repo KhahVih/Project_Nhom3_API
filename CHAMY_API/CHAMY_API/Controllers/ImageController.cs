@@ -24,7 +24,7 @@ namespace CHAMY_API.Controllers
         [HttpGet("GetAllImages")]
         public async Task<IActionResult> GetImages(int page = 1)
         {
-            const int pageSize = 8;
+            const int pageSize = 7;
             if (page < 1) page = 1;
             var query = _context.Images;
             // tổng hình ảnh 

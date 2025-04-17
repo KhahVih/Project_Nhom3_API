@@ -19,11 +19,22 @@ namespace CHAMY_API.Controllers
 
         // GET: api/history
         [HttpGet]
-        public async Task<IActionResult> GetAllHistories()
+        public async Task<IActionResult> GetAllHistories(int page = 1)
         {
-            var histories = await _context.History
+            const int pageSize = 12;
+            if (page < 1) page = 1;
+            var query = _context.History
                 .Include(h => h.Customer) // Include thông tin Customer
-                .OrderByDescending(h => h.CreatedAt)
+                .OrderByDescending(h => h.CreatedAt);
+            // tổng số lịch sử hoạt động  
+            var totalHistory = await query.CountAsync();
+            // tính tổng số trang 
+            var totalPage = (int)Math.Ceiling((double)totalHistory / pageSize);
+            // tính số bản ghi cần bỏ qua để đến bảng ghi 
+            var skip = (page - 1) * pageSize;
+            var histories = await query
+                .Skip(skip)
+                .Take(pageSize)
                 .Select(h => new HistoryDTO
                 {
                     CustomerId = h.CustomerId,
@@ -34,8 +45,14 @@ namespace CHAMY_API.Controllers
 
                 })
                 .ToListAsync();
-
-            return Ok(histories);
+            var result = new
+            {
+                CurrentPage = page,      // Số trang hiện tại
+                TotalPages = totalPage, // Tổng số trang 
+                ToTalHistories = totalHistory, // Tổng số khách hàng 
+                Histories = histories, // danh sách khách hàng 
+            };
+            return Ok(result);
         }
 
         [HttpPost]
@@ -63,11 +80,20 @@ namespace CHAMY_API.Controllers
         }
 
         [HttpGet("customer/{customerId}")]
-        public async Task<IActionResult> GetCustomerHistory(int customerId)
+        public async Task<IActionResult> GetCustomerHistory(int customerId, int page = 1)
         {
-            var histories = await _context.History
+            const int pageSize = 12;
+            if (page < 1) page = 1;
+            var query = _context.History
                 .Where(h => h.CustomerId == customerId)
-                .OrderByDescending(h => h.CreatedAt)
+                .OrderByDescending(h => h.CreatedAt);
+            // tổng số lịch sử hoạt động  
+            var totalHistory = await query.CountAsync();
+            // tính tổng số trang 
+            var totalPage = (int)Math.Ceiling((double)totalHistory / pageSize);
+            // tính số bản ghi cần bỏ qua để đến bảng ghi 
+            var skip = (page - 1) * pageSize;
+            var histories = await query
                 .Select(h => new HistoryDTO
                 {
                     CustomerId = h.CustomerId,
@@ -78,8 +104,15 @@ namespace CHAMY_API.Controllers
 
                 })
                 .ToListAsync();
+            var result = new
+            {
+                CurrentPage = page,      // Số trang hiện tại
+                TotalPages = totalPage, // Tổng số trang 
+                ToTalHistories = totalHistory, // Tổng số khách hàng 
+                Histories = histories, // danh sách khách hàng 
+            };
 
-            return Ok(histories);
+            return Ok(result);
         }
     }
 }

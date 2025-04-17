@@ -19,12 +19,23 @@ namespace CHAMY_API.Controllers
         }
 
         // GET: api/Comment?productId=1
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<CommentDTO>>> GetComments()
+        [HttpGet("GetAllComment/page={page}")]
+        public async Task<ActionResult<IEnumerable<CommentDTO>>> GetComments(int page = 1)
         {
-            var comments = await _context.Comments
+            int pageSize = 8;
+            if (page < 1) page = 1;
+            var quey = _context.Comments
                 .Include(c => c.Product)
-                .Include(c => c.Customer)
+                .Include(c => c.Customer);
+            // tổng số liên hệ 
+            var totalComment = await _context.Comments.CountAsync();
+            // tính tổng số trang 
+            var totalPage = (int)Math.Ceiling((double)totalComment / pageSize);
+            // tính số bản ghi cần bỏ qua để đến bảng ghi 
+            var skip = (page - 1) * pageSize;
+            var comments = await quey
+                .Skip(skip)
+                .Take(pageSize)
                 .Select(c => new CommentDTO
                 {
                     Id = c.Id,
@@ -43,8 +54,15 @@ namespace CHAMY_API.Controllers
             //{
             //    query = query.Where(c => c.ProductId == productId.Value);
             //}
-
-            return Ok(comments);
+            // đối tượng chứa thông tin cần trả về 
+            var result = new
+            {
+                CurrentPage = page,      // Số trang hiện tại
+                TotalPages = totalPage, // Tổng số trang
+                TotalComments = totalComment, // Tổng số bình luận 
+                Comments = comments, // danh sách liên hệ 
+            };
+            return Ok(result);
         }
 
         // GET: api/Comment/5
@@ -95,7 +113,7 @@ namespace CHAMY_API.Controllers
                 Description = commentDTO.Description,
                 CreatedAt = DateTime.Now, // Tự động gán thời gian tạo
                 CustomerId = commentDTO.CustomerId,
-                IsShow = commentDTO.IsShow ?? false // Mặc định là true nếu không cung cấp
+                IsShow = false // Mặc định là true nếu không cung cấp
             };
 
             _context.Comments.Add(comment);

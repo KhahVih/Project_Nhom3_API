@@ -251,16 +251,27 @@ namespace CHAMY_API.Controllers
         }
 
         [HttpGet("getorderbycustomer/{id}")]
-        public async Task<IActionResult> GetOrderByCustomer(int id)
+        public async Task<IActionResult> GetOrderByCustomer(int id, int page = 1)
         {
-            var orders = await _context.Orders
+            const int pageSize = 6;
+            if (page < 1) page = 1;
+            var query = _context.Orders
                 .Where(o => o.CustomerId == id)
                 .Include(o => o.OrderItems)
                     .ThenInclude(od => od.Product)
                 .Include(o => o.OrderItems)
                     .ThenInclude(od => od.Color)
                 .Include(o => o.OrderItems)
-                    .ThenInclude(od => od.Size)
+                    .ThenInclude(od => od.Size);
+            // tổng đơn hàng 
+            var totalOrder = await query.CountAsync();
+            // tính tổng số trang 
+            var totalPage = (int)Math.Ceiling((double)totalOrder / pageSize);
+            // tính số bản ghi cần bỏ qua để đến bảng ghi 
+            var skip = (page - 1) * pageSize;
+            var orders = await query
+                .Skip(skip)
+                .Take(pageSize)
                 .Select(o => new
                 {
                     o.Id,
@@ -291,8 +302,16 @@ namespace CHAMY_API.Controllers
                     }).ToList()
                 })
                 .ToListAsync();
+            // đối tượng chứa thông tin cần trả về 
+            var result = new
+            {
+                CurrentPage = page,      // Số trang hiện tại
+                TotalPages = totalPage, // Tổng số trang
+                TotalOrders = totalOrder, // Tổng số đơn hàng  
+                Orders = orders // Danh sách đơn hàng  
+            };
 
-            return Ok(orders);
+            return Ok(result);
         }
 
 
@@ -480,7 +499,7 @@ namespace CHAMY_API.Controllers
             var skip = (page - 1) * pageSize;
             var processingOrders = await query
                 .Skip(skip)
-                .Take(totalPage)
+                .Take(pageSize)
                 .Select(o => new
                 {
                     o.Id,

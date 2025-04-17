@@ -20,7 +20,7 @@ namespace CHAMY_API.Controllers
         [HttpGet("GetCustomer/page{page}")]
         public async Task<ActionResult<IEnumerable<CustomerDTO>>> GetCustomers(int page = 1)
         {
-            const int pageSize = 9;
+            const int pageSize = 8;
             if (page < 1) page = 1;
             var query = _context.Customers
                 .Include(c => c.Comments);
@@ -169,6 +169,7 @@ namespace CHAMY_API.Controllers
             customer.Username = customerDTO.Username;
             customer.Email = customerDTO.Email;
             customer.Fullname = customerDTO.Fullname;
+            customer.Password = customerDTO.Password;
             customer.Address = customerDTO.Address;
             customer.Phone = customerDTO.Phone;
             customer.Gender = customerDTO.Gender;
