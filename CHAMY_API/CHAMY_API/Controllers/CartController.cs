@@ -53,6 +53,40 @@ namespace CHAMY_API.Controllers
             return Ok(cart);
         }
 
+        [HttpGet("CartId/{id}")]
+        public async Task<ActionResult<IEnumerable<CartItemDTO>>> GetCartId(int id)
+        {
+            var cart = await _context.CartItems
+             .Where(c => c.Id == id)
+             .Include(c => c.Product)
+                .ThenInclude(c => c.ProductImages)
+             .Include(c => c.Color)
+             .Include(c => c.Size)
+             .Select(item => new CartItemDTO // Giả sử đây là DTO, tôi đổi tên class cho rõ ràng
+             {
+                 Id = item.Id,
+                 CustomerId = item.CustomerId ?? 0,
+                 ProductId = item.ProductId,
+                 ProductName = item.Product.Name ?? "Không có tên", // Thêm tên sản phẩm
+                 Quantity = item.Quantity,
+                 ColorId = item.ColorId,
+                 ColorName = item.Color.Name ?? "Không chọn",
+                 SizeId = item.SizeId,
+                 SizeName = item.Size.Name ?? "Không chọn",
+                 UnitPrice = item.UnitPrice,
+                 FinalPrice = (item.Product.Sales != null && item.Product.Sales.IsActive &&
+                          DateTime.Now >= item.Product.Sales.StartDate && DateTime.Now <= item.Product.Sales.EndDate)
+                          ? item.UnitPrice * (1 - item.Product.Sales.DiscountPercentage / 100)
+                          : item.UnitPrice,
+                 ProductImage = item.Product.ProductImages != null && item.Product.ProductImages.Any()
+                   ? item.Product.ProductImages.First().Image.Link : ""
+
+
+             }).ToListAsync();
+
+            return Ok(cart);
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddToCart(CartItemDTO cartItemDto)
         {

@@ -26,7 +26,8 @@ namespace CHAMY_API.Controllers
             if (page < 1) page = 1;
             var quey = _context.Comments
                 .Include(c => c.Product)
-                .Include(c => c.Customer);
+                .Include(c => c.Customer)
+                .OrderByDescending(c => c.CreatedAt);
             // tổng số liên hệ 
             var totalComment = await _context.Comments.CountAsync();
             // tính tổng số trang 

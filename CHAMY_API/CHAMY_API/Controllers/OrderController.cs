@@ -19,6 +19,7 @@ namespace CHAMY_API.Controllers
         {
             _context = context;
         }
+
         [HttpPost("checkout")]
         public async Task<IActionResult> CheckOut(CheckOutDTO checkoutDto)
         {
@@ -65,7 +66,14 @@ namespace CHAMY_API.Controllers
                 {
                     return BadRequest(new { message = $"Sản phẩm với ID {item.ProductId} không tồn tại!" });
                 }
-
+                if (product.Count.HasValue) {
+                    product.Count -= item.Quantity;
+                    _context.Products.Update(product);
+                }
+                else
+                {
+                    return BadRequest(new { message = $"Không tìm thấy tồn kho cho sản phẩm {product.Name} với màu và kích cỡ đã chọn." });
+                }
                 // Lấy thông tin Color (nếu có)
                 //string colorName = null;
                 //if (item.ColorId.HasValue)
@@ -142,6 +150,7 @@ namespace CHAMY_API.Controllers
                 orderItems = orderDetailDtos
             });
         }
+
         [HttpGet("getall")]
         public async Task<IActionResult> GetAll(int page = 1)
         {
@@ -398,6 +407,19 @@ namespace CHAMY_API.Controllers
                 Console.WriteLine($"Lỗi khi đếm đơn hàng: {ex.Message}");
                 return StatusCode(500, new { message = "Có lỗi xảy ra khi đếm đơn hàng", error = ex.Message });
             }
+        }
+
+        // GET: api/order/count-sold-by-product
+        [HttpGet("count-sold-by-product")]
+        public async Task<IActionResult> GetSoldProductsCount(int Id)
+        {
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == Id);
+            if(product == null)
+            {
+                return NotFound(new { message = $"Sản phẩm với ID {Id} không tồn tại!" });
+            }
+            var CountProduct = await _context.OrderDetails.Where(od => od.ProductId == Id).SumAsync(od => od.Quantity);
+            return Ok(CountProduct);
         }
 
         [HttpGet("by-statusPending")]

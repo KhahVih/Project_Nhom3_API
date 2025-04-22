@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CHAMY_API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8dfd34ec8c2723c93b490517a7fb72609041fefe")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9ce9f124bdb409ed0d798689d534357546845f4")]
 [assembly: System.Reflection.AssemblyProductAttribute("CHAMY_API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CHAMY_API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

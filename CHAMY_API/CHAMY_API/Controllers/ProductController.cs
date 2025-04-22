@@ -26,7 +26,7 @@ namespace CHAMY_API.Controllers
         [HttpGet("GetAllProduct")]
         public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProducts(int page = 1)
         {   
-            const int pageSize = 21;
+            const int pageSize = 12;
             if(page < 1) page = 1;
             // tổng sản phẩm
             var totalProduct = await _context.Products.CountAsync();
@@ -101,7 +101,7 @@ namespace CHAMY_API.Controllers
         [HttpGet("GetDiscountedProducts")]
         public async Task<ActionResult<IEnumerable<ProductDTO>>> GetDiscountedProducts(int page = 1)
         {
-            const int pageSize = 21;
+            const int pageSize = 12;
             if (page < 1) page = 1;
 
             // Lọc sản phẩm có giảm giá
@@ -165,7 +165,7 @@ namespace CHAMY_API.Controllers
         [HttpGet("GetProductIsPuslish")]
         public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsIsPuslish(int page = 1)
         {
-            const int pageSize = 21;
+            const int pageSize = 12;
             if (page < 1) page = 1;
             var query = _context.Products
                 .Where(p => p.IsPublish == true)
@@ -229,7 +229,7 @@ namespace CHAMY_API.Controllers
         [HttpGet("GetProductNoPuslish")]
         public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsNoPuslish(int page = 1)
         {
-            const int pageSize = 21;
+            const int pageSize = 12;
             if (page < 1) page = 1;
             var query = _context.Products
                 .Where(p => p.IsPublish == false)
@@ -294,7 +294,7 @@ namespace CHAMY_API.Controllers
         [HttpGet("GetProductSale/{id}")]
         public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductSaleId(int id, int page = 1)
         {
-            const int pageSize = 21;
+            const int pageSize = 12;
             if (page < 1) page = 1;
             var query = _context.Products
                 .Where(p => p.SaleId == id)
@@ -359,7 +359,7 @@ namespace CHAMY_API.Controllers
         [HttpGet("GetProductNew")]
         public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsNew(int page =1)
         {
-            const int pageSize = 21;
+            const int pageSize = 12;
             if (page < 1) page = 1;
             var query = _context.Products
                 .OrderByDescending(p => p.CreatedAt)
@@ -424,7 +424,7 @@ namespace CHAMY_API.Controllers
         [HttpGet("GetProductOld")]
         public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsOld(int page = 1)
         {
-            const int pageSize = 21;
+            const int pageSize = 12;
             if (page < 1) page = 1;
             var query = _context.Products
                 .OrderBy(p => p.CreatedAt)
@@ -489,7 +489,7 @@ namespace CHAMY_API.Controllers
         [HttpGet("GetProductPriceASC")]
         public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsPriceASC( int page = 1)
         {
-            const int pageSize = 21;
+            const int pageSize = 12;
             if (page < 1) page = 1;
             var query = _context.Products
                 .Include(p => p.ProductImages)
@@ -554,7 +554,7 @@ namespace CHAMY_API.Controllers
         [HttpGet("GetProductPriceASDC")]
         public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsPriceASDC(int page = 1)
         {
-            const int pageSize = 21;
+            const int pageSize = 12;
             if (page < 1) page = 1;
             var query = _context.Products
                 .Include(p => p.ProductImages)
@@ -700,7 +700,7 @@ namespace CHAMY_API.Controllers
         [HttpGet("GetProductCategory/{id}")]
         public async Task<ActionResult<ProductDTO>> GetProductByCategory(int id, int page = 1)
         {
-            const int pageSize = 21;
+            const int pageSize = 12;
             if (page < 1) page = 1;
             var query = _context.Products
                 .Where(p => p.ProductCategorys.Any(pc => pc.CategoryId == id))
@@ -774,7 +774,7 @@ namespace CHAMY_API.Controllers
         [HttpGet("SearchProduct/{name}")]
         public async Task<ActionResult<ProductDTO>> GetProductName(string name, int page = 1)
         {
-            const int pageSize = 21;
+            const int pageSize = 12;
             if (page < 1) page = 1;
             var query = _context.Products
                  .Include(p => p.ProductImages)
