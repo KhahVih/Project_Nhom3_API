@@ -195,21 +195,15 @@ namespace CHAMY_API.Controllers
         [HttpPut("change-password")]
         public async Task<IActionResult> ChangePassword([FromBody] ChangePassword request)
         {
-            if (string.IsNullOrEmpty(request.Email) || string.IsNullOrEmpty(request.OldPassword) || string.IsNullOrEmpty(request.NewPassword))
+            if (string.IsNullOrEmpty(request.Email) || string.IsNullOrEmpty(request.NewPassword))
             {
-                return BadRequest(new { message = "Email, mật khẩu cũ và mật khẩu mới là bắt buộc" });
+                return BadRequest(new { message = "Email, mật khẩu mới là bắt buộc" });
             }
 
             var customer = await _context.Customers.FirstOrDefaultAsync(c => c.Email == request.Email);
             if (customer == null)
             {
                 return NotFound(new { message = "Không tìm thấy khách hàng với email này" });
-            }
-
-            // Kiểm tra mật khẩu cũ
-            if (request.OldPassword != customer.Password)
-            {
-                return BadRequest(new { message = "Mật khẩu cũ không đúng" });
             }
 
             customer.Password = request.NewPassword;
@@ -227,6 +221,26 @@ namespace CHAMY_API.Controllers
             }
 
             return Ok(new { message = "Mật khẩu đã được cập nhật thành công" });
+        }
+        // kiểm tra xem tài khoản với username đã tông tại hay chưa 
+        [HttpGet("check-username")]
+        public async Task<IActionResult> CheckUsernameExists([FromQuery] string username)
+        {
+            if (string.IsNullOrWhiteSpace(username))
+                return BadRequest(new { message = "Username không hợp lệ" });
+
+            var exists = await _context.Customers.AnyAsync(c => c.Username == username);
+            return Ok(new { exists });
+        }
+        // kiểm tra xem tài khoản với email đã tông tại hay chưa 
+        [HttpGet("check-email")]
+        public async Task<IActionResult> CheckEmailExists([FromQuery] string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return BadRequest(new { message = "Username không hợp lệ" });
+
+            var exists = await _context.Customers.AnyAsync(c => c.Email == email);
+            return Ok(new { exists });
         }
 
         // DELETE: api/customers/5 - Xóa customer

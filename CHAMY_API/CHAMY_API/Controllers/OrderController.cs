@@ -503,7 +503,7 @@ namespace CHAMY_API.Controllers
         [HttpGet("by-statusDelivered{page}")]
         public async Task<IActionResult> GetOrdersByStatusDelivered(int page = 1)
         {
-            const int pageSize = 6;
+            const int pageSize = 8;
             if (page < 1) page = 1;
             var query = _context.Orders
                 .Where(o => o.Status == OrderStatus.Delivered) //o.Status == OrderStatus.Processing || o.Status == OrderStatus.Shipped ||

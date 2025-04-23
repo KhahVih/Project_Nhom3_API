@@ -358,16 +358,24 @@ namespace CHAMY_API.Controllers
         [HttpDelete("{cartItemId}")]
         public async Task<IActionResult> RemoveFromCart(int cartItemId)
         {
-            var cartItem = await _context.CartItems.FindAsync(cartItemId);
-            if (cartItem == null)
+            try
             {
-                return NotFound(new { message = "Không tìm thấy sản phẩm trong giỏ hàng!" });
+                var cartItem = await _context.CartItems.FirstOrDefaultAsync(ci => ci.Id == cartItemId);
+                if (cartItem == null)
+                {
+                    return NotFound(new { message = "Không tìm thấy sản phẩm trong giỏ hàng!" });
+                }
+
+                _context.CartItems.Remove(cartItem);
+                await _context.SaveChangesAsync();
+
+                return Ok(new { message = "Sản phẩm đã được xóa khỏi giỏ hàng!" });
             }
-
-            _context.CartItems.Remove(cartItem);
-            await _context.SaveChangesAsync();
-
-            return Ok(new { message = "Sản phẩm đã được xóa khỏi giỏ hàng!" });
+            catch (Exception ex) 
+            {
+                // Ghi log nếu cần
+                return StatusCode(500, ex.Message); // Trả lỗi có thể parse được
+            }
         }
     }
 }
