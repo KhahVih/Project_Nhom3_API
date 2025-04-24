@@ -91,15 +91,33 @@ namespace CHAMY_API.Controllers
                 //        .FirstOrDefaultAsync(s => s.Id == item.SizeId.Value);
                 //    sizeName = size?.Name;
                 //}
+                int? colorId = null;
+                if (item.ColorId.HasValue)
+                {
+                    var colorExists = await _context.Colors.AnyAsync(c => c.Id == item.ColorId.Value);
+                    if (colorExists)
+                    {
+                        colorId = item.ColorId;
+                    }
+                }
 
+                int? sizeId = null;
+                if (item.SizeId.HasValue)
+                {
+                    var sizeExists = await _context.Sizes.AnyAsync(s => s.Id == item.SizeId.Value);
+                    if (sizeExists)
+                    {
+                        sizeId = item.SizeId;
+                    }
+                }
                 // Tạo OrderDetail
                 var orderDetail = new OrderDetail
                 {
                     ProductId = item.ProductId,
                     Quantity = item.Quantity,
                     UnitPrice = item.UnitPrice,
-                    ColorId = item.ColorId,
-                    SizeId = item.SizeId,
+                    ColorId = colorId,
+                    SizeId = sizeId
                     // Không cần lưu tên trực tiếp vào OrderDetail vì thông tin này có thể lấy từ bảng liên quan
                 };
                 orderItems.Add(orderDetail);
@@ -124,8 +142,8 @@ namespace CHAMY_API.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString()); // Debug lỗi chi tiết
-                throw;
+                Console.WriteLine(ex.ToString());
+                return StatusCode(500, new { message = "Lỗi khi lưu đơn hàng: " + ex.Message });
             }
 
             // Trả về OrderDetailDTO với thông tin tên

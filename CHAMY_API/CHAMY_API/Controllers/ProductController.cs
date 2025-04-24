@@ -968,23 +968,28 @@ namespace CHAMY_API.Controllers
                 }
             }
             // Xử lý màu sắc
+            // Xử lý màu sắc
             if (productDTO.Colors != null && productDTO.Colors.Any())
             {
                 foreach (var colorDTO in productDTO.Colors)
                 {
-                    var color = await _context.Colors.FirstOrDefaultAsync(c => c.Id == colorDTO.Id);
-                    if (color != null)
+                    if (colorDTO?.Id != null)
                     {
-                        var productcolor = new ProductColor
+                        var color = await _context.Colors.FirstOrDefaultAsync(c => c.Id == colorDTO.Id);
+                        if (color != null)
                         {
-                            Product = product,
-                            Color = color,
-                            ColorId = color.Id
-                        };
-                        product.ProductColors.Add(productcolor);
+                            var productColor = new ProductColor
+                            {
+                                Product = product,
+                                Color = color,
+                                ColorId = color.Id
+                            };
+                            product.ProductColors.Add(productColor);
+                        }
                     }
                 }
             }
+
             // Xử lý kích thước
             if (productDTO.Sizes != null && productDTO.Sizes.Any())
             {
