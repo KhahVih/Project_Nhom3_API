@@ -49,7 +49,7 @@ namespace CHAMY_API.Controllers
                 Address = checkoutDto.Address,
                 Phone = checkoutDto.Phone,
                 Note = checkoutDto.Note,
-                TotalAmount = checkoutDto.CartItems.Sum(item => item.UnitPrice * item.Quantity),
+                TotalAmount = checkoutDto.CartItems.Sum(item => item.FinalPrice * item.Quantity),
                 Status = OrderStatus.Pending, // Mặc định là Pending
                 CreatedAt = DateTime.UtcNow,
             };
