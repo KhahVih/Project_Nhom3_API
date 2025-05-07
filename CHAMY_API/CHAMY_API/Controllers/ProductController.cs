@@ -851,7 +851,6 @@ namespace CHAMY_API.Controllers
             {
                 return BadRequest("Product data is required.");
             }
-
             // Parse JSON string thành ProductDTO
             ProductDTO productDTO;
             try
@@ -862,7 +861,6 @@ namespace CHAMY_API.Controllers
             {
                 return BadRequest($"Invalid product data format: {ex.Message}");
             }
-
             // Tạo product mới 
             var product = new Product
             {
@@ -880,7 +878,6 @@ namespace CHAMY_API.Controllers
                 ProductColors = new List<ProductColor>(),
                 ProductSizes = new List<ProductSize>(),
             };
-
             // Gán Sale nếu có
             if (productDTO.SaleId.HasValue)
             {
@@ -890,9 +887,6 @@ namespace CHAMY_API.Controllers
                     product.SaleId = sale.Id;
                 }
             }
-            
-
-
             // Xử lý upload hình ảnh nếu có
             if (imageFiles != null && imageFiles.Any())
             {
@@ -946,7 +940,6 @@ namespace CHAMY_API.Controllers
                     product.ProductImages.Add(productImage);
                 }
             }
-
             // Xử lý danh sách danh mục
             if (productDTO.ProductCategorys != null && productDTO.ProductCategorys.Any())
             {
@@ -968,7 +961,6 @@ namespace CHAMY_API.Controllers
                 }
             }
             // Xử lý màu sắc
-            // Xử lý màu sắc
             if (productDTO.Colors != null && productDTO.Colors.Any())
             {
                 foreach (var colorDTO in productDTO.Colors)
@@ -989,7 +981,6 @@ namespace CHAMY_API.Controllers
                     }
                 }
             }
-
             // Xử lý kích thước
             if (productDTO.Sizes != null && productDTO.Sizes.Any())
             {
@@ -1008,43 +999,12 @@ namespace CHAMY_API.Controllers
                     }
                 }
             }
-            // Sau khi SaveChanges để có product.Id
-            //if (productDTO.Variants != null && productDTO.Variants.Any())
-            //{
-            //    foreach (var variantDTO in productDTO.Variants)
-            //    {
-            //        var productVariant = new ProductVariant
-            //        {
-            //            ProductId = product.Id,
-            //            ColorId = variantDTO.ColorId,
-            //            SizeId = variantDTO.SizeId,
-            //            Quantity = variantDTO.Quantity
-            //        };
-            //        _context.ProductVariants.Add(productVariant);
-            //    }
-            //    await _context.SaveChangesAsync();
-            //}
-
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
-
             foreach (var productImage in product.ProductImages)
             {
                 productImage.ProductId = product.Id;
             }
-            // Tạo các bản ghi ProductVariant
-            //foreach (var variant in product.ProductVariants)
-            //{
-            //    var pv = new ProductVariant
-            //    {
-            //        ProductId = product.Id,
-            //        ColorId = variant.ColorId,
-            //        SizeId = variant.SizeId,
-            //        Quantity = variant.Quantity
-            //    };
-            //}
-            //await _context.SaveChangesAsync();
-
             productDTO.Id = product.Id;
             productDTO.ProductCategorys = product.ProductCategorys.Select(pc => new ProductCategoryDTO
             {
@@ -1052,7 +1012,6 @@ namespace CHAMY_API.Controllers
                 CategoryId = pc.CategoryId,
                 CategoryName = pc.Category.Name,
             }).ToList();
-
             productDTO.Images = product.ProductImages.Select(pi => new ImageDTO
             {
                 Id = pi.Image.Id,
@@ -1064,7 +1023,6 @@ namespace CHAMY_API.Controllers
                 Id = pc.Color.Id,
                 Name = pc.Color.Name
             }).ToList();
-
             productDTO.Sizes = product.ProductSizes.Select(ps => new SizeDTO
             {
                 Id = ps.Size.Id,
@@ -1082,8 +1040,6 @@ namespace CHAMY_API.Controllers
                     EndDate = product.Sales.EndDate
                 };
             }
-
-
             return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, productDTO);
         }
 
@@ -1095,7 +1051,6 @@ namespace CHAMY_API.Controllers
             {
                 return BadRequest("Product data is required.");
             }
-
             // Parse JSON string thành ProductDTO
             ProductDTO productDTO;
             try
@@ -1106,12 +1061,10 @@ namespace CHAMY_API.Controllers
             {
                 return BadRequest($"Invalid product data format: {ex.Message}");
             }
-
             if (id != productDTO.Id)
             {
                 return BadRequest("Product ID mismatch.");
             }
-
             var product = await _context.Products
                 .Include(p => p.ProductImages)
                     .ThenInclude(pi => pi.Image)
@@ -1123,7 +1076,6 @@ namespace CHAMY_API.Controllers
             {
                 return NotFound();
             }
-
             // Cập nhật thông tin sản phẩm
             product.PosCode = productDTO.PosCode;
             product.Name = productDTO.Name;

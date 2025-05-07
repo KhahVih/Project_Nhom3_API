@@ -20,10 +20,10 @@ namespace CHAMY_API.Controllers
         [HttpGet("GetCustomer/page{page}")]
         public async Task<ActionResult<IEnumerable<CustomerDTO>>> GetCustomers(int page = 1)
         {
-            const int pageSize = 8;
+            const int pageSize = 10;
             if (page < 1) page = 1;
             var query = _context.Customers
-                .Include(c => c.Comments);
+                .Include(c => c.Comments).OrderByDescending(c => c.CreatedAt);
             // tổng số khách hàng 
             var totalCustomer = await query.CountAsync();
             // tính tổng số trang 

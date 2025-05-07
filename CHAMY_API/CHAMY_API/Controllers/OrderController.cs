@@ -521,7 +521,7 @@ namespace CHAMY_API.Controllers
         [HttpGet("by-statusDelivered{page}")]
         public async Task<IActionResult> GetOrdersByStatusDelivered(int page = 1)
         {
-            const int pageSize = 8;
+            const int pageSize = 6;
             if (page < 1) page = 1;
             var query = _context.Orders
                 .Where(o => o.Status == OrderStatus.Delivered) //o.Status == OrderStatus.Processing || o.Status == OrderStatus.Shipped ||
@@ -579,6 +579,23 @@ namespace CHAMY_API.Controllers
                 ProcessingOrders = processingOrders // Danh sách đơn hàng đã được giao  
             };
             return Ok(result);
+        }
+
+        [HttpGet("revenue-by-month")]
+        public IActionResult GetRevenueByMonth()
+        {
+            var revenueByMonth = _context.Orders
+                .Where(o => o.Status == OrderStatus.Delivered)
+                // chỉ tính đơn đã hoàn tất
+                .GroupBy(o => o.CreatedAt.Month)
+                .Select(g => new {
+                    Month = g.Key,
+                    Revenue = g.Sum(o => o.TotalAmount)
+                })
+                .OrderBy(x => x.Month)
+                .ToList();
+
+            return Ok(revenueByMonth);
         }
 
         // DELETE: api/order/{id}

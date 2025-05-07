@@ -934,6 +934,16 @@
   },
   {
     "ContainingType": "CHAMY_API.Controllers.OrderController",
+    "Method": "GetRevenueByMonth",
+    "RelativePath": "api/Order/revenue-by-month",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CHAMY_API.Controllers.OrderController",
     "Method": "UpdateStatus",
     "RelativePath": "api/Order/update-status/{orderId}",
     "HttpMethod": "PUT",

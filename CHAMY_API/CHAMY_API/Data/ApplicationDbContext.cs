@@ -15,7 +15,7 @@ namespace CHAMY_API.Data
         public DbSet<ProductCategory> ProductCategory { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Permission> Permissions { get; set; }
-        public DbSet<UserPermission> UserPermissions { get; set; }
+        public DbSet<UserPermission> UserPermissions { get; set; }  
         public DbSet<Role> Roles { get; set; }
         public DbSet<PermissionRole> PermissionRoles { get; set; }
         public DbSet<CartItem> CartItems { get; set; }

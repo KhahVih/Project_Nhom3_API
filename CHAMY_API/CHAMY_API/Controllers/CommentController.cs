@@ -129,13 +129,13 @@ namespace CHAMY_API.Controllers
 
         // PUT: api/Comment/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateComment(int id, CommentDTO commentDTO)
+        public async Task<IActionResult> UpdateComment(int id, CommentDTO commentDTO )
         {
             if (id != commentDTO.Id)
             {
                 return BadRequest("ID mismatch");
             }
-
+            
             var comment = await _context.Comments.FindAsync(id);
             if (comment == null)
             {
@@ -143,10 +143,10 @@ namespace CHAMY_API.Controllers
             }
 
             // Cập nhật các trường
-            comment.ProductId = commentDTO.ProductId;
-            comment.Vote = commentDTO.Vote;
-            comment.Description = commentDTO.Description;
-            comment.CustomerId = commentDTO.CustomerId;
+            //comment.ProductId = commentDTO.ProductId;
+            //comment.Vote = commentDTO.Vote;
+            //comment.Description = commentDTO.Description;
+            //comment.CustomerId = commentDTO.CustomerId;
             comment.IsShow = commentDTO.IsShow;
             // CreatedAt không cập nhật vì là thời gian tạo ban đầu
 

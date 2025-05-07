@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bOw7yJ8XHQEUMBgdfsoXs++mRegOeQ6SQIkY0DnCCbQ=",
+  "Hash": "fl2vjaThA5E+mCSSGdMHwhgp9dY3qvBoIdF6eruRfUk=",
   "Source": "CHAMY_API",
   "BasePath": "_content/CHAMY_API",
   "Mode": "Default",
@@ -1478,6 +1478,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Image\\cc757fa8-79d8-477c-ac7f-cf3d047b1f31.jpg"
+    },
+    {
+      "Identity": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\ccf0870b-cdf5-44aa-a961-a457578e2398.png",
+      "SourceId": "CHAMY_API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\",
+      "BasePath": "_content/CHAMY_API",
+      "RelativePath": "Image/ccf0870b-cdf5-44aa-a961-a457578e2398.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Image\\ccf0870b-cdf5-44aa-a961-a457578e2398.png"
     },
     {
       "Identity": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\wwwroot\\Image\\cd6a43fd-5887-4aa6-8839-371a9618cff6.jpg",
