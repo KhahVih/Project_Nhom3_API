@@ -6,6 +6,7 @@ using CHAMY_API.Data;
 using CHAMY_API.Models.DTO;
 using System.Text.Json;
 using System.Drawing;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CHAMY_API.Controllers
 {

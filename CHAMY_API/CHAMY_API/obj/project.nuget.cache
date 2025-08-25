@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "b9XWTNxJxuA=",
+  "dgSpecHash": "6v028Kerr50=",
   "success": true,
-  "projectFilePath": "C:\\Du_An_TT_CubeTech\\Project\\CHAMY_API\\CHAMY_API\\CHAMY_API.csproj",
+  "projectFilePath": "C:\\Users\\khanh\\Downloads\\ChamyNhom3\\API\\CHAMY_API\\CHAMY_API\\CHAMY_API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\khanh\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\khanh\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
